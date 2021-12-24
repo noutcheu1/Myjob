@@ -1,0 +1,9 @@
+window_sizes 1366 708 320 1040 523 128
+cleanlooks_style
+show_stereotypes
+selected objectdiagram_ref 128646 // obj_myjob
+open
+  classview_ref 128006 // class_views_myjob
+  usecaseview_ref 128006 // use_case_myjob
+end
+end
