@@ -1,0 +1,75 @@
+format 224
+
+subject 128006 ""
+  xyzwh 218 56 2000 545 564
+classcanvas 128134 class_ref 128006 // user
+  simpleclassdiagramsettings end
+  xyz 127 139 2000
+end
+usecasecanvas 128262 usecase_ref 128006 // sign in
+  xyzwh 488 62 3005 64 32 label_xy 500 64
+end
+usecasecanvas 128390 usecase_ref 128134 // sign up
+  xyzwh 261 87 3005 69 35 label_xy 274 92
+end
+usecasecanvas 129030 usecase_ref 128262 // cree un cv
+  xyzwh 645 118 3005 79 45 label_xy 655 130
+end
+usecasecanvas 129158 usecase_ref 128390 // update un cv
+  xyzwh 436 169 3005 95 51 label_xy 439 182
+end
+usecasecanvas 129286 usecase_ref 128518 // postuler sur un job
+  xyzwh 587 230 3005 139 79 label_xy 596 257
+end
+usecasecanvas 129414 usecase_ref 128646 // passer un entretient
+  xyzwh 414 411 3005 139 73 label_xy 416 433
+end
+usecasecanvas 129542 usecase_ref 128774 // rechercher un job
+  xyzwh 533 324 3005 133 85 label_xy 540 356
+end
+usecasecanvas 129670 usecase_ref 128902 // voire les cv 
+  xyzwh 262 544 3005 135 55 label_xy 288 565
+end
+usecasecanvas 129798 usecase_ref 129030 // selectionner des candidats
+  xyzwh 275 306 3005 179 59 label_xy 279 324
+end
+classcanvas 129926 class_ref 128134 // Employeur
+  simpleclassdiagramsettings end
+  xyz 106 291 2005
+end
+usecasecanvas 131206 usecase_ref 129158 // poster un job
+  xyzwh 286 451 3005 97 63 label_xy 292 471
+end
+simplerelationcanvas 128646 simplerelation_ref 128134
+  from ref 128262 z 3006 stereotype "<<include>>" xyz 370 89 3000 to ref 128390
+end
+relationcanvas 130438 relation_ref 128006 // <generalisation>
+  from ref 129926 z 2006 to ref 128134
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+line 130566 ----
+  from ref 129926 z 3006 to ref 129798
+line 130950 ----
+  from ref 129414 z 3006 to ref 129926
+line 131078 ----
+  from ref 129670 z 3006 to ref 129926
+line 131334 ----
+  from ref 131206 z 3006 to ref 129926
+line 131462 ----
+  from ref 128134 z 3006 to ref 128390
+line 131718 ----
+  from ref 129030 z 3006 to ref 128134
+simplerelationcanvas 132102 simplerelation_ref 128262
+  from ref 129158 z 3006 stereotype "<<include>>" xyz 548.5 165 3000 to ref 129030
+end
+line 132230 ----
+  from ref 128134 z 3006 to ref 129158
+line 132358 ----
+  from ref 129542 z 3006 to ref 128134
+line 132870 ----
+  from ref 129286 z 3006 to ref 128134
+simplerelationcanvas 132998 simplerelation_ref 128390
+  from ref 129030 z 3006 stereotype "<<include>>" xyz 559 106.5 3000 to ref 128262
+end
+end
