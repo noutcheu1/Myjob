@@ -1,47 +1,54 @@
 format 224
 
 subject 128006 ""
-  xyzwh 218 56 2000 545 564
+  xyzwh 207 64 2000 545 564
 classcanvas 128134 class_ref 128006 // user
   simpleclassdiagramsettings end
   xyz 127 139 2000
 end
 usecasecanvas 128262 usecase_ref 128006 // sign in
-  xyzwh 488 62 3005 64 32 label_xy 500 64
+  xyzwh 477 70 3005 64 32 label_xy 489 72
 end
 usecasecanvas 128390 usecase_ref 128134 // sign up
-  xyzwh 261 87 3005 69 35 label_xy 274 92
+  xyzwh 250 95 3005 69 35 label_xy 263 100
 end
 usecasecanvas 129030 usecase_ref 128262 // cree un cv
-  xyzwh 645 118 3005 79 45 label_xy 655 130
+  xyzwh 634 126 3005 79 45 label_xy 644 138
 end
 usecasecanvas 129158 usecase_ref 128390 // update un cv
-  xyzwh 436 169 3005 95 51 label_xy 439 182
+  xyzwh 425 177 3005 95 51 label_xy 428 190
 end
 usecasecanvas 129286 usecase_ref 128518 // postuler sur un job
-  xyzwh 587 230 3005 139 79 label_xy 596 257
+  xyzwh 576 238 3005 139 79 label_xy 585 265
 end
 usecasecanvas 129414 usecase_ref 128646 // passer un entretient
-  xyzwh 414 411 3005 139 73 label_xy 416 433
+  xyzwh 414 413 3005 139 73 label_xy 416 435
 end
 usecasecanvas 129542 usecase_ref 128774 // rechercher un job
-  xyzwh 533 324 3005 133 85 label_xy 540 356
+  xyzwh 593 353 3005 133 85 label_xy 600 385
 end
 usecasecanvas 129670 usecase_ref 128902 // voire les cv 
-  xyzwh 262 544 3005 135 55 label_xy 288 565
+  xyzwh 227 558 3005 135 55 label_xy 253 579
 end
 usecasecanvas 129798 usecase_ref 129030 // selectionner des candidats
-  xyzwh 275 306 3005 179 59 label_xy 279 324
+  xyzwh 276 317 3005 179 59 label_xy 280 335
 end
 classcanvas 129926 class_ref 128134 // Employeur
   simpleclassdiagramsettings end
   xyz 106 291 2005
 end
 usecasecanvas 131206 usecase_ref 129158 // poster un job
-  xyzwh 286 451 3005 97 63 label_xy 292 471
+  xyzwh 342 481 3005 97 63 label_xy 348 500
+end
+classcanvas 133254 class_ref 135430 // admin
+  simpleclassdiagramsettings end
+  xyz 773 474 2000
+end
+usecasecanvas 133382 usecase_ref 135686 // valider le job
+  xyzwh 548 510 3005 95 57 label_xy 556 527
 end
 simplerelationcanvas 128646 simplerelation_ref 128134
-  from ref 128262 z 3006 stereotype "<<include>>" xyz 370 89 3000 to ref 128390
+  from ref 128262 z 3006 stereotype "<<include>>" xyz 359 97 3000 to ref 128390
 end
 relationcanvas 130438 relation_ref 128006 // <generalisation>
   from ref 129926 z 2006 to ref 128134
@@ -61,7 +68,7 @@ line 131462 ----
 line 131718 ----
   from ref 129030 z 3006 to ref 128134
 simplerelationcanvas 132102 simplerelation_ref 128262
-  from ref 129158 z 3006 stereotype "<<include>>" xyz 548.5 165 3000 to ref 129030
+  from ref 129158 z 3006 stereotype "<<include>>" xyz 537 173 3000 to ref 129030
 end
 line 132230 ----
   from ref 128134 z 3006 to ref 129158
@@ -70,6 +77,11 @@ line 132358 ----
 line 132870 ----
   from ref 129286 z 3006 to ref 128134
 simplerelationcanvas 132998 simplerelation_ref 128390
-  from ref 129030 z 3006 stereotype "<<include>>" xyz 559 106.5 3000 to ref 128262
+  from ref 129030 z 3006 stereotype "<<include>>" xyz 548 114 3000 to ref 128262
 end
+simplerelationcanvas 133126 simplerelation_ref 128006
+  from ref 128390 z 3006 to ref 128262
+end
+line 133510 ----
+  from ref 133254 z 3006 to ref 133382
 end

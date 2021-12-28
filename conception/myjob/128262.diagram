@@ -1,3 +1,83 @@
 format 224
 
+classcanvas 128006 class_ref 128262 // User
+  classdiagramsettings member_max_width 0 end
+  xyzwh 78 232 2000 79 95
+end
+classcanvas 128134 class_ref 128134 // Employeur
+  classdiagramsettings member_max_width 0 end
+  xyzwh 51 372 2000 121 117
+end
+classcanvas 128390 class_ref 128390 // Job
+  classdiagramsettings member_max_width 0 end
+  xyz 704 356 2000
+end
+classcanvas 128518 class_ref 128518 // CV
+  classdiagramsettings member_max_width 0 end
+  xyzwh 81 5 2000 75 101
+end
+classcanvas 128646 class_ref 128646 // Formation
+  classdiagramsettings member_max_width 0 end
+  xyzwh 670 13 2000 113 85
+end
+classcanvas 128774 class_ref 128774 // Competence
+  classdiagramsettings member_max_width 0 end
+  xyzwh 527 175 2000 107 49
+end
+classcanvas 129542 class_ref 128902 // Experience
+  classdiagramsettings member_max_width 0 end
+  xyz 341 166 2000
+end
+relationcanvas 128262 relation_ref 128134 // <generalisation>
+  from ref 128134 z 2001 to ref 128006
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 128902 relation_ref 128262 // cree
+  from ref 128006 z 2001 label "cree" italic max_width 255 xyz 88 150 2001 to ref 128518
+  no_role_a no_role_b
+  multiplicity_a_pos 99 114 3000 multiplicity_b_pos 99 206 3000
+end
+relationcanvas 129030 relation_ref 128390 // contenir
+  decenter_end 435
+  from ref 128518 z 2001 label "contenir" italic max_width 255 xyz 385 33 2001 to ref 128646
+  no_role_a no_role_b
+  multiplicity_a_pos 652 58 3000 multiplicity_b_pos 165 64 3000
+end
+relationcanvas 129158 relation_ref 128518 // contenir
+  from ref 128518 z 2001 label "contenir" italic max_width 255 xyz 313.5 104.5 2001 to ref 128774
+  no_role_a no_role_b
+  multiplicity_a_pos 509 194 3000 multiplicity_b_pos 165 78 3000
+end
+relationcanvas 129286 relation_ref 128646 // postuler
+  from ref 128390 z 2001 label "postuler" italic max_width 255 xyz 403 326 2001 to ref 128006
+  no_role_a no_role_b
+  multiplicity_a_pos 166 297 3000 multiplicity_b_pos 686 415 3000
+end
+relationcanvas 129414 relation_ref 128774 // publier
+  from ref 128134 z 2001 label "publier" italic max_width 255 xyz 414 403 2001 to ref 128390
+  no_role_a no_role_b
+  multiplicity_a_pos 671 425 3000 multiplicity_b_pos 181 437 3000
+end
+relationcanvas 129670 relation_ref 128902 // <association>
+  decenter_begin 831
+  from ref 128518 z 2001 to ref 129542
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130182 relation_ref 129414 // <association>
+  from ref 128646 z 2001 to ref 128390
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130310 relation_ref 129542 // <association>
+  from ref 128774 z 2001 to ref 128390
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130822 relation_ref 129670 // <association>
+  from ref 129542 z 2001 to ref 128390
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
 end
