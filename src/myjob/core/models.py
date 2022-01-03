@@ -55,24 +55,6 @@ class Experience(models.Model):
     lieux = models.CharField(max_length=200)
 
 
-class Job(models.Model):
-    """
-    Description: Model Description
-    """
-    work_statue = (("wait", "en attente"), ("bad", "refuser"), ("poster", "ok"))
-    titre = models.CharField(max_length=200)
-    type_contrat = models.CharField(max_length=50)
-    salaire =  models.PositiveIntegerField()
-    date_debut = models.DateTimeField(auto_now_add=True)
-    date_fin = models.DateTimeField()
-    description = models.TextField()
-    competences = models.ManyToManyField(Competence, related_name="competences_job")
-    formations = models.ManyToManyField(Formation, related_name="formation_job")
-    experiences = models.ManyToManyField(Experience, related_name="experiences_job")
-    Job_statue = models.CharField(max_length=150, choices=work_statue)
-
-    class Meta:
-        pass
 
 
 class ProfilRetruteur(Profil):
@@ -107,3 +89,31 @@ class ProfilUser(Profil):
     class Meta:
     	abstract = False
     	
+
+class Job(models.Model):
+    """
+    Description: Model Description
+    """
+    work_statue = (("wait", "en attente"), ("bad", "refuser"), ("poster", "ok"))
+    titre = models.CharField(max_length=200)
+    type_contrat = models.CharField(max_length=50)
+    salaire =  models.PositiveIntegerField(default=0)
+    date_debut = models.DateTimeField(auto_now_add=True)
+    date_fin = models.DateTimeField()
+    description = models.TextField()
+    competences = models.ManyToManyField(Competence, related_name="competences_job")
+    formations = models.ManyToManyField(Formation, related_name="formation_job")
+    experiences = models.ManyToManyField(Experience, related_name="experiences_job")
+    Job_statue = models.CharField(max_length=150, choices=work_statue)
+    domaine =  models.CharField(max_length=200)
+    nombres_experiences = models.PositiveIntegerField(default=0)
+    postuler = models.ManyToManyField(ProfilUser)
+
+    def save(self, *args, **kargs):
+    	
+    	self.Job_statue = ("wait", "en attente")
+    	
+    	return super().save(*args, **kargs)
+
+    class Meta:
+        pass

@@ -1,10 +1,6 @@
 format 224
 "myjob"
-<<<<<<< HEAD
   revision 5
-=======
-  revision 2
->>>>>>> origin
   modified_by 6 "noutcheu"
 
 
@@ -136,12 +132,12 @@ format 224
 	MysqlColumn
       end
 
-      classrelation 138886 // <association>
-	relation 136966 ----
+      classrelation 138886 // (avoir)
+	relation 136966 ---- name "avoir"
 	  a role_name "" multiplicity "1" private
-	    classrelation_ref 138886 // <association>
+	    classrelation_ref 138886 // (avoir)
 	  b role_name "" multiplicity "1" private
-	    classrelation_ref 139014 // <association>
+	    classrelation_ref 139014 // (avoir)
       end
 
       attribute 144006 "email"
@@ -179,6 +175,19 @@ format 224
 	mysql_decl ""
 	MysqlColumn
       end
+
+      classrelation 146182 // <association>
+	relation 143878 ----
+	  a role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 146182 // <association>
+	  b role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 146310 // <association>
+      end
+
     end
 
     class 128390 "Job"
@@ -268,6 +277,22 @@ format 224
       end
 
       attribute 144902 "description"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 146310 // <association>
+	relation_ref 143878 // <association>
+      end
+
+      attribute 146182 "work_statue"
 	private explicit_type ""
 	cpp_decl ""
 	java_decl ""
@@ -381,6 +406,22 @@ format 224
 	idl_decl ""
 	mysql_decl ""
 	MysqlColumn
+      end
+
+      attribute 145926 "sexe"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 146566 // (retrute)
+	relation_ref 144006 // retrute
       end
     end
 
@@ -653,8 +694,8 @@ ${members}}
 	MysqlColumn
       end
 
-      classrelation 139014 // <association>
-	relation_ref 136966 // <association>
+      classrelation 139014 // (avoir)
+	relation_ref 136966 // avoir
       end
 
       attribute 145542 "description"
@@ -667,6 +708,31 @@ ${members}}
 	mysql_decl ""
 	MysqlColumn
       end
+
+      attribute 145798 "nationalite"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+    end
+
+    class 148614 "Admin"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
     end
   end
 
@@ -696,11 +762,7 @@ ${members}}
       size A4
     end
 
-<<<<<<< HEAD
     class 128006 "Utilisateur"
-=======
-    class 128006 "user"
->>>>>>> origin
       visibility package stereotype "actor"
       cpp_decl ""
       java_decl ""
@@ -761,13 +823,6 @@ ${members}}
       
       activitydiagramsettings
        end
-<<<<<<< HEAD
-=======
-      simplerelation 128006
-	-_->
-	  on usecase_ref 128006 // sign in
-      end
->>>>>>> origin
     end
 
     usecase 128262 "cree un cv"
@@ -798,34 +853,6 @@ ${members}}
       end
     end
 
-    usecase 128390 "update un cv"
-      
-      usecasediagramsettings end
-      
-      sequencediagramsettings end
-      
-      collaborationdiagramsettings end
-      
-      classdiagramsettings member_max_width 0 end
-      
-      classcompositediagramsettings end
-      
-      objectdiagramsettings end
-      
-      objectcompositediagramsettings end
-      
-      statediagramsettings
-       end
-      
-      activitydiagramsettings
-       end
-      simplerelation 128262
-	-_->
-	  stereotype "include"
-	  on usecase_ref 128262 // cree un cv
-      end
-    end
-
     usecase 128518 "postuler sur un job"
       
       usecasediagramsettings end
@@ -847,14 +874,11 @@ ${members}}
       
       activitydiagramsettings
        end
-<<<<<<< HEAD
       simplerelation 134918
 	-_->
 	  stereotype "include"
 	  on usecase_ref 128262 // cree un cv
       end
-=======
->>>>>>> origin
     end
 
     usecase 128646 "passer un entretient"
@@ -949,7 +973,6 @@ ${members}}
        end
     end
 
-<<<<<<< HEAD
     class 128134 "ProfilRetruteur"
       visibility package 
       cpp_decl "${comment}${template}class ${name}${inherit} {
@@ -1005,6 +1028,18 @@ ${members}};
 	mysql_decl ""
 	MysqlColumn
       end
+
+      classrelation 146438 // (retrute)
+	relation 144006 ---- name "retrute"
+	  a role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 146438 // (retrute)
+	  b role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 146566 // (retrute)
+      end
     end
 
     usecase 129158 "poster un job"
@@ -1031,9 +1066,6 @@ ${members}};
     end
 
     class 135430 "admin"
-=======
-    class 128134 "Employeur"
->>>>>>> origin
       visibility package stereotype "actor"
       cpp_decl ""
       java_decl ""
@@ -1043,21 +1075,9 @@ ${members}};
       explicit_switch_type ""
       mysql_decl ""
       
-<<<<<<< HEAD
     end
 
     usecase 135686 "valider le job"
-=======
-      classrelation 128006 // <generalisation>
-	relation 128006 ---|>
-	  a public
-	    classrelation_ref 128006 // <generalisation>
-	  b parent class_ref 128006 // user
-      end
-    end
-
-    usecase 129158 "poster un job"
->>>>>>> origin
       
       usecasediagramsettings end
       
@@ -1079,7 +1099,6 @@ ${members}};
       activitydiagramsettings
        end
     end
-<<<<<<< HEAD
 
     class 148486 "Retruteur"
       visibility package stereotype "actor"
@@ -1101,8 +1120,6 @@ ${docstring}${members}
 	  b parent class_ref 128006 // Utilisateur
       end
     end
-=======
->>>>>>> origin
   end
 preserve_bodies
 
