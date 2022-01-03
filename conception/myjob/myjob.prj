@@ -1,10 +1,6 @@
 format 224
 "myjob"
-<<<<<<< HEAD
-  revision 2
-=======
   revision 5
->>>>>>> 9db623246be0b05c4a3cff920c724b3eaab3373d
   modified_by 6 "noutcheu"
 
 
@@ -179,6 +175,19 @@ format 224
 	mysql_decl ""
 	MysqlColumn
       end
+
+      classrelation 146182 // <association>
+	relation 143878 ----
+	  a role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 146182 // <association>
+	  b role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 146310 // <association>
+      end
+
     end
 
     class 128390 "Job"
@@ -278,6 +287,10 @@ format 224
 	mysql_decl ""
 	MysqlColumn
       end
+
+      classrelation 146310 // <association>
+	relation_ref 143878 // <association>
+      end
     end
 
     class 128518 "ProfilUser"
@@ -372,6 +385,18 @@ format 224
       end
 
       attribute 137478 "cv"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 145926 "sexe"
 	private explicit_type ""
 	cpp_decl ""
 	java_decl ""
@@ -667,6 +692,31 @@ ${members}}
 	mysql_decl ""
 	MysqlColumn
       end
+
+      attribute 145798 "nationalite"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+    end
+
+    class 148614 "Admin"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
     end
   end
 
@@ -696,11 +746,7 @@ ${members}}
       size A4
     end
 
-<<<<<<< HEAD
-    class 128006 "user"
-=======
     class 128006 "Utilisateur"
->>>>>>> 9db623246be0b05c4a3cff920c724b3eaab3373d
       visibility package stereotype "actor"
       cpp_decl ""
       java_decl ""
@@ -761,13 +807,6 @@ ${members}}
       
       activitydiagramsettings
        end
-<<<<<<< HEAD
-      simplerelation 128006
-	-_->
-	  on usecase_ref 128006 // sign in
-      end
-=======
->>>>>>> 9db623246be0b05c4a3cff920c724b3eaab3373d
     end
 
     usecase 128262 "cree un cv"
@@ -847,14 +886,11 @@ ${members}}
       
       activitydiagramsettings
        end
-<<<<<<< HEAD
-=======
       simplerelation 134918
 	-_->
 	  stereotype "include"
 	  on usecase_ref 128262 // cree un cv
       end
->>>>>>> 9db623246be0b05c4a3cff920c724b3eaab3373d
     end
 
     usecase 128646 "passer un entretient"
@@ -949,9 +985,6 @@ ${members}}
        end
     end
 
-<<<<<<< HEAD
-    class 128134 "Employeur"
-=======
     class 128134 "ProfilRetruteur"
       visibility package 
       cpp_decl "${comment}${template}class ${name}${inherit} {
@@ -1033,7 +1066,6 @@ ${members}};
     end
 
     class 135430 "admin"
->>>>>>> 9db623246be0b05c4a3cff920c724b3eaab3373d
       visibility package stereotype "actor"
       cpp_decl ""
       java_decl ""
@@ -1043,21 +1075,9 @@ ${members}};
       explicit_switch_type ""
       mysql_decl ""
       
-<<<<<<< HEAD
-      classrelation 128006 // <generalisation>
-	relation 128006 ---|>
-	  a public
-	    classrelation_ref 128006 // <generalisation>
-	  b parent class_ref 128006 // user
-      end
-    end
-
-    usecase 129158 "poster un job"
-=======
     end
 
     usecase 135686 "valider le job"
->>>>>>> 9db623246be0b05c4a3cff920c724b3eaab3373d
       
       usecasediagramsettings end
       
@@ -1079,8 +1099,6 @@ ${members}};
       activitydiagramsettings
        end
     end
-<<<<<<< HEAD
-=======
 
     class 148486 "Retruteur"
       visibility package stereotype "actor"
@@ -1102,7 +1120,6 @@ ${docstring}${members}
 	  b parent class_ref 128006 // Utilisateur
       end
     end
->>>>>>> 9db623246be0b05c4a3cff920c724b3eaab3373d
   end
 preserve_bodies
 

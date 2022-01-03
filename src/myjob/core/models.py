@@ -28,6 +28,9 @@ class Formation(models.Model):
     lieux = models.CharField(max_length=200)
     description = models.TextField()
 
+    def __str__(self):
+    	return f"{self.nom}"
+
     class Meta:
         pass
 
@@ -39,6 +42,9 @@ class Competence(models.Model):
     niveau = models.CharField(max_length=2000)
     description = models.TextField()
     nom = models.CharField(max_length=200)    
+    
+    def __str__(self):
+    	return f"{self.nom}"
 
     class Meta:
         pass
@@ -63,17 +69,17 @@ class Job(models.Model):
     titre = models.CharField(max_length=200)
     type_contrat = models.CharField(max_length=50)
     salaire =  models.PositiveIntegerField()
-    date_debut = models.DateTimeField(auto_now_add=True)
-    date_fin = models.DateTimeField()
+    date_de_debut = models.DateTimeField(auto_now_add=True)
+    date_de_fin = models.DateTimeField()
     description = models.TextField()
     competences = models.ManyToManyField(Competence, related_name="competences_job")
     formations = models.ManyToManyField(Formation, related_name="formation_job")
     experiences = models.ManyToManyField(Experience, related_name="experiences_job")
     Job_statue = models.CharField(max_length=150, choices=work_statue)
 
-    class Meta:
-        pass
-
+    def __str__(self):
+    	return f"{self.titre}"
+  
 
 class ProfilRetruteur(Profil):
     """
@@ -81,6 +87,7 @@ class ProfilRetruteur(Profil):
     """
 
     def __str__(self):
+
         return f"{self.user.username}"
 
     class Meta:
