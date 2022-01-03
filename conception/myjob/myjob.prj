@@ -1,6 +1,10 @@
 format 224
 "myjob"
+<<<<<<< HEAD
   revision 5
+=======
+  revision 2
+>>>>>>> origin
   modified_by 6 "noutcheu"
 
 
@@ -692,7 +696,11 @@ ${members}}
       size A4
     end
 
+<<<<<<< HEAD
     class 128006 "Utilisateur"
+=======
+    class 128006 "user"
+>>>>>>> origin
       visibility package stereotype "actor"
       cpp_decl ""
       java_decl ""
@@ -753,6 +761,13 @@ ${members}}
       
       activitydiagramsettings
        end
+<<<<<<< HEAD
+=======
+      simplerelation 128006
+	-_->
+	  on usecase_ref 128006 // sign in
+      end
+>>>>>>> origin
     end
 
     usecase 128262 "cree un cv"
@@ -832,11 +847,14 @@ ${members}}
       
       activitydiagramsettings
        end
+<<<<<<< HEAD
       simplerelation 134918
 	-_->
 	  stereotype "include"
 	  on usecase_ref 128262 // cree un cv
       end
+=======
+>>>>>>> origin
     end
 
     usecase 128646 "passer un entretient"
@@ -931,6 +949,7 @@ ${members}}
        end
     end
 
+<<<<<<< HEAD
     class 128134 "ProfilRetruteur"
       visibility package 
       cpp_decl "${comment}${template}class ${name}${inherit} {
@@ -1012,6 +1031,9 @@ ${members}};
     end
 
     class 135430 "admin"
+=======
+    class 128134 "Employeur"
+>>>>>>> origin
       visibility package stereotype "actor"
       cpp_decl ""
       java_decl ""
@@ -1021,9 +1043,21 @@ ${members}};
       explicit_switch_type ""
       mysql_decl ""
       
+<<<<<<< HEAD
     end
 
     usecase 135686 "valider le job"
+=======
+      classrelation 128006 // <generalisation>
+	relation 128006 ---|>
+	  a public
+	    classrelation_ref 128006 // <generalisation>
+	  b parent class_ref 128006 // user
+      end
+    end
+
+    usecase 129158 "poster un job"
+>>>>>>> origin
       
       usecasediagramsettings end
       
@@ -1045,6 +1079,7 @@ ${members}};
       activitydiagramsettings
        end
     end
+<<<<<<< HEAD
 
     class 148486 "Retruteur"
       visibility package stereotype "actor"
@@ -1066,6 +1101,8 @@ ${docstring}${members}
 	  b parent class_ref 128006 // Utilisateur
       end
     end
+=======
+>>>>>>> origin
   end
 preserve_bodies
 
