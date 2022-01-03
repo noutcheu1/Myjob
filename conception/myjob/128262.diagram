@@ -66,9 +66,9 @@ end
 relationcanvas 130822 relation_ref 129670 // exige
   decenter_begin 917
   decenter_end 74
-  from ref 129542 z 2001 label "exige" italic max_width 255 xyz 630 505.5 3000 to ref 128390
+  from ref 129542 z 2001 label "exige" italic max_width 255 xyz 618 496.5 3000 to ref 128390
   no_role_a no_role_b
-  multiplicity_a_pos 655 538 3000 multiplicity_b_pos 605 495 3000
+  multiplicity_a_pos 654 538 3000 multiplicity_b_pos 582 477 3000
 end
 relationcanvas 132102 relation_ref 136582 // <realization>
   decenter_end 873
@@ -79,9 +79,9 @@ end
 relationcanvas 132230 relation_ref 136710 // avoir
   decenter_begin 504
   decenter_end 669
-  from ref 129542 z 2001 label "avoir" italic max_width 255 xyz 331.5 377 3000 to ref 128518
+  from ref 129542 z 2001 label "avoir" italic max_width 255 xyz 331.5 372 3000 to ref 128518
   no_role_a no_role_b
-  multiplicity_a_pos 242 384 3000 multiplicity_b_pos 444 429 3000
+  multiplicity_a_pos 242 384 3000 multiplicity_b_pos 444 419 3000
 end
 relationcanvas 132358 relation_ref 136838 // <realization>
   decenter_begin 411

@@ -606,17 +606,6 @@ format 224
 	MysqlColumn
       end
 
-      attribute 145670 "type_d_experience"
-	private explicit_type ""
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl "${comment}${self}${name} = ${value}
-"
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
-      end
     end
 
     class 141958 "Profil"
