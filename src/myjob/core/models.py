@@ -107,7 +107,7 @@ class Job(models.Model):
     Job_statue = models.CharField(max_length=150, choices=work_statue)
     domaine =  models.CharField(max_length=200)
     nombres_experiences = models.PositiveIntegerField(default=0)
-    postuler = models.ManyToManyField(ProfilUser)
+    postuler = models.ManyToManyField(ProfilUser, related_name='job_postuler')
 
     def save(self, *args, **kargs):
     	
