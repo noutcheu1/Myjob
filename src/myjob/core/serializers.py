@@ -90,7 +90,7 @@ class ExperienceSerializer(ModelSerializer):
    
     class Meta: 
          model = Experience
-         fields = ('id', 'date_de_debut', 'date_de_fin', 'title,Description', 'lieux')
+         fields = ('id', 'date_de_debut', 'date_de_fin', 'title','Description', 'lieux')
 
 
 class ProfilRetruteurSerializer(ModelSerializer):
@@ -98,11 +98,11 @@ class ProfilRetruteurSerializer(ModelSerializer):
     Description: Model Description
     """
 
-    def __str__(self):
-        return f"{self.user.username}"
+    
 
     class Meta:
-        abstract = False
+        model = ProfilRetruteur
+        fields = ('id','user', 'location','Description','adresse','nationalite',)
         
         
 
@@ -114,7 +114,7 @@ class JobSerializer(ModelSerializer):
 
     class Meta:
        model = Job
-       fields = ('id','titre', 'type_contra', 'salaire', 'date_debut', 'date_fin', 'description', 'competences', 'formations', 'experiences', 'Job_statue', 'domaine', 'nombres_experiences', 'postuler')
+       fields = ('id','titre', 'type_contrat', 'salaire', 'date_debut', 'date_fin', 'description', 'competences', 'formations', 'experiences', 'Job_statue', 'work_location', 'nombres_experiences', 'postuler')
 
 
 
@@ -126,6 +126,6 @@ class ProfilUserSerializer(ModelSerializer):
 
     class Meta:
         model = ProfilUser
-        fields = ('id','user', 'location','Description','adresse','nationalite '
-,'birthday','cv', 'competences', 'formation', 'experience')
+        fields = ('id','user', 'location','Description','adresse','nationalite'
+,'birthday','cv', 'competences', 'formations', 'experiences')
          

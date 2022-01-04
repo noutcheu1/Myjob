@@ -1,17 +1,20 @@
 window_sizes 1366 708 320 1040 651 0
 cleanlooks_style
 diagrams
-  active  usecasediagram_ref 128134 // myjob
-    1040 651 100 A4 48 0
+  usecasediagram_ref 128134 // myjob
+    1040 651 100 A4 84 0
   sequencediagram_ref 128390 // myjob_sequence
     120 115 100 A4 0 0
-  classdiagram_ref 128262 // myjob_classs
-    120 115 100 A4 0 0
+  active  classdiagram_ref 128262 // myjob_classs
+    1040 651 100 A4 204 0
 end
 show_stereotypes
-selected usecasediagram_ref 128134 // myjob
+selected attribute_ref 146950 // nombre_experience
 open
-  classview_ref 128006 // class_views_myjob
+  class_ref 128390 // Job
+  class_ref 128518 // ProfilUser
+  class_ref 148742 // Metier
+  class_ref 148870 // Category
   usecaseview_ref 128006 // use_case_myjob
 end
 end

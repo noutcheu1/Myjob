@@ -14,16 +14,24 @@ from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from .models import (Job, ProfilUser, ProfilRetruteur, Competence, Formation, Experience)
 from rest_framework.permissions import BasePermission, IsAuthenticated, AllowAny, SAFE_METHODS
-
+from django.contrib.auth.models import  User
 
 class ProfilRetruteurViewset(RetrieveModelMixin, CreateModelMixin, ListModelMixin,
                     UpdateModelMixin, DestroyModelMixin, GenericViewSet):
     """
     Description: Model Description
     """
-    querySet = ProfilRetruteur.objects.all()
+    queryset = ProfilRetruteur.objects.all()
     serializer_class = ProfilRetruteurSerializer
-    
+    permission_classes = [IsAuthenticated, ]
+
+# ViewSets define the view behavior.
+class UserViewSet(CreateModelMixin, ListModelMixin, RetrieveModelMixin,
+                  UpdateModelMixin, DestroyModelMixin, GenericViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [IsAuthenticated, ]
+
 
 class AuthViewSet(GenericViewSet):
     """
@@ -120,3 +128,61 @@ class SetPassword(GenericViewSet):
         return Response({'password': f'password does\'nt match'}, status=status.HTTP_400_BAD_REQUEST)
 
         #        Simple Call on /logout in post. No arguments
+
+
+class FormationViewset(RetrieveModelMixin, CreateModelMixin, ListModelMixin,
+                    UpdateModelMixin, DestroyModelMixin, GenericViewSet):
+    """
+    Description: Model Description
+    """
+    
+
+    queryset = Formation.objects.all()
+    serializer_class = FormationSerializer
+    permission_classes = [IsAuthenticated, ]
+
+
+class JobViewset(RetrieveModelMixin, CreateModelMixin, ListModelMixin,
+                    UpdateModelMixin, DestroyModelMixin, GenericViewSet):
+    """
+    Description: Model Description
+    """
+
+    queryset = Job.objects.all()
+    serializer_class = JobSerializer
+    permission_classes = [IsAuthenticated, ]
+
+
+class ExperienceViewset(RetrieveModelMixin, CreateModelMixin, ListModelMixin,
+                    UpdateModelMixin, DestroyModelMixin, GenericViewSet):
+    """
+    Description: Model Description
+    """
+
+
+    queryset = Experience.objects.all()
+    serializer_class = ExperienceSerializer
+    permission_classes = [IsAuthenticated, ]
+
+
+class ProfilUserViewset(RetrieveModelMixin, CreateModelMixin, ListModelMixin,
+                    UpdateModelMixin, DestroyModelMixin, GenericViewSet):
+    """
+    Description: Model Description
+    """
+
+    queryset = ProfilUser.objects.all()
+    serializer_class = ProfilUserSerializer
+    permission_classes = [IsAuthenticated, ]
+
+
+class CompetenceViewset(RetrieveModelMixin, CreateModelMixin, ListModelMixin,
+                    UpdateModelMixin, DestroyModelMixin, GenericViewSet):
+    """
+    Description: Model Description
+    """
+
+
+    queryset = Competence.objects.all()
+    serializer_class = CompetenceSerializer
+    permission_classes = [IsAuthenticated, ]
