@@ -259,34 +259,3 @@ class PostulerSerializer(ModelSerializer):
         model =Postuler
         fields = ('id', 'user_id', 'job_id', 'motivation_letter', 'date_post')
 
-class RetruterSerializer(ModelSerializer):
-    """
-    Description: Model Description
-    """
-    
-    def create(self, validated_data):
-        user_id = validated_data.get('user_id') 
-        
-
-
-        if date_debut > date_fin :
-            raise serializers.ValidationError('the creation date must be lower than the end date')
-        elif salaire_max < salaire_min:
-            raise serializers.ValidationError('the salaries interval is not correct')
-        return Job.objects.create(**validated_data)
-
-
-    def update(self, instance:Job, validated_data):
-        validated_data.pop('user')
-        
-        for key, value in validated_data.items():
-
-            setattr(instance, key, value)
-            
-            instance.save()
-
-
-    class Meta:
-        model= Retruter
-        fields = ('id', 'user_id', 'job_id', 'user_retruteur_id', 'date_post' )
-        pass

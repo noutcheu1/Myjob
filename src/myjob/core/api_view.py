@@ -4,7 +4,7 @@ from rest_framework.mixins import (CreateModelMixin, DestroyModelMixin,
                                    ListModelMixin, UpdateModelMixin, RetrieveModelMixin)
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.views import APIView
-from .serializers import (ProfilRetruteurSerializer, UserSerializer, FindJobSerializer, LoginSerializer, RetruterSerializer, SetpassSerializers, FormationSerializer, CompetenceSerializer, ExperienceSerializer, JobSerializer, PostulerSerializer, ProfilUserSerializer)
+from .serializers import (ProfilRetruteurSerializer, UserSerializer, FindJobSerializer, LoginSerializer, SetpassSerializers, FormationSerializer, CompetenceSerializer, ExperienceSerializer, JobSerializer, PostulerSerializer, ProfilUserSerializer)
 from django.contrib.auth import logout, login, authenticate
 from rest_framework.decorators import action
 from drf_yasg.utils import swagger_auto_schema
@@ -12,7 +12,7 @@ from rest_framework.generics import RetrieveAPIView
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
-from .models import (Job, ProfilUser, ProfilRetruteur, Retruter,Competence, Formation, Experience, Postuler)
+from .models import (Job, ProfilUser, ProfilRetruteur, Competence, Formation, Experience, Postuler)
 from rest_framework.permissions import BasePermission, IsAuthenticated, AllowAny, SAFE_METHODS
 from django.contrib.auth.models import  User
 
@@ -32,17 +32,6 @@ class UserViewSet(CreateModelMixin, ListModelMixin, RetrieveModelMixin,
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated, ]
 
-
-class RetruterViewset(CreateModelMixin, ListModelMixin, RetrieveModelMixin,
-                  UpdateModelMixin, DestroyModelMixin, GenericViewSet):
-    """
-    Description: Model Description
-    """
-    
-
-    queryset = Retruter.objects.all()
-    serializer_class = RetruterSerializer
-    permission_classes = [IsAuthenticated, ]
 
 class PostulerVieset(CreateModelMixin, ListModelMixin, RetrieveModelMixin,
                   UpdateModelMixin, DestroyModelMixin, GenericViewSet):

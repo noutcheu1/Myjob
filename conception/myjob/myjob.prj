@@ -433,7 +433,7 @@ format 224
 	MysqlColumn
       end
 
-      classrelation 146566 // retrute
+      classrelation 146566 // (retrute)
 	relation_ref 144006 // retrute
       end
 
@@ -892,6 +892,79 @@ ${docstring}${members}
 	mysql_decl ""
 	MysqlColumn
       end
+
+      attribute 154374 "retruteur"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 154502 "response_status"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+    end
+
+    class 155526 "Retruter"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 153990 "user_id"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 154118 "retruteur_id"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 154246 "job_id"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
     end
   end
 
@@ -1190,14 +1263,15 @@ ${members}};
 
       classrelation 146438 // (retrute)
 	relation 144006 ---- name "retrute"
-	  a role_name "" private
-	    python "${comment}${self}${name} = ${value}
+	  a role_name "" multiplicity "*" private
+	    python "${comment}${self}${name} = ${stereotype}()
 "
 	    classrelation_ref 146438 // (retrute)
-	  b role_name "" private
-	    python "${comment}${self}${name} = ${value}
+	  b role_name "" multiplicity "*" private
+	    python "${comment}${self}${name} = ${stereotype}()
 "
-	    classrelation_ref 146566 // retrute
+	    classrelation_ref 146566 // (retrute)
+	  association_type class_ref 155526 // Retruter
       end
     end
 

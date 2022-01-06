@@ -9,7 +9,7 @@ with open('core/pays.json') as fp:
     obj = json.load(fp)
 STATES_LOCATION = obj.items()
 CONTRAT_TYPE = (('TEMP PLEIN ','TEMP PLEIN '),('PERMANENT', 'PERMANENT'), ('OCCASIONNEL', 'OCCASIONNEL'), ('STAGE', 'STAGE'), ('FREELANCER', 'FREELANCER') ,('TEMP PARTIEL', 'TEMP PARTIEL') ,('CONTRACTUEL', 'CONTRACTUEL'))
-
+RESPONSE_STATUS = (('Retruter', 'Retruter'), ('REFUSER', 'REFUSER'), ('WAITING', 'WAITING'))
 class Profil(models.Model):
     """
     Description: Model Description
@@ -153,6 +153,8 @@ class Postuler(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     motivation_letter =  models.TextField()
     date_post = models.DateField(auto_now_add=True)
+    response_status = models.CharField(max_length=200, choices=RESPONSE_STATUS)
+    user_retruteur_id = models.ForeignKey(ProfilRetruteur, on_delete=models.CASCADE)
         
 
     class Meta:
