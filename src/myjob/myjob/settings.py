@@ -163,5 +163,8 @@ REST_FRAMEWORK = {
             #  'rest_framework.permissions.IsAuthenticated', #  par défaut, toutes les requêtes auront besoin du token
           ),
 
-    
+    'DEFAULT_PAGINATION_CLASS':
+                    'rest_framework.pagination.PageNumberPagination',
+                    'PAGE_SIZE': 10,
+                    
         }

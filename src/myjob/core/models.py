@@ -1,7 +1,14 @@
 from django.db import models
 
 from django.contrib.auth.models import User
+import json
+from ast import literal_eval
 # Create your models here.
+with open('core/pays.json') as fp: 
+
+    obj = json.load(fp)
+STATES_LOCATION = obj.items()
+CONTRAT_TYPE = (('TEMP PLEIN ','TEMP PLEIN '),('PERMANENT', 'PERMANENT'), ('OCCASIONNEL', 'OCCASIONNEL'), ('STAGE', 'STAGE'), ('FREELANCER', 'FREELANCER') ,('TEMP PARTIEL', 'TEMP PARTIEL') ,('CONTRACTUEL', 'CONTRACTUEL'))
 
 class Profil(models.Model):
     """
@@ -12,7 +19,7 @@ class Profil(models.Model):
     location = models.CharField(max_length=200)
     Description= models.TextField()
     adresse = models.CharField(max_length=50)
-    nationalite = models.CharField(max_length=200)
+    nationalite = models.CharField(max_length=200, choices=STATES_LOCATION)
 
     class Meta:
         abstract = True
@@ -22,12 +29,17 @@ class Formation(models.Model):
     """
     Description: Model Description
     """
-    date_debut =models.DateField(auto_now_add=True)
+
+   
+    date_debut =models.DateField()
     date_fin = models.DateField()
     nom = models.CharField(max_length=200)
     lieux = models.CharField(max_length=200)
     description = models.TextField()
 
+    def __str__(self):
+        return f"{self.nom} || {self.lieux}:{self.date_debut}-{self.date_fin}"
+        
     class Meta:
         pass
 
@@ -39,6 +51,9 @@ class Competence(models.Model):
     niveau = models.CharField(max_length=2000)
     description = models.TextField()
     nom = models.CharField(max_length=200)    
+
+    def __str__(self):
+        return f"{self.nom} || {self.description} -{self.niveau}"
 
     class Meta:
         pass
@@ -53,8 +68,10 @@ class Experience(models.Model):
     title = models.CharField(max_length=200)
     Description =models.TextField()
     lieux = models.CharField(max_length=200)
+    type_contrat = models.CharField(max_length=50,  choices=CONTRAT_TYPE)
 
-
+    def __str__(self):
+        return f"{self.title} || {self.lieux}:{self.date_de_debut}-{self.date_de_fin}"
 
 
 class ProfilRetruteur(Profil):
@@ -62,6 +79,7 @@ class ProfilRetruteur(Profil):
     Description: Model Description
     """
     web_site = models.CharField(max_length=200, null=True, blank=True)
+    
     def __str__(self):
         return f"{self.user.username}"
 
@@ -84,7 +102,7 @@ class ProfilUser(Profil):
 
 
     def __str__(self):
-        return f"{self.user.username}"
+        return f"{self.user.username}-:{self.metier}"
 
     class Meta:
     	abstract = False
@@ -94,18 +112,16 @@ class Job(models.Model):
     """
     Description: Model Description
     """
-    WORK_LOC = (("remotes", "teletravaille"),)
+    WORK_LOC = STATES_LOCATION
     WORK_STATUE= (("wait", "en attente"), ("bad", "refuser"), ("poster", "ok"))
-    CONTRAT_TYPE = (('TEMP PLEIN ','TEMP PLEIN '),('PERMANENT', 'PERMANENT'), ('OCCASIONNEL', 'OCCASIONNEL'), ('STAGE', 'STAGE'), ('FREELANCER', 'FREELANCER') ,('TEMP PARTIEL', 'TEMP PARTIEL') ,('CONTRACTUEL', 'CONTRACTUEL'))
+    
     titre = models.CharField(max_length=200)
     type_contrat = models.CharField(max_length=50,  choices=CONTRAT_TYPE)
-    salaire =  models.PositiveIntegerField(default=0)
+    salaire_min =  models.PositiveIntegerField(default=0)
     date_debut = models.DateTimeField(auto_now_add=True)
     date_fin = models.DateTimeField()
     description = models.TextField()
-    competences = models.ManyToManyField(Competence, related_name="competences_job")
-    formations = models.ManyToManyField(Formation, related_name="formation_job")
-    experiences = models.ManyToManyField(Experience, related_name="experiences_job")
+    salaire_max = models.PositiveIntegerField(default=0)
     Job_statue = models.CharField(max_length=150, choices=WORK_STATUE)
     work_location =  models.CharField(max_length=200, choices=WORK_LOC)
     nombres_experiences = models.PositiveIntegerField(default=0)
@@ -116,6 +132,9 @@ class Job(models.Model):
     	self.Job_statue = ("wait", "en attente")
     	
     	return super().save(*args, **kargs)
+
+    def __str__(self):
+        return f"{self.titre} || {self.salaire_min}< {self.salaire_max}:{self.date_debut}-{self.date_fin} {self.Job_statue}"
 
     class Meta:
         pass

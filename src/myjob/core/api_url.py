@@ -10,20 +10,22 @@ from rest_framework.authtoken import views
 
 
 router = DefaultRouter()
-router.register('login',AuthViewSet, basename="login")
-router.register('logout',LogoutView, basename="logout")
-router.register('retruteur',ProfilRetruteurViewset, basename="=retruteur")
-router.register('competence',CompetenceViewset, basename="competence")
-router.register('profils', ProfilUserViewset, basename='profils')
-router.register('job',JobViewset, basename="job")
-router.register('experience', ExperienceViewset, basename="experience")
-
-router.register('users', UserViewSet, basename='users')
+router.register('Login',AuthViewSet, basename="Login")
+router.register('Logout',LogoutView, basename="Logout")
+router.register('Retruteur',ProfilRetruteurViewset, basename="Retruteur")
+router.register('Competence',CompetenceViewset, basename="Competence")
+router.register('Profils', ProfilUserViewset, basename='Profil')
+router.register('Job',JobViewset, basename="Job")
+router.register('Experience', ExperienceViewset, basename="Experience")
+router.register('Formation', FormationViewset, basename='Formation')
+router.register('Find', FilterFind, basename='Find')
+router.register('Users', UserViewSet, basename='Users')
 
 
 urlpatterns = [
    path('', include(router.urls)),
+   
    path('api-token-auth/', views.obtain_auth_token),
    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-   #path('dj-rest-auth/', include('dj_rest_auth.urls')),
+  # path('dj-rest-auth/', include('dj_rest_auth.urls')),
 ]

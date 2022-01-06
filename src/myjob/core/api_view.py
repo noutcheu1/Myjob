@@ -4,7 +4,7 @@ from rest_framework.mixins import (CreateModelMixin, DestroyModelMixin,
                                    ListModelMixin, UpdateModelMixin, RetrieveModelMixin)
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.views import APIView
-from .serializers import (ProfilRetruteurSerializer, UserSerializer, LoginSerializer, SetpassSerializers, FormationSerializer, CompetenceSerializer, ExperienceSerializer, JobSerializer, ProfilUserSerializer)
+from .serializers import (ProfilRetruteurSerializer, UserSerializer, FindJobSerializer, LoginSerializer, SetpassSerializers, FormationSerializer, CompetenceSerializer, ExperienceSerializer, JobSerializer, ProfilUserSerializer)
 from django.contrib.auth import logout, login, authenticate
 from rest_framework.decorators import action
 from drf_yasg.utils import swagger_auto_schema
@@ -33,6 +33,72 @@ class UserViewSet(CreateModelMixin, ListModelMixin, RetrieveModelMixin,
     permission_classes = [IsAuthenticated, ]
 
 
+class FilterFind(GenericViewSet):
+    """
+    Description: Model Description
+    """
+    
+    permission_classes = [AllowAny, ]
+    serializer_class = FindJobSerializer
+    filtering = {
+        'titre':['startswith']
+    }
+    
+    # Logout Ressource
+
+    @swagger_auto_schema(
+        operation_description='method to find Job with  using the name of job. ')
+    @action(methods=["POST"], detail=False)
+    def findbyname(self, request, *args, **kwargs):
+        
+        seria_job = FindJobSerializer(data=self.request.data)
+        seria_job.is_valid(raise_exception=True)
+
+        
+        name =  seria_job.validated_data.get('titre')
+        
+        job = Job.objects.all()
+        result = Job.objects.filter(titre__startswith=name).all()
+        
+        
+        if result:
+
+            result_de_recherche  = JobSerializer(result, many=True).data
+            
+             
+            return Response({'resultat':result_de_recherche}, status=status.HTTP_200_OK)
+
+             
+        return Response({}, status=status.HTTP_404_NOT_FOUND)
+
+
+
+    @swagger_auto_schema(
+        operation_description='method to find Job with  using the name of job. ')
+    @action(methods=["POST"], detail=False)
+    def findfilter(self, request, *args, **kwargs):
+        
+        seria_job = FindJobSerializer(data=self.request.data)
+        seria_job.is_valid(raise_exception=True)
+
+        
+        name =  seria_job.validated_data.get('titre')
+        
+        job = Job.objects.all()
+        result = Job.objects.filter(titre__startswith=name).all()
+        
+        
+        if result:
+
+            result_de_recherche  = JobSerializer(result, many=True).data
+            
+             
+            return Response({'resultat':result_de_recherche}, status=status.HTTP_200_OK)
+
+             
+        return Response({}, status=status.HTTP_404_NOT_FOUND)
+    
+
 class AuthViewSet(GenericViewSet):
     """
     Description: Model Description
@@ -44,6 +110,7 @@ class AuthViewSet(GenericViewSet):
         request_body=LoginSerializer(),
         operation_description="Check the credentials and return the REST Token if the credentials are valid and authenticated. Calls Django Auth login method to register User ID in Django session framework Accept the following POST parameters: username, password Return the REST Framework Token Object\'s key.")
     @action(methods=["POST"], detail=False)
+
     def signin(self, request, *args, **kwargs):
 
         seria = LoginSerializer(data=self.request.data)
@@ -153,6 +220,7 @@ class JobViewset(RetrieveModelMixin, CreateModelMixin, ListModelMixin,
     permission_classes = [IsAuthenticated, ]
 
 
+
 class ExperienceViewset(RetrieveModelMixin, CreateModelMixin, ListModelMixin,
                     UpdateModelMixin, DestroyModelMixin, GenericViewSet):
     """
@@ -186,3 +254,6 @@ class CompetenceViewset(RetrieveModelMixin, CreateModelMixin, ListModelMixin,
     queryset = Competence.objects.all()
     serializer_class = CompetenceSerializer
     permission_classes = [IsAuthenticated, ]
+
+
+
