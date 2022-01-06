@@ -1,27 +1,25 @@
 <template>
-    <button class ="button">
+    <button class ="buttonUp">
         {{ message }}
     </button>
 </template>
 <style>
-    .button {
-        box-sizing:border-box;
-        padding: 7px;
-        padding-left: 5px;
-        padding-right: 5px;
-        width:59px;
+    .buttonUp {
+        padding: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
         background-color:#FFC947;
         border-radius: 0.4em;
         border: none;
         color: rgb(40, 40, 40);
         font-weight: bold;
-        font-size: 13px;
+        font-size: 16px;
         cursor: pointer;
     }
-    .button:hover {
+    .buttonUp:hover {
         background-color:#10345D
     }
-    .button:focus {
+    .buttonUp:focus {
         box-shadow: 0px 0px 0px 4px lightblue;
     }
 </style>

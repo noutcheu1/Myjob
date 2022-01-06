@@ -1,6 +1,9 @@
 <template>
-    <div class ="accueil">
-        <TNavBar/>
+    <div class="accueil">
+        <div><TNavBar/></div>
+        <div>
+            <MyProfile/>
+        </div>
     </div>
 </template>
 <style src="./accueil.css">
