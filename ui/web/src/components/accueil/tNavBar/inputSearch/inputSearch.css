@@ -1,0 +1,38 @@
+.inputSearch {
+    box-sizing: border-box;
+    border:solid 1px;
+    color: #000F94;
+    display: flex;
+    height: 38px;
+    border-radius: 0.3em;
+    z-index: 1;
+    padding-left: 1px;
+}
+.inputSearch div{
+    width: 25%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    position: relative;
+    padding: 5px;
+    left:1px;
+}
+.inputSearch div button {
+    width: 45px;
+    height: 100%;
+    border:none;
+    background-color: white;
+    background-image: url('loupe.svg');
+    background-size: 38%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.inputSearch input {
+    width: 75%;
+    border-radius: 4em;
+    padding-left: 25px;
+    font-size: 12px;
+    font-weight: bold;
+    border:none;
+    z-index: 3;
+}
