@@ -1,6 +1,6 @@
 format 224
 "myjob"
-  revision 5
+  revision 6
   modified_by 6 "noutcheu"
 
 
@@ -187,7 +187,6 @@ format 224
 "
 	    classrelation_ref 146310 // <association>
       end
-
     end
 
     class 128390 "Job"
@@ -260,7 +259,7 @@ format 224
 	relation_ref 129414 // requiere
       end
 
-      classrelation 130950 // (demande)
+      classrelation 130950 // demande
 	relation_ref 129542 // demande
       end
 
@@ -300,7 +299,7 @@ format 224
 	MysqlColumn
       end
 
-      classrelation 147334 // (metier)
+      classrelation 147334 // metier
 	relation_ref 144390 // metier
       end
 
@@ -352,9 +351,9 @@ format 224
 
       classrelation 128518 // (contenir)
 	relation 128390 ---- name "contenir"
-	  a role_name "" multiplicity "*" private
+	  a role_name "" multiplicity "1..*" private
 	    classrelation_ref 128518 // (contenir)
-	  b role_name "" multiplicity "*" package
+	  b role_name "" multiplicity "1..*" package
 	    comment "
 "
 	    classrelation_ref 128646 // (contenir)
@@ -362,7 +361,7 @@ format 224
 
       classrelation 128774 // (contenir)
 	relation 128518 ---- name "contenir"
-	  a role_name "" multiplicity "*" private
+	  a role_name "" multiplicity "1..*" private
 	    classrelation_ref 128774 // (contenir)
 	  b role_name "" multiplicity "*" private
 	    classrelation_ref 128902 // (contenir)
@@ -407,6 +406,7 @@ format 224
 	    classrelation_ref 139142 // (postuler)
 	  b role_name "" multiplicity "*" private
 	    classrelation_ref 139270 // postuler
+	  association_type class_ref 155398 // Postuler
       end
 
       attribute 137478 "cv"
@@ -433,7 +433,7 @@ format 224
 	MysqlColumn
       end
 
-      classrelation 146566 // (retrute)
+      classrelation 146566 // retrute
 	relation_ref 144006 // retrute
       end
 
@@ -488,9 +488,9 @@ format 224
 
       classrelation 130566 // (requiere)
 	relation 129414 ---- name "requiere"
-	  a role_name "" multiplicity "*" private
+	  a role_name "" multiplicity "1..*" private
 	    classrelation_ref 130566 // (requiere)
-	  b role_name "" multiplicity "1..*" private
+	  b role_name "" multiplicity "1" private
 	    classrelation_ref 130694 // (requiere)
       end
 
@@ -554,7 +554,7 @@ format 224
 	  a role_name "" multiplicity "*" private
 	    classrelation_ref 130822 // (demande)
 	  b role_name "" multiplicity "1..*" private
-	    classrelation_ref 130950 // (demande)
+	    classrelation_ref 130950 // demande
       end
 
       attribute 144390 "niveau"
@@ -650,7 +650,7 @@ format 224
 
       classrelation 138502 // (avoir)
 	relation 136710 ---- name "avoir"
-	  a role_name "" multiplicity "*" private
+	  a role_name "" multiplicity "0..1" private
 	    classrelation_ref 138502 // (avoir)
 	  b role_name "" multiplicity "*" private
 	    classrelation_ref 138630 // (avoir)
@@ -667,7 +667,6 @@ format 224
 	mysql_decl ""
 	MysqlColumn
       end
-
     end
 
     class 141958 "Profil"
@@ -813,7 +812,7 @@ ${docstring}${members}
 	  b role_name "" private
 	    python "${comment}${self}${name} = ${value}
 "
-	    classrelation_ref 147334 // (metier)
+	    classrelation_ref 147334 // metier
       end
     end
 
@@ -846,6 +845,43 @@ ${docstring}${members}
       end
 
       attribute 146566 "domain"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+    end
+
+    class 155398 "Postuler"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 153734 "date_post"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 153862 "motivation_letter"
 	private explicit_type ""
 	cpp_decl ""
 	java_decl ""
@@ -1161,7 +1197,7 @@ ${members}};
 	  b role_name "" private
 	    python "${comment}${self}${name} = ${value}
 "
-	    classrelation_ref 146566 // (retrute)
+	    classrelation_ref 146566 // retrute
       end
     end
 

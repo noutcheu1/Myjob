@@ -1,6 +1,6 @@
 from rest_framework.serializers import Serializer, ModelSerializer
-from rest_framework import fields
-from .models import (Job, ProfilUser, ProfilRetruteur, Competence, Formation, Experience)
+from rest_framework import fields, serializers
+from .models import (Job, ProfilUser, ProfilRetruteur, Competence, Formation, Postuler, Experience, Retruter)
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
 
@@ -112,6 +112,11 @@ class ExperienceSerializer(ModelSerializer):
     """
 
     def create(self, validated_data):
+        date_debut = validated_data.get('date_de_debut') 
+        date_fin = validated_data.get('date_de_fin')
+        if date_debut > date_fin :
+            raise serializers.ValidationError('the creation date must be lower than the end date')
+
         return Experience.objects.create(**validated_data)
 
     def update(self, instance:Experience, validated_data):
@@ -158,28 +163,12 @@ class ProfilUserSerializer(ModelSerializer):
         #create a users instance 
         
         #creat
-        competences_serialize = validated_data.get('competences')
-        formations_serialize = validated_data.get('formations')
-        experiences_serialize = validated_data.get('experiences') 
-        Description = validated_data.get('Description')
-        adresse = validated_data.get('adresse')
-        nationalite = validated_data.get('nationalite')
-        validated_data.pop('competences')
-        validated_data.pop('formations')
-        validated_data.pop('experiences')
+        
 
         profil =ProfilUser.objects.create(**validated_data)
         #profil.competences.add()
 
 
-        for comp in competences_serialize:
-            profil.competences.add(comp)
-            
-        for comp in formations_serialize:
-            profil.formations.add(comp)
-        
-        for comp in experiences_serialize:
-            profil.experiences.add(comp)
         
 
         return profil
@@ -195,18 +184,24 @@ class ProfilUserSerializer(ModelSerializer):
 
     class Meta:
         model = ProfilUser
-        fields = ('id','user', 'location','Description','adresse','nationalite'
-,'birthday','cv', 'competences', 'formations', 'experiences')
+        fields = ('id','user', 'location','Description','adresse','nationalite','birthday','cv',)
 
 
 class JobSerializer(ModelSerializer):
     """
     Description: Model Description
     """
-    postuler = ProfilUserSerializer(many=True)
     
     def create(self, validated_data):
+        date_debut = validated_data.get('date_debut') 
+        date_fin = validated_data.get('date_fin')
+        salaire_min = validated_data.get('salaire_min')
+        salaire_max = validated_data.get('salaire_max')
 
+        if date_debut > date_fin :
+            raise serializers.ValidationError('the creation date must be lower than the end date')
+        elif salaire_max < salaire_min:
+            raise serializers.ValidationError('the salaries interval is not correct')
         return Job.objects.create(**validated_data)
 
 
@@ -221,7 +216,7 @@ class JobSerializer(ModelSerializer):
 
     class Meta:
        model = Job
-       fields = ('id','titre', 'type_contrat', 'salaire_min','salaire_max','postuler', 'date_debut', 'date_fin', 'description', 'work_location', 'nombres_experiences')
+       fields = ('id','titre', 'type_contrat', 'salaire_min','salaire_max','profilretruteur', 'date_debut', 'date_fin', 'description', 'work_location', 'nombres_experiences')
 
 
 
@@ -240,5 +235,58 @@ class FindJobSerializer(Serializer):
     nombres_experiences = fields.IntegerField(default=0)
    
     
+class PostulerSerializer(ModelSerializer):
+    """
+    Description: Model Description
+    """
+    
 
-         
+    def create(self, validated_data):
+       
+       
+        return Postuler.objects.create(**validated_data)
+
+
+    def update(self, instance:Postuler, validated_data):
+        
+        for key, value in validated_data.items():
+
+            setattr(instance, key, value)
+            
+            instance.save()
+
+    class Meta:
+        model =Postuler
+        fields = ('id', 'user_id', 'job_id', 'motivation_letter', 'date_post')
+
+class RetruterSerializer(ModelSerializer):
+    """
+    Description: Model Description
+    """
+    
+    def create(self, validated_data):
+        user_id = validated_data.get('user_id') 
+        
+
+
+        if date_debut > date_fin :
+            raise serializers.ValidationError('the creation date must be lower than the end date')
+        elif salaire_max < salaire_min:
+            raise serializers.ValidationError('the salaries interval is not correct')
+        return Job.objects.create(**validated_data)
+
+
+    def update(self, instance:Job, validated_data):
+        validated_data.pop('user')
+        
+        for key, value in validated_data.items():
+
+            setattr(instance, key, value)
+            
+            instance.save()
+
+
+    class Meta:
+        model= Retruter
+        fields = ('id', 'user_id', 'job_id', 'user_retruteur_id', 'date_post' )
+        pass

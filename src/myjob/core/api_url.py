@@ -20,7 +20,8 @@ router.register('Experience', ExperienceViewset, basename="Experience")
 router.register('Formation', FormationViewset, basename='Formation')
 router.register('Find', FilterFind, basename='Find')
 router.register('Users', UserViewSet, basename='Users')
-
+router.register('postuler_job',PostulerVieset, basename='postuler_job')
+router.register('retrute', RetruterViewset, basename='retrute')
 
 urlpatterns = [
    path('', include(router.urls)),

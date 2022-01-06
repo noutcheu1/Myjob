@@ -25,6 +25,26 @@ class Profil(models.Model):
         abstract = True
 
 
+        
+
+class ProfilUser(Profil):
+    """
+    Description: Model Description
+    """
+    work= (('developpeur',"dev Android"), ("developpeur", "DEV WEb"), ("DATA SCIENTIST","DATA SCIENTIST"))
+    
+    birthday = models.DateField(auto_now_add=False)
+    metier = models.CharField(max_length=200, choices=work)
+    cv = models.FileField(verbose_name='User_Cv', upload_to="Cv_doc", null=True)
+
+
+    def __str__(self):
+        return f"{self.user.username}-:{self.metier}"
+
+    class Meta:
+        abstract = False
+
+
 class Formation(models.Model):
     """
     Description: Model Description
@@ -36,6 +56,7 @@ class Formation(models.Model):
     nom = models.CharField(max_length=200)
     lieux = models.CharField(max_length=200)
     description = models.TextField()
+    profiluser = models.ForeignKey(ProfilUser, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.nom} || {self.lieux}:{self.date_debut}-{self.date_fin}"
@@ -51,6 +72,7 @@ class Competence(models.Model):
     niveau = models.CharField(max_length=2000)
     description = models.TextField()
     nom = models.CharField(max_length=200)    
+    profiluser = models.ForeignKey(ProfilUser, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.nom} || {self.description} -{self.niveau}"
@@ -63,6 +85,8 @@ class Experience(models.Model):
     """
     Description: Model Description
     """
+    experiences_users = models.ForeignKey(ProfilUser, on_delete=models.SET_NULL, blank=True, null=True, related_name="experiences_user")
+
     date_de_debut = models.DateField()
     date_de_fin = models.DateField()
     title = models.CharField(max_length=200)
@@ -85,28 +109,7 @@ class ProfilRetruteur(Profil):
 
     class Meta:
     	abstract = False
-    	
 
-class ProfilUser(Profil):
-    """
-    Description: Model Description
-    """
-    work= (('developpeur',"dev Android"), ("developpeur", "DEV WEb"), ("DATA SCIENTIST","DATA SCIENTIST"))
-    
-    birthday = models.DateField(auto_now_add=False)
-    metier = models.CharField(max_length=200, choices=work)
-    cv = models.FileField(verbose_name='User_Cv', upload_to="Cv_doc", null=True)
-    competences = models.ManyToManyField(Competence, related_name="competences_user")
-    formations = models.ManyToManyField(Formation, related_name="formation_user")
-    experiences = models.ManyToManyField(Experience, related_name="experiences_user")
-
-
-    def __str__(self):
-        return f"{self.user.username}-:{self.metier}"
-
-    class Meta:
-    	abstract = False
-    	
 
 class Job(models.Model):
     """
@@ -115,6 +118,7 @@ class Job(models.Model):
     WORK_LOC = STATES_LOCATION
     WORK_STATUE= (("wait", "en attente"), ("bad", "refuser"), ("poster", "ok"))
     
+    profilretruteur = models.ForeignKey(ProfilRetruteur, on_delete=models.CASCADE)
     titre = models.CharField(max_length=200)
     type_contrat = models.CharField(max_length=50,  choices=CONTRAT_TYPE)
     salaire_min =  models.PositiveIntegerField(default=0)
@@ -125,16 +129,44 @@ class Job(models.Model):
     Job_statue = models.CharField(max_length=150, choices=WORK_STATUE)
     work_location =  models.CharField(max_length=200, choices=WORK_LOC)
     nombres_experiences = models.PositiveIntegerField(default=0)
-    postuler = models.ManyToManyField(ProfilUser, related_name='job_postuler')
+   
 
     def save(self, *args, **kargs):
-    	
+
     	self.Job_statue = ("wait", "en attente")
+        
     	
     	return super().save(*args, **kargs)
 
     def __str__(self):
-        return f"{self.titre} || {self.salaire_min}< {self.salaire_max}:{self.date_debut}-{self.date_fin} {self.Job_statue}"
+        return f"{self.titre} || {self.salaire_min} < {self.salaire_max}:{self.date_debut}-{self.date_fin} {self.Job_statue}"
+
+    class Meta:
+        ordering = ('date_debut', 'date_fin', 'Job_statue')
+
+
+class Postuler(models.Model):
+    """
+    Description: Model Description
+    """
+    job_id = models.ForeignKey(Job, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    motivation_letter =  models.TextField()
+    date_post = models.DateField(auto_now_add=True)
+        
+
+    class Meta:
+        ordering = ('date_post','id')
+        
+
+class Retruter(models.Model):
+    """
+    Description: Model Description
+    """
+    job_id = models.ForeignKey(Job, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(ProfilUser, on_delete=models.CASCADE)
+    user_retruteur_id = models.ForeignKey(ProfilRetruteur, on_delete=models.CASCADE)
+    date_post = models.DateField(auto_now_add=True)
 
     class Meta:
         pass
