@@ -5,6 +5,7 @@ import todolist from '@/components/todo'
 import Inscription from '@/components/inscription/Inscription'
 import Inscription1 from '@/components/inscription/Inscription1'
 import Login from '@/components/inscription/Login'
+import Accueil from '@/components/accueil/Accueil'
 Vue.use(Router)
 
 export default new Router({
@@ -29,6 +30,11 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/accueil',
+      name: 'accueil',
+      component: Accueil
     }
   ]
 })

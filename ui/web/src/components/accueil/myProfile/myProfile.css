@@ -1,0 +1,72 @@
+.Myprofile {
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+.profileMain {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+.profileContent {
+    position: relative;
+    width: 300%;
+    display: flex;
+    transition: left 2s;
+}
+.profileContent > div {
+    width: 100%;
+}
+.profileContent > div img {
+    width: 100%;
+}
+.profileCont {
+    width: 33%;
+}
+
+
+.myPUpground {
+    box-sizing: border-box;
+    position: absolute;
+    left:0%;
+    top:0%;
+    width: 100%;
+    background-image: linear-gradient(to right, rgb(0, 15, 148,0.7) ,rgb(0, 15, 148,0));
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profileBack {
+    width: 10%;
+    height: 100%;
+    background-image: url('back.svg');
+    background-size: 30%;
+    background-position:center;
+    background-repeat: no-repeat;
+}
+.profileBack + div {
+    width: 80%;
+}
+.myPostuler {
+    font-size: 40px;
+    text-align: justify;
+    color: white;
+    margin-bottom: 70px;
+}
+.myPostuler + div {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+.myPostuler + div > button {
+    margin: 20px;
+}
+.profileNext {
+    width: 10%;
+    height: 100%;
+    background-image: url('next.svg');
+    background-size: 30%;
+    background-position:center;
+    background-repeat: no-repeat;
+}
