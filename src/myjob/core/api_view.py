@@ -4,7 +4,7 @@ from rest_framework.mixins import (CreateModelMixin, DestroyModelMixin,
                                    ListModelMixin, UpdateModelMixin, RetrieveModelMixin)
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.views import APIView
-from .serializers import (ProfilRetruteurSerializer, UserSerializer, FindJobSerializer, LoginSerializer, SetpassSerializers, FormationSerializer, CompetenceSerializer, ExperienceSerializer, JobSerializer, PostulerSerializer, ProfilUserSerializer)
+from .serializers import (ProfilRetruteurSerializer, MetierSerializer, UserSerializer, FindJobSerializer, LoginSerializer, RetruterSerializer, SetpassSerializers, FormationSerializer, CompetenceSerializer, ExperienceSerializer, JobSerializer, PostulerSerializer, ProfilUserSerializer)
 from django.contrib.auth import logout, login, authenticate
 from rest_framework.decorators import action
 from drf_yasg.utils import swagger_auto_schema
@@ -12,7 +12,7 @@ from rest_framework.generics import RetrieveAPIView
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
-from .models import (Job, ProfilUser, ProfilRetruteur, Competence, Formation, Experience, Postuler)
+from .models import (Job, ProfilUser, ProfilRetruteur, Competence, Formation, Experience, Postuler, Metier)
 from rest_framework.permissions import BasePermission, IsAuthenticated, AllowAny, SAFE_METHODS
 from django.contrib.auth.models import  User
 
@@ -41,6 +41,27 @@ class PostulerVieset(CreateModelMixin, ListModelMixin, RetrieveModelMixin,
     queryset = Postuler.objects.all()
     serializer_class = PostulerSerializer
     permission_classes = [IsAuthenticated, ]
+
+    
+class RetruterPostuler(GenericViewSet):
+    """
+    Description: Model Description
+    """
+    serializer_class = RetruterSerializer
+    permission_classes = [IsAuthenticated, ]
+
+    @swagger_auto_schema(
+        operation_description='method to find Job with  using the name of job. ')
+    @action(methods=["POST"], detail=False)
+    def retruter(self, request, *args, **kwargs):
+        user_have_job = RetruterSerializer(data=self.request.data)
+        user_have_job.is_valid(raise_exception=True)
+        userrs = user_have_job.validated_data.get('user_id')
+        for retruter_job  in userrs:
+            print(retruter_job)
+        Postuler.retruter_job(userrs)
+        return Response({'resultat':''}, status=status.HTTP_200_OK)
+
 
 
 class FilterFind(GenericViewSet):
@@ -169,7 +190,6 @@ class LogoutView(GenericViewSet):
     @action(methods=["POST"], detail=False)
     def post(self, request, format=None):
         user = request.user.username
-        print(user)
         request.user.auth_token.delete()
         #        Simple Call on /logout in post. No arguments
         logout(request)
@@ -267,3 +287,13 @@ class CompetenceViewset(RetrieveModelMixin, CreateModelMixin, ListModelMixin,
 
 
 
+class MetierViewset(RetrieveModelMixin, CreateModelMixin, ListModelMixin,
+                    UpdateModelMixin, DestroyModelMixin, GenericViewSet):
+    """
+    Description: Model Description
+    """
+    
+
+    queryset = Metier.objects.all()
+    serializer_class = MetierSerializer
+    permission_classes = [IsAuthenticated, ]

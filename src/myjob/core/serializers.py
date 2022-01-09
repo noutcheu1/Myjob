@@ -1,8 +1,34 @@
 from rest_framework.serializers import Serializer, ModelSerializer
 from rest_framework import fields, serializers
-from .models import (Job, ProfilUser, ProfilRetruteur, Competence, Formation, Postuler, Experience, Retruter)
+from .models import (Job, ProfilUser, ProfilRetruteur, Competence, Formation, Metier, Postuler, Experience, Retruter)
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
+
+
+
+class MetierSerializer(ModelSerializer):
+    """
+    Description: Model Description
+    """
+    
+    domaine = fields.CharField(required=False)
+    nom = fields.CharField(required=True)
+
+    def create(self, validated_data):
+        return Metier.objects.create(**validated_data)
+    
+    def update(self, instance:Metier, validated_data):
+        for key, value in validated_data.items():
+
+            setattr(instance, key, value)
+
+            instance.save()
+
+        return instance
+        
+    class Meta:
+        fields = ('id','domaine', 'nom')
+        model = Metier
 
 
 class SetpassSerializers(Serializer):
@@ -51,7 +77,7 @@ class UserSerializer(ModelSerializer):
 
     class Meta:
         model = User
-        read_only_fields = ['id', 'password']
+        
         fields = ('id', 'username', 'password', 'first_name', 'email',)
         extra_kwargs = {'password': {"write_only": True}}
 
@@ -79,7 +105,7 @@ class FormationSerializer(ModelSerializer):
     class Meta:
         model = Formation
 
-        fields = ('id', 'date_debut', 'date_fin', 'nom', 'lieux', 'description')
+        fields = ('id', 'date_debut', 'date_fin', 'profiluser', 'nom', 'lieux', 'description')
         pass
 
 
@@ -102,7 +128,7 @@ class CompetenceSerializer(ModelSerializer):
 
     class Meta:
         model = Competence
-        fields = ('id', 'niveau', 'description', 'nom')
+        fields = ('id', 'niveau', 'profiluser', 'description', 'nom')
         pass
 
 
@@ -129,7 +155,7 @@ class ExperienceSerializer(ModelSerializer):
 
     class Meta: 
          model = Experience
-         fields = ('id', 'date_de_debut', 'date_de_fin', 'title','Description', 'lieux')
+         fields = ('id', 'date_de_debut', 'experiences_users', 'date_de_fin', 'title','Description', 'lieux')
 
 
 class ProfilRetruteurSerializer(ModelSerializer):
@@ -193,16 +219,9 @@ class JobSerializer(ModelSerializer):
     """
     
     def create(self, validated_data):
-        date_debut = validated_data.get('date_debut') 
-        date_fin = validated_data.get('date_fin')
-        salaire_min = validated_data.get('salaire_min')
-        salaire_max = validated_data.get('salaire_max')
+        job = Job.objects.create(**validated_data)
 
-        if date_debut > date_fin :
-            raise serializers.ValidationError('the creation date must be lower than the end date')
-        elif salaire_max < salaire_min:
-            raise serializers.ValidationError('the salaries interval is not correct')
-        return Job.objects.create(**validated_data)
+        return job
 
 
     def update(self, instance:Job, validated_data):
@@ -216,7 +235,7 @@ class JobSerializer(ModelSerializer):
 
     class Meta:
        model = Job
-       fields = ('id','titre', 'type_contrat', 'salaire_min','salaire_max','profilretruteur', 'date_debut', 'date_fin', 'description', 'work_location', 'nombres_experiences')
+       fields = ('id','titre', 'metier', 'type_contrat', 'salaire_min','salaire_max','profilretruteur', 'date_debut', 'date_fin', 'description', 'work_location', 'nombres_experiences')
 
 
 
@@ -259,3 +278,25 @@ class PostulerSerializer(ModelSerializer):
         model =Postuler
         fields = ('id', 'user_id', 'job_id', 'motivation_letter', 'date_post')
 
+
+class UsersSerializer(Serializer):
+    """
+    Description: Model Description
+    """
+    user_id = fields.IntegerField(required=True)
+    username = fields.CharField(required=True)    
+
+    class Meta:
+        pass
+        
+
+class RetruterSerializer(Serializer):
+    """
+    Description: Model Description
+    """
+
+    job_id = fields.IntegerField(write_only=True, required=True)
+    user_id = UsersSerializer(many=True)
+
+    class Meta:
+        fields = ('id', 'job_id', 'user_id',)

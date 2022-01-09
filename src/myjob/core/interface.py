@@ -3,42 +3,59 @@ from core.interface import *
 from django.contrib.auth.models import User
 import json
 
-# Create your models here.
+with open('core/pays.json') as fp: 
 
-class Metier(Metier):
+    obj = json.load(fp)
+STATES_LOCATION = obj.items()
+CONTRAT_TYPE = (('TEMP PLEIN ','TEMP PLEIN '),('PERMANENT', 'PERMANENT'), ('OCCASIONNEL', 'OCCASIONNEL'), ('STAGE', 'STAGE'), ('FREELANCER', 'FREELANCER') ,('TEMP PARTIEL', 'TEMP PARTIEL') ,('CONTRACTUEL', 'CONTRACTUEL'))
+RESPONSE_STATUS = (('Retruter', 'Retruter'), ('REFUSER', 'REFUSER'), ('WAITING', 'WAITING'))
+
+class Metier(models.Model):
     """
     Description: Model Description
     """
     nom = models.CharField(max_length=200)
     domaine =models.CharField(max_length=200)
     
-    def __str__(self):
-        return f"{self.nom}-:{self.domaine}"
 
     class Meta:
-        abstract=False
+        abstract=True
 
 
+class Profil(models.Model):
+    """
+    Description: Model Description
+    """
+    
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    location = models.CharField(max_length=200)
+    Description= models.TextField()
+    adresse = models.CharField(max_length=50)
+    nationalite = models.CharField(max_length=200, choices=STATES_LOCATION)
 
-class ProfilUser(ProfilUser):
+    class Meta:
+        abstract = True
+
+
+class ProfilUser(Profil):
     """
     Description: Model Description
     """
     work= (('developpeur',"dev Android"), ("developpeur", "DEV WEb"), ("DATA SCIENTIST","DATA SCIENTIST"))
-    metier = models.ForeignKey(Metier, on_delete=models.CASCADE)
+    
     birthday = models.DateField(auto_now_add=False)
     metier = models.CharField(max_length=200, choices=work)
-    cv = models.FileField(verbose_name='User_Cv', upload_to="Cv_doc", null=True)
+    cv = models.FileField(verbose_name='User_Cv', upload_to="Cv_doc", blank=True, null=True)
 
 
     def __str__(self):
-        return f"{self.user.username}-:{self.metier}"
+        pass
 
     class Meta:
-        abstract = False
+        abstract = True
 
 
-class Formation(Formation):
+class Formation(models.Model):
     """
     Description: Model Description
     """
@@ -52,13 +69,13 @@ class Formation(Formation):
     profiluser = models.ForeignKey(ProfilUser, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.nom} || {self.lieux}:{self.date_debut}-{self.date_fin}"
+        pass
         
     class Meta:
-        abstract = False
+        abstract = True
 
 
-class Competence(Competence):
+class Competence(models.Model):
     """
     Description: Model Description
     """
@@ -68,13 +85,13 @@ class Competence(Competence):
     profiluser = models.ForeignKey(ProfilUser, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.nom} || {self.description} -{self.niveau}"
+        pass
 
     class Meta:
-        abstract = False
+        abstract = True
 
 
-class Experience(Experience):
+class Experience(models.Model):
     """
     Description: Model Description
     """
@@ -88,31 +105,35 @@ class Experience(Experience):
     type_contrat = models.CharField(max_length=50,  choices=CONTRAT_TYPE)
 
     class Meta:
-        abstract = False
+        abstract = True
 
     def __str__(self):
-        return f"{self.title} || {self.lieux}:{self.date_de_debut}-{self.date_de_fin}"
+      pass
 
 
-class ProfilRetruteur(ProfilRetruteur):
+class ProfilRetruteur(Profil):
     """
     Description: Model Description
     """
     web_site = models.CharField(max_length=200, null=True, blank=True)
     
     def __str__(self):
-        return f"{self.user.username}"
+        pass
 
     class Meta:
-    	abstract = False
+        abstract = True
 
 
-class Job(Job):
+
+
+
+
+class Job(models.Model):
     """
     Description: Model Description
     """
     WORK_LOC = STATES_LOCATION
-    WORK_STATUE= (("draft", "en attente"), ("bad", "refuser"), ("poster", "ok"))
+    WORK_STATUE= (("wait", "en attente"), ("bad", "refuser"), ("poster", "ok"))
     metier = models.ForeignKey(Metier, on_delete=models.CASCADE)
     profilretruteur = models.ForeignKey(ProfilRetruteur, on_delete=models.CASCADE)
     titre = models.CharField(max_length=200)
@@ -125,20 +146,19 @@ class Job(Job):
     Job_statue = models.CharField(max_length=150, choices=WORK_STATUE)
     work_location =  models.CharField(max_length=200, choices=WORK_LOC)
     nombres_experiences = models.PositiveIntegerField(default=0)
-   
-
-
-
 
     def __str__(self):
-        return f"{self.titre} || {self.salaire_min} < {self.salaire_max}:{self.date_debut}-{self.date_fin} {self.Job_statue}"
+    	pass
+
+    def save(self):
+   		pass
 
     class Meta:
-        abstract = False
-        ordering = ('date_debut', 'date_fin', 'Job_statue')
+        abstract = True
 
 
-class Postuler(Postuler):
+
+class Postuler(models.Model):
     """
     Description: Model Description
     """
@@ -148,33 +168,22 @@ class Postuler(Postuler):
     date_post = models.DateField(auto_now_add=True)
     response_status = models.CharField(max_length=200, choices=RESPONSE_STATUS)
     user_retruteur_id = models.ForeignKey(ProfilRetruteur, on_delete=models.CASCADE)
-    
-    @classmethod
-    def retruter_job(cls, *args, **kwargs):
-        job = Job.objects.get(id=kwargs.get('job_id'))
-        postuler = Postuler.objects.all()
-        list_user_postuler = postuler.filter(job_id=job.id)
-        # do something with the book
-        return Job
-
-    def save(self, *args, **kwargs):
-        self.response_status = ('WAITING', 'WAITING')
-
-        return super(Postuler, self).save(*args, **kargs)
-               
+        
 
     class Meta:
-        abstract = False
+
+        abstract = True
         ordering = ('date_post','id')
         
-"""
-class Retruter(Retruter):
-  
+
+class Retruter(models.Model):
+    """
+    Description: Model Description
+    """
     job_id = models.ForeignKey(Job, on_delete=models.CASCADE)
     user_id = models.ForeignKey(ProfilUser, on_delete=models.CASCADE)
     user_retruteur_id = models.ForeignKey(ProfilRetruteur, on_delete=models.CASCADE)
     date_post = models.DateField(auto_now_add=True)
 
     class Meta:
-        abstract = False
-"""
+        abstract = True

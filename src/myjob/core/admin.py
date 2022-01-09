@@ -1,12 +1,12 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import (ProfilRetruteur, ProfilUser, Job, Experience, Competence, Formation, Postuler, Retruter)
+from .models import (ProfilRetruteur, ProfilUser, Job, Experience, Competence, Formation, Postuler, Retruter, Metier)
 
 
 
 
-
+admin.site.register(Metier)
 admin.site.register(Postuler)
 admin.site.register(Job)
 admin.site.register(ProfilUser)
