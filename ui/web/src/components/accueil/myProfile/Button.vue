@@ -17,7 +17,8 @@
         cursor: pointer;
     }
     .buttonUp:hover {
-        background-color:#10345D
+        background-color:#10345D;
+        color: #fff;
     }
     .buttonUp:focus {
         box-shadow: 0px 0px 0px 4px lightblue;
