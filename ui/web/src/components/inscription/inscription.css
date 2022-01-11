@@ -18,6 +18,7 @@
 }
 .insMain {
     width:400px;
+    height: 396.28px;
 }
 .insMainSection {
     box-shadow: 0px 0px 6px 3px rgb(235,235,235);
@@ -78,4 +79,17 @@
     padding-bottom: 40px;
     border-bottom: solid 1px;
     color: rgb(200,200,200);
+}
+.wrapper{
+    display: flex;
+}
+.img_login{
+    height: 400px;
+    width:400px;
+    box-shadow: 0px 0px 6px 3px rgb(235,235,235);
+    justify-content: center;
+    align-items: center;
+}
+.red{
+    color: red;
 }
