@@ -1,0 +1,59 @@
+.cardBid1 {
+    width: 382px;
+    height: 287px;
+
+    background: #FFFEFE;
+    border: 1px solid #000F94;
+    box-sizing: border-box;
+    border-radius: 8px;
+    position:relative
+}
+.cb1Title {
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 15px;
+    margin-right: 10px;
+}
+.cb1Info{
+    padding-left: 85px;
+    text-align: left;
+}
+.cb1Info > div {
+    margin-bottom: 10px; 
+}
+.cb1Info > div > img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.cb1Info + div {
+    font-size: 12px;
+    margin-top: 10px;
+}
+.cb1Post {
+    margin-right: 60px;
+}
+.cb1Info + div + div {
+    margin-top: 30px;
+}
+.cb1Info + div + div > button {
+    border: none;
+    background-color:#FFC947;
+    font-weight: bold;
+    padding: 4px;
+    padding-left: 13px;
+    padding-right: 13px;
+    border-radius: 8px;
+    cursor: pointer
+}
+.cb1New {
+    position:absolute ;
+    top:0px;    
+    right: 0px;
+    margin-right: -25px;
+    margin-top: -25px;
+    width: 70px;
+    height: 70px;
+}

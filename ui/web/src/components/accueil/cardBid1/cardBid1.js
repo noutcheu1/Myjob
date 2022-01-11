@@ -1,3 +1,3 @@
 export default {
-  name: 'cardBid'
+  name: 'cardBid1'
 }

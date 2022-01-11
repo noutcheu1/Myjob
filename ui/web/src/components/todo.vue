@@ -1,17 +1,17 @@
 <template>
 <section class="todoapp">
-    <CardBid/>
+    <CardBid1/>
 </section>
 </template>
 <style src="./todo.css">
 
 </style>
 <script>
-import CardBid from '@/components/accueil/cardBid/CardBid.vue'
+import CardBid1 from '@/components/accueil/cardBid1/CardBid1.vue'
 export default {
   name: 'todo',
   components: {
-    CardBid
+    CardBid1
   }
 }
 </script>
