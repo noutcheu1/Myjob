@@ -1,0 +1,7 @@
+{% if lastest_job_list %}
+    {% for travail in lastest_job_list %}
+        {{ travail.travail_text }}</br>
+    {% endfor %}
+{% else %}
+    <p>No job are available.</p>
+{% endif %}
