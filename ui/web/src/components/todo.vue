@@ -1,20 +1,17 @@
 <template>
 <section class="todoapp">
-    <header class="header">
-        <h1>Todos</h1>
-        <input type="text" name="" class="new-todo" placeholder="Ajouter une tache">
-    </header>
-    <div class="main">
-        <ul class="todo-list">
-            <li class="todo">
-                <div class="view">
-                    <label for="">Nom de la tache ajoutée</label>
-                </div>
-            </li>
-        </ul>
-    </div>
+    <CardBid/>
 </section>
 </template>
 <style src="./todo.css">
 
 </style>
+<script>
+import CardBid from '@/components/accueil/cardBid/CardBid.vue'
+export default {
+  name: 'todo',
+  components: {
+    CardBid
+  }
+}
+</script>
