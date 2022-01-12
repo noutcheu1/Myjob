@@ -1,6 +1,10 @@
 format 224
 "myjob"
+<<<<<<< HEAD
   revision 8
+=======
+  revision 5
+>>>>>>> 2a1312e23c8195336bdc1ac230f12c4191603b20
   modified_by 6 "noutcheu"
 
 
@@ -199,6 +203,7 @@ ${members}};
 	    classrelation_ref 146310 // <association>
       end
 
+<<<<<<< HEAD
       classrelation 167174 // <association>
 	relation 160902 ----
 	  a role_name "" private
@@ -275,6 +280,8 @@ ${docstring}${body}
       classrelation 169734 // <association>
 	relation_ref 162182 // <association>
       end
+=======
+>>>>>>> 2a1312e23c8195336bdc1ac230f12c4191603b20
     end
 
     class 128390 "Job"
@@ -381,6 +388,14 @@ ${members}};
 	mysql_decl ""
 	MysqlColumn
       end
+<<<<<<< HEAD
+=======
+
+      classrelation 146310 // <association>
+	relation_ref 143878 // <association>
+      end
+    end
+>>>>>>> 2a1312e23c8195336bdc1ac230f12c4191603b20
 
       classrelation 146310 // <association>
 	relation_ref 143878 // <association>
@@ -569,6 +584,7 @@ ${members}};
 	MysqlColumn
       end
 
+<<<<<<< HEAD
       classrelation 146566 // retrute
 	relation_ref 144006 // retrute
       end
@@ -660,6 +676,18 @@ ${docstring}${body}
 
       classrelation 171142 // (avoir)
 	relation_ref 162950 // avoir
+=======
+      attribute 145926 "sexe"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+>>>>>>> 2a1312e23c8195336bdc1ac230f12c4191603b20
       end
     end
 
@@ -2089,6 +2117,7 @@ ${members}};
 	MysqlColumn
       end
 
+<<<<<<< HEAD
       classrelation 170246 // (contenir)
 	relation_ref 162566 // contenir
       end
@@ -2124,6 +2153,32 @@ ${docstring}${body}
 "
 	    classrelation_ref 171142 // (avoir)
       end
+=======
+      attribute 145798 "nationalite"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+    end
+
+    class 148614 "Admin"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+>>>>>>> 2a1312e23c8195336bdc1ac230f12c4191603b20
     end
   end
 
