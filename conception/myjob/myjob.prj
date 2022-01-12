@@ -1,6 +1,10 @@
 format 224
 "myjob"
+<<<<<<< HEAD
   revision 5
+=======
+  revision 8
+>>>>>>> 7d333749e167b19203268db5f84d2b62760b51a6
   modified_by 6 "noutcheu"
 
 
@@ -79,7 +83,7 @@ format 224
      end
     classdiagram 128262 "myjob_classs"
       classdiagramsettings draw_all_relations no member_max_width 0 end
-      size A4
+      size A2
     end
 
     sequencediagram 128390 "myjob_sequence"
@@ -98,15 +102,26 @@ format 224
     end
 
     activity 128006 "activty_myhob"
+      activitydiagram 135302 "activty"
+	activitydiagramsettings
+	 end
+	size A4
+      end
     end
 
-    class 128262 "User"
-      visibility package 
+    class 128262 "UserI"
+      visibility package stereotype "interface"
       cpp_decl ""
-      java_decl ""
-      php_decl ""
+      java_decl "${comment}${@}${visibility}${static}interface ${name}${extends} {
+${members}}
+"
+      php_decl "${comment}interface ${name}${extends} {
+${members}}
+"
       python_2_2 python_decl ""
-      idl_decl ""
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
       explicit_switch_type ""
       mysql_decl ""
       
@@ -132,12 +147,12 @@ format 224
 	MysqlColumn
       end
 
-      classrelation 138886 // <association>
-	relation 136966 ----
+      classrelation 138886 // (avoir)
+	relation 136966 ---- name "avoir"
 	  a role_name "" multiplicity "1" private
-	    classrelation_ref 138886 // <association>
+	    classrelation_ref 138886 // (avoir)
 	  b role_name "" multiplicity "1" private
-	    classrelation_ref 139014 // <association>
+	    classrelation_ref 139014 // (avoir)
       end
 
       attribute 144006 "email"
@@ -188,15 +203,105 @@ format 224
 	    classrelation_ref 146310 // <association>
       end
 
+<<<<<<< HEAD
+=======
+      classrelation 167174 // <association>
+	relation 160902 ----
+	  a role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 167174 // <association>
+	  b role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 167046 // <association>
+      end
+
+      operation 141958 "create"
+	preserve_cpp_body_indent public return_type class_ref 128262 // UserI
+	nparams 0
+	
+	preserve_java_body_indent 
+	preserve_php_body_indent 
+	preserve_python_body_indent python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 142086 "delete"
+	preserve_cpp_body_indent public explicit_return_type "Void"
+	nparams 0
+	
+	preserve_java_body_indent 
+	preserve_php_body_indent 
+	preserve_python_body_indent python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 142214 "get"
+	preserve_cpp_body_indent public return_type class_ref 128262 // UserI
+	nparams 1
+	  param in name "id" explicit_type "int"
+	
+	preserve_java_body_indent 
+	preserve_php_body_indent 
+	preserve_python_body_indent python_def "${@}${static}${abstract}def ${name}${(}${p0}${v0}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 142342 "get"
+	preserve_cpp_body_indent public return_type class_ref 128262 // UserI
+	nparams 0
+	
+	preserve_java_body_indent 
+	preserve_php_body_indent 
+	preserve_python_body_indent python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      classrelation 169606 // <association>
+	relation 162182 ----
+	  a role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 169606 // <association>
+	  b role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 169734 // <association>
+      end
+
+      classrelation 169734 // <association>
+	relation_ref 162182 // <association>
+      end
+>>>>>>> 7d333749e167b19203268db5f84d2b62760b51a6
     end
 
     class 128390 "Job"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
+      visibility package stereotype "interface"
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl "${comment}${@}${visibility}${static}interface ${name}${extends} {
+${members}}
+"
+      php_decl "${comment}interface ${name}${extends} {
+${members}}
+"
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
       explicit_switch_type ""
       mysql_decl ""
       
@@ -256,16 +361,12 @@ format 224
 	    classrelation_ref 130182 // <association>
       end
 
-      classrelation 130694 // (requiere)
+      classrelation 130694 // requiere
 	relation_ref 129414 // requiere
       end
 
-      classrelation 130950 // (demande)
+      classrelation 130950 // demande
 	relation_ref 129542 // demande
-      end
-
-      classrelation 131206 // (exige)
-	relation_ref 129670 // exige
       end
 
       classrelation 139270 // postuler
@@ -287,24 +388,118 @@ format 224
 	mysql_decl ""
 	MysqlColumn
       end
+<<<<<<< HEAD
 
       classrelation 146310 // <association>
 	relation_ref 143878 // <association>
       end
     end
+=======
+>>>>>>> 7d333749e167b19203268db5f84d2b62760b51a6
 
-    class 128518 "ProfilUser"
-      visibility package 
+      classrelation 146310 // <association>
+	relation_ref 143878 // <association>
+      end
+
+      attribute 146182 "work_statue"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 147334 // metier
+	relation_ref 144390 // metier
+      end
+
+      attribute 146950 "nombre_experience"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 134534 "retruter"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 0
+	
+	preserve_java_body_indent 
+	preserve_php_body_indent 
+	preserve_python_body_indent python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      classrelation 160646 // (demande)
+	relation_ref 157446 // demande
+      end
+
+      classrelation 162822 // (postuler)
+	relation_ref 158598 // postuler
+      end
+
+      classrelation 163590 // (rechercher)
+	relation 158982 ---- name "rechercher"
+	  a role_name "" multiplicity "*" private
+	    python "${comment}${self}${name} = ${stereotype}()
+"
+	    classrelation_ref 163590 // (rechercher)
+	  b role_name "" multiplicity "*" private
+	    python "${comment}${self}${name} = ${stereotype}()
+"
+	    classrelation_ref 163462 // (rechercher)
+      end
+
+      operation 141190 "all"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 0
+	
+	preserve_java_body_indent 
+	preserve_php_body_indent 
+	preserve_python_body_indent python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      classrelation 169222 // <association>
+	relation_ref 161926 // <association>
+      end
+
+      classrelation 170118 // (requiere)
+	relation_ref 162438 // requiere
+      end
+    end
+
+    class 128518 "Profiluser"
+      visibility package stereotype "interface"
       cpp_decl ""
-      java_decl ""
-      php_decl ""
+      java_decl "${comment}${@}${visibility}${static}interface ${name}${extends} {
+${members}}
+"
+      php_decl "${comment}interface ${name}${extends} {
+${members}}
+"
       python_2_2 python_decl ""
-      idl_decl ""
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
       explicit_switch_type ""
       mysql_decl ""
       
       attribute 128390 "adresse"
-	private explicit_type ""
+	private explicit_type "string"
 	cpp_decl ""
 	java_decl ""
 	php_decl ""
@@ -314,26 +509,16 @@ format 224
 	MysqlColumn
       end
 
-      classrelation 128518 // (contenir)
-	relation 128390 ---- name "contenir"
-	  a role_name "" multiplicity "*" private
-	    classrelation_ref 128518 // (contenir)
-	  b role_name "" multiplicity "*" package
-	    comment "
-"
-	    classrelation_ref 128646 // (contenir)
-      end
-
       classrelation 128774 // (contenir)
 	relation 128518 ---- name "contenir"
-	  a role_name "" multiplicity "*" private
+	  a role_name "" multiplicity "1..*" private
 	    classrelation_ref 128774 // (contenir)
 	  b role_name "" multiplicity "*" private
 	    classrelation_ref 128902 // (contenir)
       end
 
       attribute 129414 "birthday"
-	private explicit_type ""
+	private explicit_type "Date"
 	cpp_decl ""
 	java_decl ""
 	php_decl ""
@@ -345,17 +530,7 @@ format 224
 
       attribute 129798 "location"
 	private explicit_type ""
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
-      end
-
-      attribute 136582 "metier"
-	private explicit_type ""
+	init_value "string"
 	cpp_decl ""
 	java_decl ""
 	php_decl ""
@@ -372,7 +547,7 @@ format 224
 	  b parent class_ref 141958 // Profil
       end
 
-      classrelation 138630 // (avoir)
+      classrelation 138630 // avoir
 	relation_ref 136710 // avoir
       end
 
@@ -382,10 +557,11 @@ format 224
 	    classrelation_ref 139142 // (postuler)
 	  b role_name "" multiplicity "*" private
 	    classrelation_ref 139270 // postuler
+	  association_type class_ref 155398 // Postuler
       end
 
       attribute 137478 "cv"
-	private explicit_type ""
+	private explicit_type "File"
 	cpp_decl ""
 	java_decl ""
 	php_decl ""
@@ -397,6 +573,19 @@ format 224
       end
 
       attribute 145926 "sexe"
+	private explicit_type "enum"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+<<<<<<< HEAD
+      attribute 145926 "sexe"
 	private explicit_type ""
 	cpp_decl ""
 	java_decl ""
@@ -406,6 +595,99 @@ format 224
 	idl_decl ""
 	mysql_decl ""
 	MysqlColumn
+=======
+      classrelation 146566 // retrute
+	relation_ref 144006 // retrute
+      end
+
+      classrelation 146950 // (possedent)
+	relation 144262 ---- name "possedent"
+	  a role_name "" multiplicity "1..*" private
+	    python "${comment}${self}${name} = ${stereotype}()
+"
+	    classrelation_ref 146950 // (possedent)
+	  b role_name "" multiplicity "*" private
+	    python "${comment}${self}${name} = ${stereotype}()
+"
+	    classrelation_ref 147078 // (possedent)
+      end
+
+      classrelation 160774 // <association>
+	relation 157574 ----
+	  a role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 160774 // <association>
+	  b role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 160902 // <association>
+      end
+
+      classrelation 161030 // (avoir)
+	relation 157702 ---- name "avoir"
+	  a role_name "" multiplicity "1" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 161030 // (avoir)
+	  b role_name "" multiplicity "1..*" private
+	    python "${comment}${self}${name} = ${stereotype}()
+"
+	    classrelation_ref 161158 // (avoir)
+      end
+
+      classrelation 161542 // <generalisation>
+	relation 157958 ---|>
+	  a private
+	    python "${type}"
+	    classrelation_ref 161542 // <generalisation>
+	  b parent class_ref 141958 // Profil
+      end
+
+      classrelation 164742 // <generalisation>
+	relation 159750 ---|>
+	  a private
+	    python "${type}"
+	    classrelation_ref 164742 // <generalisation>
+	  b parent class_ref 162054 // ProfilUser
+      end
+
+      classrelation 165254 // <generalisation>
+	relation 160006 ---|>
+	  a private
+	    python "${type}"
+	    classrelation_ref 165254 // <generalisation>
+	  b parent class_ref 141958 // Profil
+      end
+
+      operation 141062 "all"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 0
+	
+	preserve_java_body_indent 
+	preserve_php_body_indent 
+	preserve_python_body_indent python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      classrelation 166662 // (postuler)
+	relation 160646 ---- name "postuler"
+	  a role_name "" multiplicity "*" private
+	    classrelation_ref 166662 // (postuler)
+	  b role_name "" multiplicity "*" private
+	    classrelation_ref 166534 // (postuler)
+	  association_type class_ref 155398 // Postuler
+      end
+
+      classrelation 167686 // (rechercher)
+	relation_ref 161158 // rechercher
+      end
+
+      classrelation 171142 // (avoir)
+	relation_ref 162950 // avoir
+>>>>>>> 7d333749e167b19203268db5f84d2b62760b51a6
       end
     end
 
@@ -419,10 +701,6 @@ format 224
       explicit_switch_type ""
       mysql_decl ""
       
-      classrelation 128646 // (contenir)
-	relation_ref 128390 // contenir
-      end
-
       attribute 129158 "date_de_debut"
 	private explicit_type ""
 	cpp_decl ""
@@ -447,10 +725,10 @@ format 224
 
       classrelation 130566 // (requiere)
 	relation 129414 ---- name "requiere"
-	  a role_name "" multiplicity "*" private
+	  a role_name "" multiplicity "1..*" private
 	    classrelation_ref 130566 // (requiere)
-	  b role_name "" multiplicity "1..*" private
-	    classrelation_ref 130694 // (requiere)
+	  b role_name "" multiplicity "1" private
+	    classrelation_ref 130694 // requiere
       end
 
       attribute 145030 "nom"
@@ -488,6 +766,46 @@ format 224
 	mysql_decl ""
 	MysqlColumn
       end
+
+      classrelation 161926 // (contenir)
+	relation_ref 158086 // contenir
+      end
+
+      classrelation 166150 // (requiere)
+	relation 160390 ---- name "requiere"
+	  a role_name "" multiplicity "1..*" private
+	    classrelation_ref 166150 // (requiere)
+	  b role_name "" multiplicity "1" private
+	    classrelation_ref 166022 // (requiere)
+      end
+
+      operation 141702 "all"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 0
+	
+	preserve_java_body_indent 
+	preserve_php_body_indent 
+	preserve_python_body_indent python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      classrelation 171270 // <realization>
+	relation 163078 -_-|>
+	  a public
+	    python "${type}"
+	    classrelation_ref 171270 // <realization>
+	  b parent class_ref 162694 // FormationI
+      end
+
+      classrelation 171398 // <dependency>
+	relation 163206 -_->
+	  a public
+	    python "${type}"
+	    classrelation_ref 171398 // <dependency>
+	  b parent class_ref 162694 // FormationI
+      end
     end
 
     class 128774 "Competence"
@@ -513,7 +831,7 @@ format 224
 	  a role_name "" multiplicity "*" private
 	    classrelation_ref 130822 // (demande)
 	  b role_name "" multiplicity "1..*" private
-	    classrelation_ref 130950 // (demande)
+	    classrelation_ref 130950 // demande
       end
 
       attribute 144390 "niveau"
@@ -550,6 +868,34 @@ format 224
 	idl_decl ""
 	mysql_decl ""
 	MysqlColumn
+      end
+
+      classrelation 162182 // (contenir)
+	relation_ref 158214 // contenir
+      end
+
+      classrelation 165894 // <association>
+	relation_ref 160262 // <association>
+      end
+
+      classrelation 166406 // (demande)
+	relation 160518 ---- name "demande"
+	  a role_name "" multiplicity "*" private
+	    classrelation_ref 166406 // (demande)
+	  b role_name "" multiplicity "1..*" private
+	    classrelation_ref 166278 // (demande)
+      end
+
+      operation 141574 "all"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 0
+	
+	preserve_java_body_indent 
+	preserve_php_body_indent 
+	preserve_python_body_indent python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
       end
     end
 
@@ -607,20 +953,12 @@ format 224
 	MysqlColumn
       end
 
-      classrelation 131078 // (exige)
-	relation 129670 ---- name "exige"
-	  a role_name "" multiplicity "*" private
-	    classrelation_ref 131078 // (exige)
-	  b role_name "" multiplicity "*" private
-	    classrelation_ref 131206 // (exige)
-      end
-
       classrelation 138502 // (avoir)
 	relation 136710 ---- name "avoir"
-	  a role_name "" multiplicity "*" private
+	  a role_name "" multiplicity "0..1" private
 	    classrelation_ref 138502 // (avoir)
 	  b role_name "" multiplicity "*" private
-	    classrelation_ref 138630 // (avoir)
+	    classrelation_ref 138630 // avoir
       end
 
       attribute 144646 "lieux"
@@ -635,17 +973,45 @@ format 224
 	MysqlColumn
       end
 
+      classrelation 162566 // (avoir)
+	relation 158470 ---- name "avoir"
+	  a role_name "" multiplicity "0..1" private
+	    classrelation_ref 162566 // (avoir)
+	  b role_name "" multiplicity "*" private
+	    classrelation_ref 162438 // (avoir)
+      end
+
+      operation 141830 "all_experience"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 0
+	
+	preserve_java_body_indent 
+	preserve_php_body_indent 
+	preserve_python_body_indent python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
     end
 
     class 141958 "Profil"
-      visibility package stereotype "@interface"
-      cpp_decl ""
-      java_decl "${comment}${@}${visibility}${static}@interface ${name}${extends} {
+      visibility package stereotype "interface"
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl "${comment}${@}${visibility}${static}interface ${name}${extends} {
 ${members}}
 "
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
+      php_decl "${comment}interface ${name}${extends} {
+${members}}
+"
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
       explicit_switch_type ""
       mysql_decl ""
       
@@ -653,11 +1019,11 @@ ${members}}
 	relation 136454 -_-|>
 	  a public
 	    classrelation_ref 138118 // <realization>
-	  b parent class_ref 128518 // ProfilUser
+	  b parent class_ref 128518 // Profiluser
       end
 
       attribute 136838 "adresse"
-	private explicit_type ""
+	private explicit_type "string"
 	cpp_decl ""
 	java_decl ""
 	php_decl ""
@@ -668,7 +1034,7 @@ ${members}}
       end
 
       attribute 137094 "location"
-	private explicit_type ""
+	private explicit_type "string"
 	cpp_decl ""
 	java_decl ""
 	php_decl ""
@@ -678,11 +1044,456 @@ ${members}}
 	MysqlColumn
       end
 
-      classrelation 139014 // <association>
-	relation_ref 136966 // <association>
+      classrelation 139014 // (avoir)
+	relation_ref 136966 // avoir
       end
 
       attribute 145542 "description"
+	private explicit_type "Text"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 145798 "nationalite"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 163078 "user"
+	private type class_ref 128262 // UserI
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 168966 // (avoir)
+	relation_ref 161798 // avoir
+      end
+    end
+
+    class 148614 "Admin"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 148742 "Metier"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 146310 "nom"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 146694 // (appartient)
+	relation 144134 ---- name "appartient"
+	  a role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 146694 // (appartient)
+	  b role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 146822 // (appartient)
+      end
+
+      classrelation 147078 // (possedent)
+	relation_ref 144262 // possedent
+      end
+
+      attribute 146694 "domaine"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 147206 // (metier)
+	relation 144390 ---- name "metier"
+	  a role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 147206 // (metier)
+	  b role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 147334 // metier
+      end
+
+      classrelation 160518 // (demande)
+	relation 157446 ---- name "demande"
+	  a role_name "" multiplicity "1..*" private
+	    python "${comment}${self}${name} = ${stereotype}()
+"
+	    classrelation_ref 160518 // (demande)
+	  b role_name "" multiplicity "1" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 160646 // (demande)
+      end
+
+      classrelation 160902 // <association>
+	relation_ref 157574 // <association>
+      end
+
+      classrelation 161158 // (avoir)
+	relation_ref 157702 // avoir
+      end
+
+      classrelation 163334 // (possedent)
+	relation_ref 158854 // possedent
+      end
+
+      classrelation 163846 // <association>
+	relation_ref 159110 // <association>
+      end
+
+      classrelation 164102 // (avoir)
+	relation_ref 159238 // avoir
+      end
+
+      classrelation 167430 // (metier)
+	relation 161030 ---- name "metier"
+	  a role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 167430 // (metier)
+	  b role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 167302 // (metier)
+      end
+
+      classrelation 167942 // (demande)
+	relation 161286 ---- name "demande"
+	  a role_name "" multiplicity "1..*" private
+	    python "${comment}${self}${name} = ${stereotype}()
+"
+	    classrelation_ref 167942 // (demande)
+	  b role_name "" multiplicity "1" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 167814 // (demande)
+      end
+    end
+
+    class 148870 "Category"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 146822 // (appartient)
+	relation_ref 144134 // appartient
+      end
+
+      attribute 146438 "nom"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 146566 "domain"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+    end
+
+    class 155398 "Postuler"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 153734 "date_post"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 153862 "motivation_letter"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 154374 "retruteur"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 154502 "response_status"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+    end
+
+    class 155526 "Retruter"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 153990 "user_id"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 154118 "retruteur_id"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 154246 "job_id"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+    end
+
+    state 134534 "state_job"
+      stereotype "machine"
+      statediagram 135174 "state_obj"
+	statediagramsettings draw_all_relations no
+	 end
+	size A4
+      end
+
+      pseudostate 134534 initial ""
+	transition 135174 "<transition>"
+	  on state_ref 135046 // en attente
+	  external 
+	end
+      end
+
+      state 134790 "postuler"
+	transition 134662 "<transition>"
+	  on state_ref 134790 // postuler
+	end
+
+	transition 135430 "<transition>"
+	  on pseudostate_ref 135174 // junction 
+	  external 
+	end
+      end
+
+      state 134918 "refuser"
+	transition 134790 "<transition>"
+	  on pseudostate_ref 134662 // exit_point fin
+	  external 
+	end
+
+	transition 135558 "<transition>"
+	  on pseudostate_ref 135174 // junction 
+	  external 
+	end
+      end
+
+      state 135046 "en attente"
+	transition 135046 "refuser"
+	  on state_ref 134918 // refuser
+	  external 
+	end
+
+	transition 135302 "<transition>"
+	  stereotype "valider"
+	  on state_ref 134790 // postuler
+	  external 
+	end
+      end
+
+      pseudostate 134662 exit_point "fin"
+      end
+
+      pseudostate 134918 join ""
+      end
+
+      pseudostate 135046 final ""
+      end
+
+      pseudostate 135174 junction ""
+	transition 135686 "<transition>"
+	  on pseudostate_ref 135302 // final 
+	  external 
+	end
+      end
+
+      pseudostate 135302 final ""
+      end
+
+      stateaction 134534
+	stereotype "send-signal"
+      end
+    end
+
+    class 162054 "ProfilUser"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl "${comment}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      python_2_2 python_decl ""
+      idl_decl "${comment}${abstract}${custom}valuetype ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 161030 "adresse"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 161798 // (contenir)
+	relation 158086 ---- name "contenir"
+	  a role_name "" multiplicity "1..*" private
+	    classrelation_ref 161798 // (contenir)
+	  b role_name "" multiplicity "1..*" package
+	    comment "
+"
+	    classrelation_ref 161926 // (contenir)
+      end
+
+      classrelation 162054 // (contenir)
+	relation 158214 ---- name "contenir"
+	  a role_name "" multiplicity "1..*" private
+	    classrelation_ref 162054 // (contenir)
+	  b role_name "" multiplicity "*" private
+	    classrelation_ref 162182 // (contenir)
+      end
+
+      attribute 161158 "birthday"
 	private explicit_type ""
 	cpp_decl ""
 	java_decl ""
@@ -693,6 +1504,620 @@ ${members}}
 	MysqlColumn
       end
 
+      attribute 161286 "location"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 162310 // <realization>
+	relation 158342 -_-|>
+	  a private
+	    classrelation_ref 162310 // <realization>
+	  b parent class_ref 141958 // Profil
+      end
+
+      classrelation 162438 // (avoir)
+	relation_ref 158470 // avoir
+      end
+
+      classrelation 162694 // (postuler)
+	relation 158598 ---- name "postuler"
+	  a role_name "" multiplicity "*" private
+	    classrelation_ref 162694 // (postuler)
+	  b role_name "" multiplicity "*" private
+	    classrelation_ref 162822 // (postuler)
+	  association_type class_ref 155398 // Postuler
+      end
+
+      attribute 161414 "cv"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 161542 "sexe"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 162950 // (retrute)
+	relation_ref 158726 // retrute
+      end
+
+      classrelation 163206 // (possedent)
+	relation 158854 ---- name "possedent"
+	  a role_name "" multiplicity "1..*" private
+	    python "${comment}${self}${name} = ${stereotype}()
+"
+	    classrelation_ref 163206 // (possedent)
+	  b role_name "" multiplicity "*" private
+	    python "${comment}${self}${name} = ${stereotype}()
+"
+	    classrelation_ref 163334 // (possedent)
+      end
+
+      classrelation 163462 // (rechercher)
+	relation_ref 158982 // rechercher
+      end
+
+      classrelation 163718 // <association>
+	relation 159110 ----
+	  a role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 163718 // <association>
+	  b role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 163846 // <association>
+      end
+
+      classrelation 163974 // (avoir)
+	relation 159238 ---- name "avoir"
+	  a role_name "" multiplicity "1" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 163974 // (avoir)
+	  b role_name "" multiplicity "1..*" private
+	    python "${comment}${self}${name} = ${stereotype}()
+"
+	    classrelation_ref 164102 // (avoir)
+      end
+
+      classrelation 164230 // <realization>
+	relation 159366 -_-|>
+	  a private
+	    python "${type}"
+	    classrelation_ref 164230 // <realization>
+	  b parent class_ref 162054 // ProfilUser
+      end
+
+      classrelation 164358 // <generalisation>
+	relation 159494 ---|>
+	  a private
+	    python "${type}"
+	    classrelation_ref 164358 // <generalisation>
+	  b parent class_ref 141958 // Profil
+      end
+
+      classrelation 164998 // <realization>
+	relation 159878 -_-|>
+	  a private
+	    python "${type}"
+	    classrelation_ref 164998 // <realization>
+	  b parent class_ref 128518 // Profiluser
+      end
+
+      classrelation 168198 // (postuler)
+	relation 161414 ---- name "postuler"
+	  a role_name "" multiplicity "*" private
+	    classrelation_ref 168198 // (postuler)
+	  b role_name "" multiplicity "*" private
+	    classrelation_ref 168070 // (postuler)
+	  association_type class_ref 155398 // Postuler
+      end
+
+      classrelation 168454 // (rechercher)
+	relation_ref 161542 // rechercher
+      end
+
+      classrelation 170374 // (contenir)
+	relation 162566 ---- name "contenir"
+	  a role_name "" multiplicity "1..*" private
+	    classrelation_ref 170374 // (contenir)
+	  b role_name "" multiplicity "1..*" package
+	    comment "
+"
+	    classrelation_ref 170246 // (contenir)
+      end
+    end
+
+    class 162310 "JOb"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl "${comment}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl "${comment}${abstract}${custom}valuetype ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 161798 "titre"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 161926 "type_contrat"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 162054 "salaire"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 165510 // (publier)
+	relation_ref 160134 // publier
+      end
+
+      attribute 162182 "periode"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 165766 // <association>
+	relation 160262 ----
+	  a role_name "" private
+	    classrelation_ref 165766 // <association>
+	  b role_name "" private
+	    classrelation_ref 165894 // <association>
+      end
+
+      classrelation 166022 // (requiere)
+	relation_ref 160390 // requiere
+      end
+
+      classrelation 166278 // (demande)
+	relation_ref 160518 // demande
+      end
+
+      classrelation 166534 // (postuler)
+	relation_ref 160646 // postuler
+      end
+
+      classrelation 166790 // (poster)
+	relation_ref 160774 // poster
+      end
+
+      attribute 162310 "description"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 167046 // <association>
+	relation_ref 160902 // <association>
+      end
+
+      attribute 162438 "work_statue"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 167302 // (metier)
+	relation_ref 161030 // metier
+      end
+
+      attribute 162694 "nombre_experience"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 141318 "retruter"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 0
+	
+	preserve_java_body_indent 
+	preserve_php_body_indent 
+	preserve_python_body_indent python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      classrelation 167558 // (rechercher)
+	relation 161158 ---- name "rechercher"
+	  a role_name "" multiplicity "*" private
+	    python "${comment}${self}${name} = ${stereotype}()
+"
+	    classrelation_ref 167558 // (rechercher)
+	  b role_name "" multiplicity "*" private
+	    python "${comment}${self}${name} = ${stereotype}()
+"
+	    classrelation_ref 167686 // (rechercher)
+      end
+
+      classrelation 167814 // (demande)
+	relation_ref 161286 // demande
+      end
+
+      classrelation 168070 // (postuler)
+	relation_ref 161414 // postuler
+      end
+
+      classrelation 168326 // (rechercher)
+	relation 161542 ---- name "rechercher"
+	  a role_name "" multiplicity "*" private
+	    python "${comment}${self}${name} = ${stereotype}()
+"
+	    classrelation_ref 168326 // (rechercher)
+	  b role_name "" multiplicity "*" private
+	    python "${comment}${self}${name} = ${stereotype}()
+"
+	    classrelation_ref 168454 // (rechercher)
+      end
+
+      operation 141446 "all"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 0
+	
+	preserve_java_body_indent 
+	preserve_php_body_indent 
+	preserve_python_body_indent python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      classrelation 168582 // <realization>
+	relation 161670 -_-|>
+	  a private
+	    python "${type}"
+	    classrelation_ref 168582 // <realization>
+	  b parent class_ref 128390 // Job
+      end
+
+      classrelation 169478 // <association>
+	relation_ref 162054 // <association>
+      end
+
+      classrelation 170630 // (requiere)
+	relation_ref 162694 // requiere
+      end
+    end
+
+    class 162566 "User"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 163206 "first_name"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 163334 "last_name"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 168838 // (avoir)
+	relation 161798 ---- name "avoir"
+	  a role_name "" multiplicity "1" private
+	    classrelation_ref 168838 // (avoir)
+	  b role_name "" multiplicity "1" private
+	    classrelation_ref 168966 // (avoir)
+      end
+
+      attribute 163462 "email"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 163590 "password"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 163718 "username"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 169094 // <association>
+	relation 161926 ----
+	  a role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 169094 // <association>
+	  b role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 169222 // <association>
+      end
+
+      classrelation 169350 // <association>
+	relation 162054 ----
+	  a role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 169350 // <association>
+	  b role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 169478 // <association>
+      end
+
+      operation 142470 "create"
+	preserve_cpp_body_indent public return_type class_ref 162566 // User
+	nparams 0
+	
+	preserve_java_body_indent 
+	preserve_php_body_indent 
+	preserve_python_body_indent python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 142598 "delete"
+	preserve_cpp_body_indent public explicit_return_type "Void"
+	nparams 0
+	
+	preserve_java_body_indent 
+	preserve_php_body_indent 
+	preserve_python_body_indent python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 142726 "get"
+	preserve_cpp_body_indent public return_type class_ref 162566 // User
+	nparams 1
+	  param in name "id" explicit_type "int"
+	
+	preserve_java_body_indent 
+	preserve_php_body_indent 
+	preserve_python_body_indent python_def "${@}${static}${abstract}def ${name}${(}${p0}${v0}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 142854 "get"
+	preserve_cpp_body_indent public return_type class_ref 162566 // User
+	nparams 0
+	
+	preserve_java_body_indent 
+	preserve_php_body_indent 
+	preserve_python_body_indent python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      classrelation 169862 // <realization>
+	relation 162310 -_-|>
+	  a public
+	    python "${type}"
+	    classrelation_ref 169862 // <realization>
+	  b parent class_ref 128262 // UserI
+      end
+
+      classrelation 170758 // <association>
+	relation 162822 ----
+	  a role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 170758 // <association>
+	  b role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 170886 // <association>
+      end
+
+      classrelation 170886 // <association>
+	relation_ref 162822 // <association>
+      end
+    end
+
+    class 162694 "FormationI"
+      visibility package stereotype "interface"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}interface ${name}${extends} {
+${members}}
+"
+      php_decl "${comment}interface ${name}${extends} {
+${members}}
+"
+      python_2_2 python_decl ""
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 163846 "date_de_debut"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 163974 "date_de_fin"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 169990 // (requiere)
+	relation 162438 ---- name "requiere"
+	  a role_name "" multiplicity "1..*" private
+	    classrelation_ref 169990 // (requiere)
+	  b role_name "" multiplicity "1" private
+	    classrelation_ref 170118 // (requiere)
+      end
+
+      attribute 164102 "nom"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 164230 "description"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 164358 "lieux"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+<<<<<<< HEAD
       attribute 145798 "nationalite"
 	private explicit_type ""
 	cpp_decl ""
@@ -717,6 +2142,43 @@ ${docstring}${members}
       explicit_switch_type ""
       mysql_decl ""
       
+=======
+      classrelation 170246 // (contenir)
+	relation_ref 162566 // contenir
+      end
+
+      classrelation 170502 // (requiere)
+	relation 162694 ---- name "requiere"
+	  a role_name "" multiplicity "1..*" private
+	    classrelation_ref 170502 // (requiere)
+	  b role_name "" multiplicity "1" private
+	    classrelation_ref 170630 // (requiere)
+      end
+
+      operation 142982 "all"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 0
+	
+	preserve_java_body_indent 
+	preserve_php_body_indent 
+	preserve_python_body_indent python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      classrelation 171014 // (avoir)
+	relation 162950 ---- name "avoir"
+	  a role_name "" multiplicity "1..*" private
+	    python "${comment}${self}${name} = ${stereotype}()
+"
+	    classrelation_ref 171014 // (avoir)
+	  b role_name "" multiplicity "1..*" private
+	    python "${comment}${self}${name} = ${stereotype}()
+"
+	    classrelation_ref 171142 // (avoir)
+      end
+>>>>>>> 7d333749e167b19203268db5f84d2b62760b51a6
     end
   end
 
@@ -834,34 +2296,6 @@ ${docstring}${members}
 	-_->
 	  stereotype "include"
 	  on usecase_ref 128006 // sign in
-      end
-    end
-
-    usecase 128390 "update un cv"
-      
-      usecasediagramsettings end
-      
-      sequencediagramsettings end
-      
-      collaborationdiagramsettings end
-      
-      classdiagramsettings member_max_width 0 end
-      
-      classcompositediagramsettings end
-      
-      objectdiagramsettings end
-      
-      objectcompositediagramsettings end
-      
-      statediagramsettings
-       end
-      
-      activitydiagramsettings
-       end
-      simplerelation 128262
-	-_->
-	  stereotype "include"
-	  on usecase_ref 128262 // cree un cv
       end
     end
 
@@ -1030,7 +2464,7 @@ ${members}};
       end
 
       attribute 144774 "name"
-	private explicit_type ""
+	private explicit_type "string"
 	cpp_decl ""
 	java_decl ""
 	php_decl ""
@@ -1039,6 +2473,48 @@ ${members}};
 	idl_decl ""
 	mysql_decl ""
 	MysqlColumn
+      end
+
+      classrelation 146438 // (retrute)
+	relation 144006 ---- name "retrute"
+	  a role_name "" multiplicity "*" private
+	    python "${comment}${self}${name} = ${stereotype}()
+"
+	    classrelation_ref 146438 // (retrute)
+	  b role_name "" multiplicity "*" private
+	    python "${comment}${self}${name} = ${stereotype}()
+"
+	    classrelation_ref 146566 // retrute
+	  association_type class_ref 155526 // Retruter
+      end
+
+      classrelation 163078 // (retrute)
+	relation 158726 ---- name "retrute"
+	  a role_name "" multiplicity "*" private
+	    python "${comment}${self}${name} = ${stereotype}()
+"
+	    classrelation_ref 163078 // (retrute)
+	  b role_name "" multiplicity "*" private
+	    python "${comment}${self}${name} = ${stereotype}()
+"
+	    classrelation_ref 162950 // (retrute)
+	  association_type class_ref 155526 // Retruter
+      end
+
+      classrelation 165638 // (publier)
+	relation 160134 ---- name "publier"
+	  a role_name "" multiplicity "1..*" private
+	    classrelation_ref 165638 // (publier)
+	  b role_name "" multiplicity "1" private
+	    classrelation_ref 165510 // (publier)
+      end
+
+      classrelation 166918 // (poster)
+	relation 160774 ---- name "poster"
+	  a role_name "" multiplicity "1..*" private
+	    classrelation_ref 166918 // (poster)
+	  b role_name "" multiplicity "1" private
+	    classrelation_ref 166790 // (poster)
       end
     end
 
