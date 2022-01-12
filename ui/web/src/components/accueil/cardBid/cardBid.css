@@ -1,0 +1,45 @@
+.cardBid {
+    width: 585px;
+    height: 289px;
+
+    background: #FFFFFF;
+    border: 1px solid #4743FD;
+    box-sizing: border-box;
+    border-radius: 8px;
+    position: relative;
+}
+.cbDeposer {
+    margin: 35px;
+    margin-left: 40px;
+    font-size: 30px;
+    text-align: left;
+    font-weight: bold;
+}
+.cbDeposer + div {
+    margin: 35px;
+    margin-left: 40px;
+    margin-right: 50px;
+    font-size: 15px;
+    text-align: left;
+}
+.cbDeposer + div + div {
+    position: absolute;
+    left:0px;
+    bottom: 0px;
+    margin-left: 35px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.cbDeposer + div + div > button{
+    border: none;
+    font-weight: bold;
+    font-size: 17px;
+    border-radius: 8px; 
+    background: #FFC947;
+    padding: 10px;
+    padding-left: 35px;
+    padding-right: 35px;
+    cursor: pointer;
+}

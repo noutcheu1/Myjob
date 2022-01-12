@@ -1,10 +1,18 @@
 <template>
 <section class="inscription">
     <header>
-        <img src="@/assets/bix_logo.jpg"/>
+         <img src="@/assets/myjob.png"/>
     </header>
     <div class="insMain">
         <form class = "insMainSection" @submit="submiting" action="#">
+            <div class="tNavButton"> type of account <select class = "DropDownList">
+                <option> Find Talent </option>
+                <option> Selectionner un candidat </option>
+                <option> Passer un entretien </option>
+                <option>  Poster un Job </option>
+                <option>  Voir les CV </option>
+                </select>
+            </div>
             <div class = "insTitle">
                 <span>Sign up for your account</span>
             </div>
@@ -38,12 +46,9 @@
             <div class="insLast">
                 <a href='/login'>Already have an account? Log In</a>
             </div>
-        </form>
-        <section class = "insSiteLang">
             <DropDownList/>
-        </section>
+        </form>
     </div>
-    <FooterI/>
 </section>
 </template>
 <script src = "./inscription1.js">

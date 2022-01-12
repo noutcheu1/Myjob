@@ -10,6 +10,7 @@ from rest_framework.authtoken import views
 
 
 router = DefaultRouter()
+router.register('retruter', RetruterPostuler, basename='retruter')
 router.register('Login',AuthViewSet, basename="Login")
 router.register('Logout',LogoutView, basename="Logout")
 router.register('Retruteur',ProfilRetruteurViewset, basename="Retruteur")

@@ -1,15 +1,27 @@
 from django.db import models
-
+from core.interface import *
 from django.contrib.auth.models import User
 import json
-from ast import literal_eval
-# Create your models here.
+
 with open('core/pays.json') as fp: 
 
     obj = json.load(fp)
 STATES_LOCATION = obj.items()
 CONTRAT_TYPE = (('TEMP PLEIN ','TEMP PLEIN '),('PERMANENT', 'PERMANENT'), ('OCCASIONNEL', 'OCCASIONNEL'), ('STAGE', 'STAGE'), ('FREELANCER', 'FREELANCER') ,('TEMP PARTIEL', 'TEMP PARTIEL') ,('CONTRACTUEL', 'CONTRACTUEL'))
 RESPONSE_STATUS = (('Retruter', 'Retruter'), ('REFUSER', 'REFUSER'), ('WAITING', 'WAITING'))
+
+class Metier(models.Model):
+    """
+    Description: Model Description
+    """
+    nom = models.CharField(max_length=200)
+    domaine =models.CharField(max_length=200)
+    
+
+    class Meta:
+        abstract=True
+
+
 class Profil(models.Model):
     """
     Description: Model Description
@@ -25,8 +37,6 @@ class Profil(models.Model):
         abstract = True
 
 
-        
-
 class ProfilUser(Profil):
     """
     Description: Model Description
@@ -35,14 +45,14 @@ class ProfilUser(Profil):
     
     birthday = models.DateField(auto_now_add=False)
     metier = models.CharField(max_length=200, choices=work)
-    cv = models.FileField(verbose_name='User_Cv', upload_to="Cv_doc", null=True)
+    cv = models.FileField(verbose_name='User_Cv', upload_to="Cv_doc", blank=True, null=True)
 
 
     def __str__(self):
-        return f"{self.user.username}-:{self.metier}"
+        pass
 
     class Meta:
-        abstract = False
+        abstract = True
 
 
 class Formation(models.Model):
@@ -59,10 +69,10 @@ class Formation(models.Model):
     profiluser = models.ForeignKey(ProfilUser, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.nom} || {self.lieux}:{self.date_debut}-{self.date_fin}"
+        pass
         
     class Meta:
-        pass
+        abstract = True
 
 
 class Competence(models.Model):
@@ -75,10 +85,10 @@ class Competence(models.Model):
     profiluser = models.ForeignKey(ProfilUser, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.nom} || {self.description} -{self.niveau}"
+        pass
 
     class Meta:
-        pass
+        abstract = True
 
 
 class Experience(models.Model):
@@ -94,8 +104,11 @@ class Experience(models.Model):
     lieux = models.CharField(max_length=200)
     type_contrat = models.CharField(max_length=50,  choices=CONTRAT_TYPE)
 
+    class Meta:
+        abstract = True
+
     def __str__(self):
-        return f"{self.title} || {self.lieux}:{self.date_de_debut}-{self.date_de_fin}"
+      pass
 
 
 class ProfilRetruteur(Profil):
@@ -105,10 +118,14 @@ class ProfilRetruteur(Profil):
     web_site = models.CharField(max_length=200, null=True, blank=True)
     
     def __str__(self):
-        return f"{self.user.username}"
+        pass
 
     class Meta:
-    	abstract = False
+        abstract = True
+
+
+
+
 
 
 class Job(models.Model):
@@ -117,7 +134,7 @@ class Job(models.Model):
     """
     WORK_LOC = STATES_LOCATION
     WORK_STATUE= (("wait", "en attente"), ("bad", "refuser"), ("poster", "ok"))
-    
+    metier = models.ForeignKey(Metier, on_delete=models.CASCADE)
     profilretruteur = models.ForeignKey(ProfilRetruteur, on_delete=models.CASCADE)
     titre = models.CharField(max_length=200)
     type_contrat = models.CharField(max_length=50,  choices=CONTRAT_TYPE)
@@ -129,20 +146,16 @@ class Job(models.Model):
     Job_statue = models.CharField(max_length=150, choices=WORK_STATUE)
     work_location =  models.CharField(max_length=200, choices=WORK_LOC)
     nombres_experiences = models.PositiveIntegerField(default=0)
-   
-
-    def save(self, *args, **kargs):
-
-    	self.Job_statue = ("wait", "en attente")
-        
-    	
-    	return super().save(*args, **kargs)
 
     def __str__(self):
-        return f"{self.titre} || {self.salaire_min} < {self.salaire_max}:{self.date_debut}-{self.date_fin} {self.Job_statue}"
+    	pass
+
+    def save(self):
+   		pass
 
     class Meta:
-        ordering = ('date_debut', 'date_fin', 'Job_statue')
+        abstract = True
+
 
 
 class Postuler(models.Model):
@@ -158,6 +171,8 @@ class Postuler(models.Model):
         
 
     class Meta:
+
+        abstract = True
         ordering = ('date_post','id')
         
 
@@ -171,4 +186,4 @@ class Retruter(models.Model):
     date_post = models.DateField(auto_now_add=True)
 
     class Meta:
-        pass
+        abstract = True
