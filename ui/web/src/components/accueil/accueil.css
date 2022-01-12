@@ -20,3 +20,32 @@
 .div_offres_recentes{
     display: flex;
 }
+footer{
+    height: 540px;
+    width: 100%;
+    background-size: cover;
+    background-image: url("../../assets/backgroundfooter.png");
+}
+.description_myjob{
+    padding-top: 15px;
+}
+h2{
+    color:  #ffb300;
+}
+p{
+    color: #fff;
+}
+.card{
+    margin: 50px;
+}
+.social_network{
+    margin-left: 30px;
+}
+.social_network ul li{
+    font-style: none;
+    text-decoration: none;
+}
+.lign_offres_footer{
+    width: 100%;
+    border-bottom: 1px solid #ffb300;
+}

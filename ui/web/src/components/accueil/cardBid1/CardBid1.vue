@@ -3,8 +3,8 @@
       <div class="cb1Title  ">Community manager</div>
       <div class="cb1Info">
         <div><img src='./hand-bag.svg'/><span>Mtn Cameroon</span></div>
-        <div><img src='./location.svg'/><span>CDD</span></div>
-        <div><img src='./notepad-note.svg'/><span>Douala</span></div>
+        <div><img src='./notepad-note.svg'/><span>CDD</span></div>
+        <div><img src='./location.svg'/><span>Douala</span></div>
       </div>
       <div>
           <span class="cb1Post">post: 01/01/2022</span>
