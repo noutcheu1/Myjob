@@ -26,7 +26,7 @@ class Profil(models.Model):
     """
     Description: Model Description
     """
-    
+
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     location = models.CharField(max_length=200)
     Description= models.TextField()
@@ -150,11 +150,10 @@ class Job(models.Model):
     def __str__(self):
     	pass
 
-    def save(self):
-   		pass
-
+   
     class Meta:
         abstract = True
+        ordering = ('date_debut', 'date_fin', 'Job_statue')
 
 
 
@@ -167,9 +166,7 @@ class Postuler(models.Model):
     motivation_letter =  models.TextField()
     date_post = models.DateField(auto_now_add=True)
     response_status = models.CharField(max_length=200, choices=RESPONSE_STATUS)
-    user_retruteur_id = models.ForeignKey(ProfilRetruteur, on_delete=models.CASCADE)
-        
-
+   
     class Meta:
 
         abstract = True

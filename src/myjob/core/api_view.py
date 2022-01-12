@@ -57,10 +57,27 @@ class RetruterPostuler(GenericViewSet):
         user_have_job = RetruterSerializer(data=self.request.data)
         user_have_job.is_valid(raise_exception=True)
         userrs = user_have_job.validated_data.get('user_id')
+        postuler = Postuler.objects.all()
+        list_user_postulers = postuler.filter(job_id=user_have_job.validated_data.get('job_id'))
+        for user in list_user_postulers:
+            user.response_status =  'REFUSER'
+            user.save()
+
+            
+        list_user_postuler = []
+
         for retruter_job  in userrs:
-            print(retruter_job)
-        Postuler.retruter_job(userrs)
-        return Response({'resultat':''}, status=status.HTTP_200_OK)
+            username = retruter_job.get('username')
+            user = User.objects.get(username=username)
+            job_id = user_have_job.validated_data.get('job_id')
+            postul = postuler.get(job_id=job_id, user_id=user.pk)
+            
+            postul.set_retruter(user, job_id)
+            list_user_postuler.append(user)
+
+        # do something with the book
+      
+        return Response({'resultat':print(list_user_postuler)}, status=status.HTTP_200_OK)
 
 
 
