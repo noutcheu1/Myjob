@@ -6,7 +6,8 @@
     border: 1px solid #000F94;
     box-sizing: border-box;
     border-radius: 8px;
-    position:relative
+    position:relative;
+    margin: 30px;
 }
 .cb1Title {
     font-weight: bold;

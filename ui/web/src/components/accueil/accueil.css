@@ -10,3 +10,13 @@
     justify-content: center;
     margin: 30px;
 }
+.lign_offres{
+    width: 50%;
+    border-bottom: 1px solid #ffb300;
+}
+.img_offres_recentes{
+    padding-top: 30px;
+}
+.div_offres_recentes{
+    display: flex;
+}
