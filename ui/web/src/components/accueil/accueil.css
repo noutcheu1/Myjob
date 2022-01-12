@@ -4,3 +4,9 @@
     left:0%;
     top: 0%
 }
+.flex_acceuil{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px;
+}

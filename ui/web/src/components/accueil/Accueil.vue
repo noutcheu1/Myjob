@@ -4,6 +4,14 @@
         <div>
             <MyProfile/>
         </div>
+        <div class="flex_acceuil">
+            <div>
+            <CardBid/>
+        </div>
+         <div>
+            <CardBid/>
+        </div>
+        </div>
     </div>
 </template>
 <style src="./accueil.css">
