@@ -25,7 +25,7 @@ router.register('postuler_job',PostulerVieset, basename='postuler_job')
 router.register('metier', MetierViewset, basename='metier')
 urlpatterns = [
    path('', include(router.urls)),
-   
+   path('home', Home.as_view()),
    path('api-token-auth/', views.obtain_auth_token),
    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
   # path('dj-rest-auth/', include('dj_rest_auth.urls')),

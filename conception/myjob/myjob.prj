@@ -1,10 +1,6 @@
 format 224
 "myjob"
-<<<<<<< HEAD
   revision 8
-=======
-  revision 5
->>>>>>> 2a1312e23c8195336bdc1ac230f12c4191603b20
   modified_by 6 "noutcheu"
 
 
@@ -203,7 +199,6 @@ ${members}};
 	    classrelation_ref 146310 // <association>
       end
 
-<<<<<<< HEAD
       classrelation 167174 // <association>
 	relation 160902 ----
 	  a role_name "" private
@@ -280,8 +275,6 @@ ${docstring}${body}
       classrelation 169734 // <association>
 	relation_ref 162182 // <association>
       end
-=======
->>>>>>> 2a1312e23c8195336bdc1ac230f12c4191603b20
     end
 
     class 128390 "Job"
@@ -388,14 +381,6 @@ ${members}};
 	mysql_decl ""
 	MysqlColumn
       end
-<<<<<<< HEAD
-=======
-
-      classrelation 146310 // <association>
-	relation_ref 143878 // <association>
-      end
-    end
->>>>>>> 2a1312e23c8195336bdc1ac230f12c4191603b20
 
       classrelation 146310 // <association>
 	relation_ref 143878 // <association>
@@ -584,7 +569,6 @@ ${members}};
 	MysqlColumn
       end
 
-<<<<<<< HEAD
       classrelation 146566 // retrute
 	relation_ref 144006 // retrute
       end
@@ -676,18 +660,6 @@ ${docstring}${body}
 
       classrelation 171142 // (avoir)
 	relation_ref 162950 // avoir
-=======
-      attribute 145926 "sexe"
-	private explicit_type ""
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl "${comment}${self}${name} = ${value}
-"
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
->>>>>>> 2a1312e23c8195336bdc1ac230f12c4191603b20
       end
     end
 
@@ -1382,7 +1354,7 @@ ${docstring}${members}
       end
 
       pseudostate 134534 initial ""
-	transition 135174 "<transition>"
+	transition 135174 "creation d'un job"
 	  on state_ref 135046 // en attente
 	  external 
 	end
@@ -1397,6 +1369,11 @@ ${docstring}${members}
 	  on pseudostate_ref 135174 // junction 
 	  external 
 	end
+
+	transition 142342 "[when : date_fin=today]"
+	  on state_ref 141574 // fermer
+	  external 
+	end
       end
 
       state 134918 "refuser"
@@ -1409,16 +1386,25 @@ ${docstring}${members}
 	  on pseudostate_ref 135174 // junction 
 	  external 
 	end
+
+	transition 142214 "<transition>"
+	  on state_ref 135046 // en attente
+	  external 
+	end
+
+	transition 142726 "<transition>"
+	  on pseudostate_ref 135302 // final fin
+	  external 
+	end
       end
 
       state 135046 "en attente"
-	transition 135046 "refuser"
+	transition 135046 "<transition>"
 	  on state_ref 134918 // refuser
 	  external 
 	end
 
 	transition 135302 "<transition>"
-	  stereotype "valider"
 	  on state_ref 134790 // postuler
 	  external 
 	end
@@ -1435,16 +1421,28 @@ ${docstring}${members}
 
       pseudostate 135174 junction ""
 	transition 135686 "<transition>"
-	  on pseudostate_ref 135302 // final 
+	  on pseudostate_ref 135302 // final fin
 	  external 
 	end
       end
 
-      pseudostate 135302 final ""
+      pseudostate 135302 final "fin"
       end
 
       stateaction 134534
 	stereotype "send-signal"
+      end
+
+      state 141574 "fermer"
+	transition 142470 "<transition>"
+	  on state_ref 134790 // postuler
+	  external 
+	end
+
+	transition 142598 "<transition>"
+	  on pseudostate_ref 135302 // final fin
+	  external 
+	end
       end
     end
 
@@ -2117,7 +2115,6 @@ ${members}};
 	MysqlColumn
       end
 
-<<<<<<< HEAD
       classrelation 170246 // (contenir)
 	relation_ref 162566 // contenir
       end
@@ -2153,32 +2150,6 @@ ${docstring}${body}
 "
 	    classrelation_ref 171142 // (avoir)
       end
-=======
-      attribute 145798 "nationalite"
-	private explicit_type ""
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
-      end
-    end
-
-    class 148614 "Admin"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl "class ${name}${inherit}:
-${docstring}${members}
-"
-      idl_decl ""
-      explicit_switch_type ""
-      mysql_decl ""
-      
->>>>>>> 2a1312e23c8195336bdc1ac230f12c4191603b20
     end
   end
 

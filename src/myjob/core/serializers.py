@@ -136,13 +136,16 @@ class ExperienceSerializer(ModelSerializer):
     """
     Description: Model Description
     """
-
-    def create(self, validated_data):
+    def clean_date_de_fin(self):
         date_debut = validated_data.get('date_de_debut') 
         date_fin = validated_data.get('date_de_fin')
 
         if date_debut > date_fin :
             raise serializers.ValidationError('the creation date must be lower than the end date')
+
+
+    def create(self, validated_data):
+        
 
         return Experience.objects.create(**validated_data)
 
@@ -247,7 +250,15 @@ class JobSerializer(ModelSerializer):
        model = Job
        fields = ('id','titre', 'metier', 'type_contrat', 'salaire_min','salaire_max','profilretruteur', 'date_debut', 'date_fin', 'description', 'work_location', 'nombres_experiences')
 
+class LogoutSerializer(Serializer):
+    """
+    Description: Model Description
+    """
+    message = fields.CharField(write_only=True)
+    
 
+    class Meta:
+        pass
 
 class FindJobSerializer(Serializer):
     """
@@ -258,7 +269,7 @@ class FindJobSerializer(Serializer):
     salaire_min =  fields.IntegerField(default=0)
     date_debut = fields.DateTimeField()
     date_fin = fields.DateTimeField()
-    description = fields.CharField(write_only=True, required=False)
+    metier = fields.CharField(write_only=True, required=False)
     salaire_max = fields.IntegerField(default=0)
     work_location =  fields.CharField(max_length=200)
     nombres_experiences = fields.IntegerField(default=0)
