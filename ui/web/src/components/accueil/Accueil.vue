@@ -1,5 +1,5 @@
 <template>
-    <div class="accueil">
+    <div>
         <div><TNavBar/></div>
         <div>
             <MyProfile/>
@@ -63,6 +63,11 @@
                 <CardBid1/>
             </div>
         </div>
+
+        <div>
+            <L-pblication-form/>
+        </div>
+
          <footer>
             <div class="flex_acceuil">
             <div class="text_left">

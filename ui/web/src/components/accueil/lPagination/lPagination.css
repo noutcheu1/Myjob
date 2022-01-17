@@ -1,0 +1,32 @@
+.lPagination {
+  display: flex;
+  font-size: 14px;
+}
+.lPagination > div {
+    box-sizing: border-box;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    padding: 3px;
+}
+.lPtSLider {
+    padding-top:7px!important;    
+}
+
+/*---- hover effects ----------- */
+.lPagination > div:hover {
+    background-color: #6289C3;
+    cursor: pointer;
+}
+.lPtSLider:hover {
+    background-color: #E1E3E3!important;   
+}
+
+/*---- focus  -----------*/
+.lPagination > div:focus {
+    background-color: #2057AA;
+    color:white
+}
