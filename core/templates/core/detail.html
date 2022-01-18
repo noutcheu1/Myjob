@@ -1,4 +1,4 @@
-<from action="{% url 'core:vote' travail.id %}" method = "post">
+<from action="{% url 'core:nbre_place' travail.id %}" method = "post">
     {% csrf_token %}
     <fieldset>
         <legend><h1>{{tavail.travail_text}}</h1></legend>
@@ -8,5 +8,5 @@
          <label for = "choice{{ forloop.counter }}">{{choice.choix_text}}</label></br>
          {% endfor %}
     </fieldset>
-    <input type="submit" value="vote">
+    <input type="submit" value="nbre">
 </form>
