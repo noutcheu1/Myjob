@@ -1,6 +1,6 @@
-from django.http import HttpResponse, Http404
-from django.shortcuts import render
-from django.utils import timezone
+from django.http import HttpResponseRedirect, Http404
+from django.shortcuts import get_object_or_404, render
+from django.urls import reverse
 from .models import Travail, Choix
 
 def index(request):
@@ -19,3 +19,20 @@ def detail(request, job_id):
     except Travail.DoesNotExist:
         raise Http404("job does not exist")
     return render(request, 'core/detail.html', context)
+def vote(request, travail_id):
+    travail = get_object_or_404(Travail, pk=travail_id)
+    try:
+        selected_choice = travail.choice_set.get(pk=request.POST['choice'])
+    except (KeyError, Choix.DoesNotExist):
+        # Redisplay the question voting form.
+        return render(request, 'polls/detail.html', {
+            'travail': travail,
+            'error_message': "You didn't select a choice.",
+        })
+    else:
+        selected_choice.votes += 1
+        selected_choice.save()
+        # Always return an HttpResponseRedirect after successfully dealing
+        # with POST data. This prevents data from being posted twice if a
+        # user hits the Back button.
+        return HttpResponseRedirect(reverse('polls:results', args=(travail.id,)))
