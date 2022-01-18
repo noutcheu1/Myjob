@@ -22,7 +22,6 @@
             <div @click='sendImage' class="lPBpublier">Parlez nous de vous</div>
                 <div>
                     <h3>coordonées</h3>
-                            
                 </div>
             <label class="custom-file-upload"><input ref='image' @change="preview" type="file"/><img src="./uploader.png"></label>
             <img id="lPbblah" />
