@@ -4,7 +4,17 @@ from .models import (Job, ProfilUser, ProfilRetruteur, Competence, Formation, Me
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
 
+class SetPasswordSerializers(Serializer):
+    """
+    Description: Model Description
+    """
 
+    email = fields.CharField(write_only=True, required=True)
+    
+    
+
+    class Meta:
+        pass
 
 class MetierSerializer(ModelSerializer):
     """

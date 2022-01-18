@@ -29,7 +29,7 @@ class ProfilUser(Profil):
     birthday = models.DateField(auto_now_add=False)
     metier = models.CharField(max_length=200, choices=work)
     cv = models.FileField(verbose_name='User_Cv', upload_to="Cv_doc", null=True)
-
+    
 
     def __str__(self):
         return f"{self.user.username}-:{self.metier}"

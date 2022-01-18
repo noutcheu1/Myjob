@@ -23,6 +23,9 @@ router.register('Find', FilterFind, basename='Find')
 router.register('Users', UserViewSet, basename='Users')
 router.register('postuler_job',PostulerVieset, basename='postuler_job')
 router.register('metier', MetierViewset, basename='metier')
+router.register('setpasswordbymail', SetPasswordView, basename="setpasswordbymail" )
+
+
 urlpatterns = [
    path('', include(router.urls)),
    path('home', Home.as_view()),

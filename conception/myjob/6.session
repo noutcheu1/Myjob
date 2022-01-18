@@ -1,23 +1,9 @@
 window_sizes 1366 708 320 1040 651 0
 cleanlooks_style
-diagrams
-  usecasediagram_ref 128134 // myjob
-    1040 651 100 A4 84 0
-  sequencediagram_ref 128390 // myjob_sequence
-    120 115 100 A4 0 0
-  active  classdiagram_ref 128262 // myjob_classs
-    1040 651 70 A2 168 1
-  statediagram_ref 135174 // state_obj
-    1040 651 100 A4 0 0
-  collaborationdiagram_ref 128518 // com_myjob
-    120 115 100 A4 0 0
-  objectdiagram_ref 128646 // obj_myjob
-    120 115 100 A4 276 0
-end
 show_stereotypes
 selected classdiagram_ref 128262 // myjob_classs
 open
-  deploymentview_ref 128006 // deplo_myjob
-  state_ref 134534 // state_job
+  activity_ref 128006 // activty_myhob
+  usecaseview_ref 128006 // use_case_myjob
 end
 end

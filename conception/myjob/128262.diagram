@@ -2,11 +2,7 @@ format 224
 
 classcanvas 128006 class_ref 128262 // UserI
   classdiagramsettings show_members_full_definition yes show_members_visibility yes show_members_stereotype yes show_members_multiplicity yes show_members_initialization yes show_attribute_modifiers yes member_max_width 0 show_parameter_dir yes show_parameter_name yes end
-<<<<<<< HEAD
   xyzwh 449.5 12.1 2000 183 237
-=======
-  xyzwh 225 723 2000 103 163
->>>>>>> 2a1312e23c8195336bdc1ac230f12c4191603b20
 end
 classcanvas 128390 class_ref 128390 // Job
   classdiagramsettings show_members_full_definition yes show_members_visibility yes show_members_stereotype yes show_members_multiplicity yes show_members_initialization yes show_attribute_modifiers yes member_max_width 0 show_parameter_dir yes show_parameter_name yes end
@@ -14,11 +10,7 @@ classcanvas 128390 class_ref 128390 // Job
 end
 classcanvas 128518 class_ref 128518 // Profiluser
   classdiagramsettings show_members_full_definition yes show_members_visibility yes show_members_stereotype yes show_members_multiplicity yes show_members_initialization yes show_attribute_modifiers yes member_max_width 0 show_parameter_dir yes show_parameter_name yes end
-<<<<<<< HEAD
   xyzwh 280.6 579.6 2000 140 243
-=======
-  xyzwh 198 246 2000 89 163
->>>>>>> 2a1312e23c8195336bdc1ac230f12c4191603b20
 end
 classcanvas 128646 class_ref 128646 // Formation
   classdiagramsettings show_members_full_definition yes show_members_visibility yes show_members_stereotype yes show_members_multiplicity yes show_members_initialization yes show_attribute_modifiers yes member_max_width 0 show_parameter_dir yes show_parameter_name yes end
@@ -46,7 +38,6 @@ plus diagramme de deploiement et
  de composant 
 diagramme d 'etat d'un job
 "
-<<<<<<< HEAD
   xyzwh 110.5 1637.3 2000 213 175
 classcanvas 133638 class_ref 155398 // Postuler
   classdiagramsettings member_max_width 0 end
@@ -85,21 +76,6 @@ relationcanvas 132230 relation_ref 136710 // avoir
   from ref 129542 z 2001 label "avoir" italic max_width 255 xyz 824.5 528 2001 to ref 128518
   no_role_a no_role_b
   multiplicity_a_pos 432 694 3000 multiplicity_b_pos 1239 407 3000
-=======
-  xyzwh 534 1014 2000 213 175
-relationcanvas 129030 relation_ref 128390 // contenir
-  decenter_begin 99
-  decenter_end 435
-  from ref 128518 z 2001 label "contenir" italic max_width 255 xyz 450 158 2001 to ref 128646
-  no_role_a no_role_b
-  multiplicity_a_pos 672 124 3000 multiplicity_b_pos 296 268 3000
-end
-relationcanvas 129158 relation_ref 128518 // contenir
-  decenter_begin 396
-  from ref 128518 z 2001 label "contenir" italic max_width 255 xyz 405.5 272 2001 to ref 128774
-  no_role_a no_role_b
-  multiplicity_a_pos 563 283 3000 multiplicity_b_pos 296 318 3000
->>>>>>> 2a1312e23c8195336bdc1ac230f12c4191603b20
 end
 relationcanvas 132358 relation_ref 136838 // <realization>
   decenter_begin 164
@@ -149,28 +125,18 @@ relationcanvas 136454 relation_ref 159878 // <realization>
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 end
-<<<<<<< HEAD
 relationcanvas 136582 relation_ref 160006 // <generalisation>
   decenter_begin 147
   decenter_end 952
   from ref 128518 z 2006 to ref 131462
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
-=======
-relationcanvas 132230 relation_ref 136710 // avoir
-  decenter_begin 504
-  decenter_end 669
-  from ref 129542 z 2001 label "avoir" italic max_width 255 xyz 358.5 362.5 3000 to ref 128518
-  no_role_a no_role_b
-  multiplicity_a_pos 296 367 3000 multiplicity_b_pos 444 421 3000
->>>>>>> 2a1312e23c8195336bdc1ac230f12c4191603b20
 end
 relationcanvas 136966 relation_ref 161670 // <realization>
   from ref 136838 z 2006 to ref 128390
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 end
-<<<<<<< HEAD
 relationcanvas 138758 relation_ref 162310 // <realization>
   decenter_end 164
   from ref 138118 z 2007 to ref 128006
@@ -181,20 +147,6 @@ relationcanvas 139526 relation_ref 162950 // avoir
   from ref 138886 z 2001 label "avoir" italic max_width 255 xyz 617.5 362 3000 to ref 128518
   no_role_a no_role_b
   multiplicity_a_pos 390 592 3000 multiplicity_b_pos 809 154 3000
-=======
-relationcanvas 132614 relation_ref 136966 // <association>
-  decenter_end 81
-  from ref 128006 z 2006 to ref 131462
-  no_role_a no_role_b
-  multiplicity_a_pos 63 195 3000 multiplicity_b_pos 237 697 3000
-end
-relationcanvas 132742 relation_ref 137094 // postuler
-  decenter_begin 925
-  decenter_end 553
-  from ref 128518 z 2001 label "postuler" italic max_width 255 xyz 456.5 494.5 2001 to ref 128390
-  no_role_a no_role_b
-  multiplicity_a_pos 663 646 3000 multiplicity_b_pos 296 410 3000
->>>>>>> 2a1312e23c8195336bdc1ac230f12c4191603b20
 end
 relationcanvas 139782 relation_ref 163206 // <dependency>
   from ref 128646 z 2001 to ref 138886

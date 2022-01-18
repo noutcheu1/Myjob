@@ -4,7 +4,7 @@ from rest_framework.mixins import (CreateModelMixin, DestroyModelMixin,
                                    ListModelMixin, UpdateModelMixin, RetrieveModelMixin)
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.views import APIView
-from .serializers import (ProfilRetruteurSerializer, LogoutSerializer, MetierSerializer, UserSerializer, FindJobSerializer, LoginSerializer, RetruterSerializer, SetpassSerializers, FormationSerializer, CompetenceSerializer, ExperienceSerializer, JobSerializer, PostulerSerializer, ProfilUserSerializer)
+from .serializers import (ProfilRetruteurSerializer, SetPasswordSerializers, LogoutSerializer, MetierSerializer, UserSerializer, FindJobSerializer, LoginSerializer, RetruterSerializer, SetpassSerializers, FormationSerializer, CompetenceSerializer, ExperienceSerializer, JobSerializer, PostulerSerializer, ProfilUserSerializer)
 from django.contrib.auth import logout, login, authenticate
 from rest_framework.decorators import action
 from drf_yasg.utils import swagger_auto_schema
@@ -15,6 +15,32 @@ from django.shortcuts import get_object_or_404
 from .models import (Job, ProfilUser, ProfilRetruteur, Competence, Formation, Experience, Postuler, Metier)
 from rest_framework.permissions import BasePermission, IsAuthenticated, AllowAny, SAFE_METHODS
 from django.contrib.auth.models import  User
+
+
+class SetPasswordView(GenericViewSet):
+    """
+    Description: Model Description
+    """
+    
+    serializer_class =  SetPasswordSerializers
+
+    @swagger_auto_schema(
+        operation_description='send mail to a user and reset your password. ')
+    @action(methods=["POST"], detail=False)
+    def set_Password_mail(self, request, *args, **kwargs):
+        user_lost_pass = SetPasswordSerializers(data=self.request.data)
+        user_lost_pass.is_valid(raise_exception=True)
+        userrs = user_have_job.validated_data.get('email')
+        
+
+       # user_find = UserSerializer(many=True, data=list_user_postuler)
+
+        # do something with the book
+      
+        return Response({'resultat':''}, status=status.HTTP_200_OK)
+
+
+
 
 class ProfilRetruteurViewset(RetrieveModelMixin, CreateModelMixin, ListModelMixin,
                     UpdateModelMixin, DestroyModelMixin, GenericViewSet):
@@ -30,7 +56,7 @@ class UserViewSet(CreateModelMixin, ListModelMixin, RetrieveModelMixin,
                   UpdateModelMixin, DestroyModelMixin, GenericViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [IsAuthenticated, ]
+    permission_classes = [AllowAnyasw, ]
 
 
 class PostulerVieset(CreateModelMixin, ListModelMixin, RetrieveModelMixin,
