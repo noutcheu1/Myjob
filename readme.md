@@ -34,5 +34,5 @@
             ->   python manage.py runserver 
           *aller a l'adresse localhost:8000/api/v1 ou localhost:8000/api/docs pour voire la documentation de l'api 
               
-
+ 
       ## pour le frontend 
