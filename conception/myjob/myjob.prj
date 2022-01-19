@@ -1,6 +1,6 @@
 format 224
 "myjob"
-  revision 9
+  revision 10
   modified_by 6 "noutcheu"
 
 
@@ -547,18 +547,6 @@ ${members}};
 
       attribute 137478 "cv"
 	private explicit_type "File"
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl "${comment}${self}${name} = ${value}
-"
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
-      end
-
-      attribute 145926 "sexe"
-	private explicit_type "enum"
 	cpp_decl ""
 	java_decl ""
 	php_decl ""
@@ -1382,7 +1370,7 @@ ${docstring}${members}
 	  external 
 	end
 
-	transition 142342 "[when : date_fin=today]"
+	transition 142342 "[when : date_fin>today]"
 	  on state_ref 141574 // fermer
 	  external 
 	end
@@ -1557,18 +1545,6 @@ ${members}};
 	MysqlColumn
       end
 
-      attribute 161542 "sexe"
-	private explicit_type ""
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl "${comment}${self}${name} = ${value}
-"
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
-      end
-
       classrelation 162950 // retrute
 	relation_ref 158726 // retrute
       end
@@ -1658,6 +1634,30 @@ ${members}};
 	    comment "
 "
 	    classrelation_ref 170246 // (contenir)
+      end
+
+      operation 149510 "all"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 0
+	
+	preserve_java_body_indent 
+	preserve_php_body_indent 
+	preserve_python_body_indent python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      attribute 177414 "description"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
       end
     end
 
