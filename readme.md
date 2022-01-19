@@ -10,9 +10,9 @@
             ----------------------------------------------------------------------------
             | 19M2310        |  NOUTCHEU LIBERT JORAN         |                         |
              ---------------------------------------------------------------------------
-            | 18T2814        | TCHIAGUIA CHRISTOPHE           |                        |
+            | 18T2814        | TCHIAGUIA CHRISTOPHE           |    chrisAfrotech        |
              ---------------------------------------------------------------------------
-            | 18T2737        |TABANTSA ZEMBOUG ARMAND         |    tabantsa            |
+            |                 |                               |                        |
              ---------------------------------------------------------------------------
             |                 |                               |                        |                       
              ---------------------------------------------------------------------------
@@ -35,4 +35,12 @@
           *aller a l'adresse localhost:8000/api/v1 ou localhost:8000/api/docs pour voire la documentation de l'api 
               
 
-      ## pour le frontend 
+      ## pour lancer le projet vuejs
+      il faut intsalller au prealable Vuejs 3.0
+      afin de pouvoir lancer notre site 
+          * aller dans le dossier ./src/myjob/ui/web/ 
+          * lancer la commande 
+            ->   yarn install
+            ->   yarn start
+          *aller a l'adresse http://localhost:8080/accueil 
+      
