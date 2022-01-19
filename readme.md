@@ -10,7 +10,7 @@
             ----------------------------------------------------------------------------
             | 19M2310        |  NOUTCHEU LIBERT JORAN         |                         |
              ---------------------------------------------------------------------------
-            | 18T2814        | TCHIAGUIA CHRISTOPHE           |                        |
+            | 18T2814        | TCHIAGUIA CHRISTOPHE           |    chrisAfrotech        |
              ---------------------------------------------------------------------------
             | 18T2737        |TABANTSA ZEMBOUG ARMAND         |    tabantsa            |
              ---------------------------------------------------------------------------
@@ -36,3 +36,11 @@
               
  
       ## pour le frontend 
+       il faut intsalller au Vuejs 3.0
+      afin de pouvoir lancer notre site 
+          * installer les dependances pour le projet
+          * aller dans le dossier ./src/myjob/ui/web/
+          * lancer la commande 
+            ->   yarn install
+            ->   yarn start pour lancer le projet
+          *aller a l'adresse http://localhost:8080/accueil
