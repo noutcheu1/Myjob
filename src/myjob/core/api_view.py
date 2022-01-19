@@ -56,7 +56,7 @@ class UserViewSet(CreateModelMixin, ListModelMixin, RetrieveModelMixin,
                   UpdateModelMixin, DestroyModelMixin, GenericViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [AllowAnyasw, ]
+    permission_classes = [AllowAny, ]
 
 
 class PostulerVieset(CreateModelMixin, ListModelMixin, RetrieveModelMixin,

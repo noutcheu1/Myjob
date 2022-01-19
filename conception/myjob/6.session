@@ -1,9 +1,14 @@
 window_sizes 1366 708 320 1040 651 0
 cleanlooks_style
+diagrams
+  active  classdiagram_ref 128262 // myjob_classs
+    1040 651 100 A2 72 0
+end
 show_stereotypes
-selected classdiagram_ref 128262 // myjob_classs
+selected attribute_ref 170886 // description
 open
   activity_ref 128006 // activty_myhob
+  class_ref 128518 // Profiluser
   usecaseview_ref 128006 // use_case_myjob
 end
 end
