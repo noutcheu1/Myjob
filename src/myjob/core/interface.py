@@ -31,7 +31,7 @@ class Profil(models.Model):
     location = models.CharField(max_length=200)
     Description= models.TextField()
     adresse = models.CharField(max_length=50)
-    nationalite = models.CharField(max_length=200, choices=STATES_LOCATION)
+    nationalite = models.CharField(max_length=200)
 
     class Meta:
         abstract = True

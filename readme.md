@@ -4,7 +4,15 @@
             |      TP INFO 3055                  |
             --------------------------------------
             |Niveau     | licence 3 informatique |
+
+
+### DESCRIPTION DU PROJET
+
+Comme dans le monde entier, le Cameroun connait une 
+De nos jours chercher une opportunité d’emploi n’est pas facile soit parce que nous ne savons pas vers qui se tourner soit nous avons l’informations très tard et pas assez de temps pour postuler à l’offre de plus il est fatiguant de chercher sur les sites entreprises cas peut parmi eu font des sites vitrine dynamique de plus avec les situations sanitaires actuelle il y a une restriction de personne dans les lieux public.
+
 ### liste de membre du projet Myjob
+
             -------------------------------------------------------------------------------
             |Matricule       |  NOM ET PRENOMS                   |     NOM SUR GITHUB      |
             -------------------------------------------------------------------------------
