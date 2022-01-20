@@ -9,7 +9,7 @@
             <CardBid title='Déposer votre CV' text="Des miliers de cv sont déposé chaque jour sur MyJob. Déposé votre cv pour avoir la chance d'etre contacté direstement par un recruteur"/>
         </div>
          <div>
-            <CardBid/>
+            <CardBid link='postJob'/>
         </div>
         </div>
         <div class="div_offres_recentes">
@@ -63,7 +63,7 @@
                 <CardBid1 :datas='publicationIndexes[5]' displayNew='none'/>
             </div>
         </div>
-        <div style="display:flex; justify-content:flex-end; align-items:center;"><LPagination/></div>
+        <div style="display:flex; justify-content:center; align-items:center;"><LPagination/></div>
 
         <div>
             <L-pblication-form/>

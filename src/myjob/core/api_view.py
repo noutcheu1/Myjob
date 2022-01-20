@@ -4,7 +4,7 @@ from rest_framework.mixins import (CreateModelMixin, DestroyModelMixin,
                                    ListModelMixin, UpdateModelMixin, RetrieveModelMixin)
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.views import APIView
-from .serializers import (ProfilRetruteurSerializer, MetierSerializer, UserSerializer, FindJobSerializer, LoginSerializer, RetruterSerializer, SetpassSerializers, FormationSerializer, CompetenceSerializer, ExperienceSerializer, JobSerializer, PostulerSerializer, ProfilUserSerializer)
+from .serializers import (ProfilRetruteurSerializer, SetPasswordSerializers, LogoutSerializer, MetierSerializer, UserSerializer, FindJobSerializer, LoginSerializer, RetruterSerializer, SetpassSerializers, FormationSerializer, CompetenceSerializer, ExperienceSerializer, JobSerializer, PostulerSerializer, ProfilUserSerializer)
 from django.contrib.auth import logout, login, authenticate
 from rest_framework.decorators import action
 from drf_yasg.utils import swagger_auto_schema
@@ -15,6 +15,32 @@ from django.shortcuts import get_object_or_404
 from .models import (Job, ProfilUser, ProfilRetruteur, Competence, Formation, Experience, Postuler, Metier)
 from rest_framework.permissions import BasePermission, IsAuthenticated, AllowAny, SAFE_METHODS
 from django.contrib.auth.models import  User
+
+
+class SetPasswordView(GenericViewSet):
+    """
+    Description: Model Description
+    """
+    
+    serializer_class =  SetPasswordSerializers
+
+    @swagger_auto_schema(
+        operation_description='send mail to a user and reset your password. ')
+    @action(methods=["POST"], detail=False)
+    def set_Password_mail(self, request, *args, **kwargs):
+        user_lost_pass = SetPasswordSerializers(data=self.request.data)
+        user_lost_pass.is_valid(raise_exception=True)
+        userrs = user_have_job.validated_data.get('email')
+        
+
+       # user_find = UserSerializer(many=True, data=list_user_postuler)
+
+        # do something with the book
+      
+        return Response({'resultat':''}, status=status.HTTP_200_OK)
+
+
+
 
 class ProfilRetruteurViewset(RetrieveModelMixin, CreateModelMixin, ListModelMixin,
                     UpdateModelMixin, DestroyModelMixin, GenericViewSet):
@@ -75,6 +101,8 @@ class RetruterPostuler(GenericViewSet):
             postul.set_retruter(user, job_id)
             list_user_postuler.append(user)
 
+        list_user_postuler = UserSerializer(many=True, data=list_user_postuler)
+
         # do something with the book
       
         return Response({'resultat':print(list_user_postuler)}, status=status.HTTP_200_OK)
@@ -124,16 +152,42 @@ class FilterFind(GenericViewSet):
     @swagger_auto_schema(
         operation_description='method to find Job with  using the name of job. ')
     @action(methods=["POST"], detail=False)
-    def findfilter(self, request, *args, **kwargs):
+    def findName_metier(self, request, *args, **kwargs):
         
         seria_job = FindJobSerializer(data=self.request.data)
         seria_job.is_valid(raise_exception=True)
 
         
         name =  seria_job.validated_data.get('titre')
+        metier = seria_job.validated_data.get('metier')
         
         job = Job.objects.all()
-        result = Job.objects.filter(titre__startswith=name).all()
+        result = Job.objects.filter(titre__startswith=name, metier__contains=metier).all()
+        
+        
+        if result:
+
+            result_de_recherche  = JobSerializer(result, many=True).data
+            
+             
+            return Response({'resultat':result_de_recherche}, status=status.HTTP_200_OK)
+
+             
+        return Response({}, status=status.HTTP_404_NOT_FOUND)
+
+
+    def findName_metier_salaire(self, request, *args, **kwargs):
+        
+        seria_job = FindJobSerializer(data=self.request.data)
+        seria_job.is_valid(raise_exception=True)
+
+        
+        name =  seria_job.validated_data.get('titre')
+        metier = seria_job.validated_data.get('metier')
+        salaire_min = seria_job.validated_data.get('salaire_min')
+        
+        job = Job.objects.all()
+        result = Job.objects.filter(titre__startswith=name, metier__contains=metier, salaire_min=salaire_min).all()
         
         
         if result:
@@ -199,6 +253,7 @@ class AuthViewSet(GenericViewSet):
 
 class LogoutView(GenericViewSet):
     permission_classes = [IsAuthenticated,]
+    serializer_class =  LogoutSerializer
 
     # Logout Ressource
 

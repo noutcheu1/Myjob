@@ -26,7 +26,6 @@ export default {
           password: this.$refs.password.message
         })
           .then((response) => {
-            alert(response.data)
             this.$router.push('accueil')
           })
           .catch((error) => {

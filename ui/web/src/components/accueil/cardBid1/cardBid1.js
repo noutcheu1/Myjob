@@ -32,6 +32,8 @@ export default {
       else {
         this.Display = 'block'
         this.title = this.datas.titre
+        this.post = this.datas.date_debut
+        this.exp = this.datas.date_fin
       }
     }
   },

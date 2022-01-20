@@ -4,7 +4,7 @@
       <div>
           {{ text }}
       </div>
-      <div><button>subscribe</button></div>
+      <div><a :href='link' >subscribe</a></div>
   </div>
 </template>
 <style src="./cardBid.css">

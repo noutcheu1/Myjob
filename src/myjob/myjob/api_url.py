@@ -6,11 +6,11 @@ from drf_yasg import openapi
 
 schema_view = get_schema_view(
    openapi.Info(
-      title="Time table API",
+      title="Myjob API",
       default_version='v1',
-      description="Documentation du service de gestion et generation des emploi de temp des etudiants(noutcheu) ",
+      description="Documentation de l'api Myjob pour le Tp de INF3055 ",
       terms_of_service="https://www.google.com/policies/terms/",
-      contact=openapi.Contact(email="contact@snippets.local"),
+      contact=openapi.Contact(email="joran.noutcheu@facsciences-uy1.cm"),
       license=openapi.License(name="BSD License"),
    ),
    public=True,
