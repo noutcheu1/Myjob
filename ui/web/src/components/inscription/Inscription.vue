@@ -1,7 +1,7 @@
 <template>
 <section class="inscription">
     <header>
-        <img src="@/assets/bix_logo.jpg"/>
+        <img src="@/assets/myjob.png"/>
     </header>
     <div class="insMain">
         <form class = "insMainSection" @submit="submiting" action="#">
@@ -35,7 +35,6 @@
             <DropDownList/>
         </section>
     </div>
-    <FooterI/>
 </section>
 </template>
 <style src="./inscription.css">

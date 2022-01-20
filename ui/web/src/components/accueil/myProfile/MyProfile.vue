@@ -6,13 +6,13 @@
           :style="{ left:Position }"
         >
           <div class="profileCont">
-            <img src="./Arsenal-1280x640.jpg" />
+            <img src="./caroussel myjob/slide1.png" />
           </div>
           <div class="profileCont">
-            22222222222222222222222222222222222
+            <img src="./caroussel myjob/slide2.png" />
           </div>
           <div class="profileCont">
-            3333333333333333333333333333333333333333333333
+            <img src="./caroussel myjob/slide3.png" />
           </div>
         </div>
       </div>

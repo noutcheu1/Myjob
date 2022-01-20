@@ -1,17 +1,20 @@
 <template>
-  <div class="cardBid1">
-      <div class="cb1Title  ">Community manager</div>
+  <div class="cardBid1" :style="{display:Display}">
+      <div class="cb1Title  ">{{title}}</div>
       <div class="cb1Info">
-        <div><img src='./hand-bag.svg'/><span>Mtn Cameroon</span></div>
-        <div><img src='./location.svg'/><span>CDD</span></div>
-        <div><img src='./notepad-note.svg'/><span>Douala</span></div>
+        <div><img src='./hand-bag.svg'/><span>{{ employer }}</span></div>
+        <div><img src='./notepad-note.svg'/><span>{{ cdd }}</span></div>
+        <div><img src='./location.svg'/><span>{{ location }}</span></div>
       </div>
       <div>
-          <span class="cb1Post">post: 01/01/2022</span>
-          <span>Exp: 01/06/2022</span>
+          <span class="cb1Post">post: {{ post }}</span>
+          <span>Exp: {{ exp }}</span>
       </div>
-      <div><button>subscribe</button></div>
-      <div class="cb1New"><img src="./new.svg"></div>
+      <div>
+        <button @click="displayForm">subscribe</button>
+        <div :style="{display:displayNumbCandidate}">6/15 candidats</div>
+      </div>
+      <div :style="{display:displayNew}" class="cb1New"><img src="./new.svg"></div>
   </div>
 </template>
 <style src="./cardBid1.css">

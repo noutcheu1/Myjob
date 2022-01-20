@@ -36,7 +36,12 @@ const store = new Vuex.Store({
       connected: false,
       id: 12
     },
-    baseUrl: 'http://localhost/projet/datas/',
+    inscription: {
+      surname: '',
+      name: '',
+      password: ''
+    },
+    baseUrl: 'http://127.0.0.1:8000/api/v1/',
     // --- pop ups this variable is boolean which decides if when publication component is created should or not display message
     publicationMessage: false
   },
@@ -50,6 +55,11 @@ const store = new Vuex.Store({
     },
     mutPubliMessage (state, playload) {
       state.publicationMessage = playload
+    },
+    mutInscription (state, playload) {
+      state.inscription.surname = playload.surname
+      state.inscription.name = playload.name
+      state.inscription.password = playload.password
     }
   }
 })

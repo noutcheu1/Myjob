@@ -21,20 +21,18 @@ export default {
       if (!this.validation()) alert('echec de validation')
       else {
         const axios = require('axios')
-        axios.post(this.$store.state.baseUrl + 'login.php', {
-          name: this.$refs.name.message,
+        axios.post(this.$store.state.baseUrl + 'Login/signin/', {
+          username: this.$refs.name.message,
           password: this.$refs.password.message
         })
           .then((response) => {
-            if (response.data !== 'account does not exist') {
-              this.$store.commit('updateLogin', {connected: true, id: response.data})
-              this.$router.push('loveProject')
-              alert('connexion éffectué avec success')
-            } else { alert(response.data) }
+            alert(response.data)
+            this.$router.push('accueil')
           })
           .catch((error) => {
             // error.response.status Check status code
-            alert(error)
+            alert(error.response.data.message)
+            console.log(error.response.data)
           }).finally(() => {
             // Perform action in always
           })

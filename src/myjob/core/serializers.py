@@ -140,6 +140,7 @@ class ExperienceSerializer(ModelSerializer):
     def create(self, validated_data):
         date_debut = validated_data.get('date_de_debut') 
         date_fin = validated_data.get('date_de_fin')
+
         if date_debut > date_fin :
             raise serializers.ValidationError('the creation date must be lower than the end date')
 
@@ -217,11 +218,20 @@ class JobSerializer(ModelSerializer):
     """
     Description: Model Description
     """
-    
-    def create(self, validated_data):
-        job = Job.objects.create(**validated_data)
 
-        return job
+    def clean_salaire_max(self, validated_data):
+        if validated_data.data.get('salaire_max') < validated_data.data.get('salaire_min'):
+            raise serializers.ValidationError('the salaries interval is not correct')
+
+    def create(self, validated_data):
+        date_debut = validated_data.get('date_debut') 
+        date_fin = validated_data.get('date_fin')
+        salaire_min = validated_data.get('salaire_min')
+        salaire_max = validated_data.get('salaire_max')
+
+        
+
+        return Job.objects.create(**validated_data)
 
 
     def update(self, instance:Job, validated_data):

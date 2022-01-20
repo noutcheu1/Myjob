@@ -1,6 +1,6 @@
 .tNavBar {
+    position: static;
     width: 100%;
-    top:0px;
     left:0px;
     display: flex;
     font-size: 17px;
@@ -70,11 +70,30 @@ select {
     color: #000F94
 }
 
-
-
 /* hover effects -----------*/
 
 .tNavLogo + div > div:hover {
     text-decoration: underline;
     cursor: pointer;
+}
+
+.DropDownList {
+    box-sizing:border-box;
+    padding: 4px;
+    padding-right: 8px;
+    width: 115px;
+    background-color:transparent;
+   /* border: solid 2px #DFE1E6;*/
+    color: #888989;
+    font-size: 15px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background-size: 10%;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-origin: content-box;
+    background-image: url('./down_arrow.svg');
+}
+.DropDownList::-ms-expand {
+    display: none;
 }

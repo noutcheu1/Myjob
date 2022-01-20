@@ -1,0 +1,55 @@
+.lDropDown{
+    position: relative;
+    width: 120px;
+    display: flex;
+    padding: 5px;
+    border: solid 1px silver;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+.lDCurrent {
+    display: flex;
+    width: 100%;
+}
+.lDFirstImg {
+    width: 100%;
+    text-align:justify
+}
+.lDFirstImg img {
+    width: 21px;
+}
+.lDFirstImg + div img {
+    width: 15px;
+}
+
+.lDCollapse {
+    box-sizing: border-box;
+    position: absolute;
+    width: 120px;
+    padding-left: 5px;
+    padding-right: 4px;
+    border: solid 1px silver;
+    border-top: none;
+    background-color: white;
+    top:100%;
+    left:-1px;
+    overflow: hidden;
+    transition: height 0.25s;
+}
+
+.lDElement {
+    display: flex;
+    padding-top: 5px;
+    margin: 5px;
+}
+
+.lDElement img {
+    width:15px;
+    margin-right: 10px;
+}
+
+
+/* ---- hover managment -------- */
+.lDElement:hover {
+    cursor: pointer;
+}

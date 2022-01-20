@@ -7,6 +7,7 @@
     box-sizing: border-box;
     border-radius: 8px;
     position: relative;
+    margin: 30px;
 }
 .cbDeposer {
     margin: 35px;

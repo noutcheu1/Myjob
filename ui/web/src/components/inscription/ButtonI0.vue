@@ -8,10 +8,10 @@
         box-sizing:border-box;
         padding: 7px;
         width: 320px;
-        background-color:#E2E4E6;
+        background-color:#FFC947;
         border-radius: 0.2em;
         border: none;
-        color: #888989;
+        color: #000000;
         font-weight: bold;
         font-size: 15px;
         cursor: pointer;

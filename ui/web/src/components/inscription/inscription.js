@@ -20,22 +20,11 @@ export default {
     toNext () {
       if (!this.validation()) alert('echec de validation')
       else {
-        const axios = require('axios')
-        axios.post(this.$store.state.baseUrl + 'inscription.php', {
-          surname: this.$refs.surname.message,
+        const playload = {surname: this.$refs.surname.message,
           name: this.$refs.name.message,
-          password: this.$refs.password.message,
-          confirmpw: this.$refs.confirmpw.message
-        })
-          .then((response) => {
-            this.$router.push('inscription1')
-          })
-          .catch((error) => {
-            // error.response.status Check status code
-            alert(error)
-          }).finally(() => {
-            // Perform action in always
-          })
+          password: this.$refs.password.message }
+        this.$router.push('inscription1')
+        this.$store.commit('mutInscription', playload)
       }
     },
     validation () {

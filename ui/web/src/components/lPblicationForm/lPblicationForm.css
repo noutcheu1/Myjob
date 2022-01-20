@@ -1,0 +1,135 @@
+input:focus, textarea:focus, select:focus{
+    outline: none;
+}
+.lPblicationForm {
+    position: fixed;
+    top:50%;
+    left: 50%;
+    width: 500px;
+    height: 520px;
+    overflow: scroll;
+    margin-left: -250px;
+    margin-top: -260px;
+    border: solid 1px silver;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    background-color: white;
+}
+.lPBFCTitle {
+    font-weight: bold;
+    font-size: 19px;
+    padding: 20px;
+    position: relative;
+    border-bottom: solid 1px silver;
+}
+.lPBFCCross {
+    position:absolute;
+    width: 32px;
+    height: 32px;
+    right: 0%;  
+    top: 50%;
+    margin-right: 10px;
+    margin-top: -15px;
+    border-radius: 5em;
+    background-color: lightgrey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.lPBFCCross img {
+    width: 55%;
+}
+
+
+.lPBFCBody {
+    padding: 15px;
+}
+.lPBFCBody > div {
+    margin-top: 20px;
+}
+.lPBFCType {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: justify;
+}
+.lPBFCType > div {
+    margin-left: 10px;
+}
+.lPBFCType + div {
+    box-sizing: border-box;
+}
+.lPBFCType + div textarea {
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    font-weight: bold;
+    border: solid 2px rgb(223, 225, 230);
+    color: rgb(40,40,40);
+    border-radius: 0.1em;
+    font-size: 15px;
+    resize: none;
+}
+.lPBFCType + div + div textarea {
+    box-sizing: border-box;
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    border: solid 2px #DFE1E6;
+    color: rgb(40,40,40);
+    border-radius: 0.1em;
+    font-size: 15px;
+    resize: none;
+}
+.lPBFCType + div + div + div label {
+    display: flex;
+    justify-content: left;
+    align-items: center ;
+}
+.lPBFCType + div + div + div input {
+    display: none;
+}
+.lPBFCType + div + div + div img {
+    width: 20px;
+    margin-left: 10px;
+}
+.custom-file-upload {
+  margin-bottom: 5px;  
+}
+#lPbblah {
+    width: 100%;
+}
+.lPBFCType + div + div + div + div {
+    background-color: #E2E4E6;
+    border-radius:0.4em;
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* now hover effects -------*/
+.lPBFCType + div + div + div label {
+    cursor: pointer;
+}
+.lPBFCType + div + div + div + div:hover, .lPBFCCross:hover {
+    cursor: pointer;
+    background-color: rgb(175, 172, 172);
+}
+/* -------------- focused ------------------ */
+.lPblicationForm textarea:focus {
+    border-color:#4C9AFF;
+    border-width: 2px;
+}
+
+
+/* ---------------- responsive managment --------------------- */
+@media screen and (max-width: 520px) { 
+    .lPblicationForm {
+        position: fixed;
+        width: 100%;
+        margin-left: -50%;
+        font-size: 14px;
+    }
+    .lPblicationForm textarea {
+        font-size: 13px;
+    }
+}
