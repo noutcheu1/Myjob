@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import (ProfilRetruteur, ProfilUser, Job, Experience, Competence, Formation, Postuler, Retruter, Metier)
+from .models import (ProfilRetruteur, ProfilUser, Job, Experience, Competence, Formation, Postuler, Retruter, Metier,Travail, Choix)
 
 
 
@@ -14,3 +14,5 @@ admin.site.register(ProfilRetruteur)
 admin.site.register(Experience)
 admin.site.register(Formation)
 admin.site.register(Competence)
+admin.site.register(Travail)
+admin.site.register(Choix)

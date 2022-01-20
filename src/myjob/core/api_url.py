@@ -31,5 +31,7 @@ urlpatterns = [
    path('home', Home.as_view()),
    path('api-token-auth/', views.obtain_auth_token),
    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+   path('', views.index, name='index'),
+   path('<int:job_id>/', views.detail, name='details'),
   # path('dj-rest-auth/', include('dj_rest_auth.urls')),
 ]
