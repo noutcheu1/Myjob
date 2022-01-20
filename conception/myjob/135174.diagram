@@ -31,7 +31,7 @@ transitioncanvas 130182 transition_ref 135046 // <transition>
 end
 transitioncanvas 130310 transition_ref 135174 // creation d'un job
   
-  from ref 128006 z 2001 label "creation d'un job" xyz 134.5 71 3000 to ref 128518
+  from ref 128006 z 2001 label "creation d'un job" xyz 134 71 2001 to ref 128518
   write_horizontally default show_definition default drawing_language default
 end
 transitioncanvas 130438 transition_ref 135302 // <transition>
@@ -45,10 +45,10 @@ transitioncanvas 131590 transition_ref 142214 // <transition>
   from ref 128390 z 2001 to ref 128518
   write_horizontally default show_definition default drawing_language default
 end
-transitioncanvas 132230 transition_ref 142342 // [when : date_fin=today]
+transitioncanvas 132230 transition_ref 142342 // [when : date_fin>today]
   decenter_begin 920
   
-  from ref 128262 z 2001 label "[when : date_fin=today]" xyz 503 129 3000 to ref 132102
+  from ref 128262 z 2001 label "[when : date_fin>today]" xyz 503 129 2001 to ref 132102
   write_horizontally default show_definition default drawing_language default
 end
 transitioncanvas 132358 transition_ref 142470 // <transition>

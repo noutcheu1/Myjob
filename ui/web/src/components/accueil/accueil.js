@@ -23,9 +23,23 @@ export default {
       publicationIndexes: []
     }
   },
+  methods: {
+    exist (a) {
+      let result
+      if (typeof a === 'undefined') {
+        result = 'lll'
+      } else result = a
+      return result
+    }
+  },
   mounted () {
     this.$root.$on('pageChanged', data => {
       this.publicationIndexes = data
+      let i, max
+      max = this.publicationIndexes.length
+     /* for (i = 0; i < max; i++) {
+        this.publicationIndexes[i] = this.exist(this.publicationIndexes[i])
+      } */
       window.scrollTo(0, 700)
     })
   }

@@ -34,7 +34,7 @@ const store = new Vuex.Store({
     ],
     login: {
       connected: false,
-      id: 12
+      id: 9
     },
     inscription: {
       surname: '',

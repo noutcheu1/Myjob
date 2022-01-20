@@ -3,7 +3,7 @@
       <div class="cb1Title  ">{{title}}</div>
       <div class="cb1Info">
         <div><img src='./hand-bag.svg'/><span>{{ employer }}</span></div>
-        <div><img src='./notepad-note.svg'/><span>{{ cdd }}</span></div>
+        <div><img src='./notepad-note.svg'/><span>{{ type_contrat }}</span></div>
         <div><img src='./location.svg'/><span>{{ location }}</span></div>
       </div>
       <div>

@@ -69,7 +69,7 @@ export default {
       const axios = require('axios')
       axios.get(this.$store.state.baseUrl + 'Job/?page=1')
         .then((response) => {
-          this.datas1 = this.splitTable(response.data.results, 6)
+          this.datas1 = this.splitTable(response.data.results.reverse(), 6)
           this.$root.$emit('pageChanged', this.datas1[0])
         })
         .catch((error) => {

@@ -9,12 +9,13 @@ export default {
       cv: '',
       Display: 'none',
       isDisplayed: false,
-      publiTitle: '',
-      publiContent: '',
+      publiTitle: '000FCFA',
+      publiContent: 'vos attentes',
       titleWork: '',
       displayOui: 'none',
       displayNon: 'none',
-      cvFileName: ''
+      cvFileName: '',
+      jobId: 1
     }
   },
   methods: {
@@ -64,28 +65,32 @@ export default {
       return true
     },
     publishing () {
-      if (!this.validation()) alert('echec de validation')
-      else {
-        const axios = require('axios')
-        axios.post(this.$store.state.baseUrl + 'savePublication.php', {
-          publiTitle: this.publiTitle,
-          publiContent: this.publiContent,
-          type: this.$refs.types.currentType,
-          userId: this.$store.state.login.id
+      const axios = require('axios')
+      axios.defaults.xsrfCookieName = 'csrftoken'
+      axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN'
+      axios.post(this.$store.state.baseUrl + 'postuler_job/', {
+        user_id: this.$store.state.login.id,
+        job_id: this.jobId,
+        motivation_letter: this.publiContent
+      })
+        .then((response) => {
+          alert('vous avez postuler')
+          this.displaying()
         })
-          .then((response) => {
-            alert('success' + response.data)
-          })
-          .catch((error) => {
-            alert(error)
-          })
-      }
+        .catch((error) => {
+          // error.response.status Check status code
+          alert(error)
+          console.log(error)
+        }).finally(() => {
+          // Perform action in always
+        })
     }
   },
   mounted () {
     this.$root.$on('displayForm', data => {
       this.displaying()
       this.titleWork = data.title
+      this.jobId = data.id
     })
   }
 }

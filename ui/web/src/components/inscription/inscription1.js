@@ -43,16 +43,10 @@ export default {
         })
           .then((response) => {
             alert('inscription de' + response.data.username + ' ' + response.data.first_name + 'reuissi')
-            console.log(response.data)
+            console.log(response.data.id)
+            let playload = {connected: true, id: response.data.id}
+            this.$store.commit('updateLogin', playload)
             this.$router.push('accueil')
-            /* if (response.data === 'account existing') {
-              this.$store.commit('mutPubliMessage', true)
-              this.$router.push('inscription')
-            } else {
-              this.$store.commit('updateLogin', {connected: true, id: response.data})
-              this.$router.push('loveProject')
-              alert(response.data)
-            } */
           })
           .catch((error) => {
             // error.response.status Check status code

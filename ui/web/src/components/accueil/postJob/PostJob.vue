@@ -15,21 +15,21 @@
                     <div class="titlePostJob"><h3>Recruteur</h3></div>
                     <div class="title2PostJob"><h1>Poster Job</h1></div>
                 </div>
-                <div class="updNom"><span class="blue">Titre métier</span><span class="red"> *</span><textarea v-model="publiContent" placeholder="Entrer votre metier"></textarea></div><br>
+                <div class="updNom"><span class="blue">Titre métier</span><span class="red"> *</span><textarea v-model="titre" placeholder="Entrer votre metier"></textarea></div><br>
                 <span class="blue">Type de contrat <span class="red"> *</span></span>
                 <div class ="postJobInput">
-                    <div>CDD<input @click="fillCv('oui')" type = "radio" name="yes" value="oui"/></div>
-                    <div>CDI<input  @click="fillCv('non')" type = "radio" name="yes" value="non"/></div>
+                    <div>CDD<input v-model='type_contrat' @click="fillCv('oui')" type = "radio" name="yes" value="CDD"/></div>
+                    <div>CDI<input v-model='type_contrat' @click="fillCv('non')" type = "radio" name="yes" value="CDI"/></div>
                 </div><br>
-                <div class="updPrenom"><span class="blue">Salaire minimal</span><span class="red"> *</span><textarea v-model="publiTitle" placeholder="Editer le Salaire minimum"></textarea> </div><br>
-                <div class="updUsername"><span class="blue">Salaire maximal</span><span class="red"> *</span><textarea v-model="publiContent" placeholder="Editer le Salaire maximum"></textarea></div><br>
-                <div class="updEmail"><span class="blue">Profil Recherché</span><span class="red"> *</span><textarea v-model="publiTitle" placeholder="Editer votre profil"></textarea> </div><br>
-                <div class="updConfirmEmail"><span class="blue">Date de fin</span><span class="red"> *</span><textarea v-model="publiContent" placeholder="Editer la date de fin du contrat"></textarea></div><br>
-                <div class="updPassword"><span class="blue">Description</span><span class="red"> *</span><textarea v-model="publiTitle" placeholder="Editer la description"></textarea> </div><br>
-                <div class="updConfirmPassword"><span class="blue">Localisation du travail</span><span class="red"> *</span><textarea v-model="publiContent" placeholder="Editer la localisation"></textarea></div><br>
-                <div class="updConfirmPassword"><span class="blue">Nombre d'année requis</span><span class="red"> *</span><textarea v-model="publiContent" placeholder="Editer le nombre d'année requis"></textarea></div><br>
+                <div class="updPrenom"><span class="blue">Salaire minimal</span><span class="red"> *</span><textarea v-model="salaire_min" placeholder="Editer le Salaire minimum"></textarea> </div><br>
+                <div class="updUsername"><span class="blue">Salaire maximal</span><span class="red"> *</span><textarea v-model="salaire_max" placeholder="Editer le Salaire maximum"></textarea></div><br>
+                <div class="updEmail"><span class="blue">Profil Recherché</span><span class="red"> *</span><textarea v-model="profil_recruteur" placeholder="Editer votre profil"></textarea> </div><br>
+                <div class="updConfirmEmail"><span class="blue">Date de fin</span><span class="red"> *</span><textarea v-model="date_fin" placeholder="Editer la date de fin du contrat"></textarea></div><br>
+                <div class="updPassword"><span class="blue">Description</span><span class="red"> *</span><textarea v-model="description" placeholder="Editer la description"></textarea> </div><br>
+                <div class="updConfirmPassword"><span class="blue">Localisation du travail</span><span class="red"> *</span><textarea v-model="work_location" placeholder="Editer la localisation"></textarea></div><br>
+                <div class="updConfirmPassword"><span class="blue">Nombre d'année requis</span><span class="red"> *</span><textarea v-model="nombres_experiences" placeholder="Editer le nombre d'année requis"></textarea></div><br>
             </div>
-            <button @click='sendImage' class="pushJob">Post Job</button>
+            <button @click='toNext' class="pushJob">Post Job</button>
         </div>
     </div>
 </section>

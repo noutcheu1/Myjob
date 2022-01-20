@@ -49,12 +49,12 @@
                 <CardBid1 :datas='publicationIndexes[1]' displayNew='none'/>
             </div>
             <div>
-                <CardBid1 :datas='publicationIndexes[2]' displayNew='none'/>
+                <CardBid1 :datas='exist(publicationIndexes[2])' displayNew='none'/>
             </div>
         </div>
         <div class="flex_acceuil">
             <div>
-                <CardBid1 :datas='publicationIndexes[3]' displayNew='none'/>
+                <CardBid1 :datas='exist(publicationIndexes[3])' displayNew='none'/>
             </div>
             <div>
                 <CardBid1 :datas='publicationIndexes[4]' displayNew='none'/>
