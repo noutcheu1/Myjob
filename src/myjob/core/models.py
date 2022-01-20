@@ -25,7 +25,7 @@ class ProfilUser(Profil):
     Description: Model Description
     """
     work= (('developpeur',"dev Android"), ("developpeur", "DEV WEb"), ("DATA SCIENTIST","DATA SCIENTIST"))
-    metier = models.ForeignKey(Metier, on_delete=models.CASCADE)
+    metier = models.CharField(max_length=200)
     birthday = models.DateField(auto_now_add=False)
     metier = models.CharField(max_length=200, choices=work)
     cv = models.FileField(verbose_name='User_Cv', upload_to="Cv_doc", null=True)
@@ -113,17 +113,17 @@ class Job(models.Model):
     """
     WORK_LOC = STATES_LOCATION
     WORK_STATUE= (("draft", "en attente"), ("bad", "refuser"), ("poster", "ok"), ("close", "fermer"))
-    metier = models.ForeignKey(Metier, on_delete=models.CASCADE)
+    metier = models.CharField(max_length=200)
     profilretruteur = models.ForeignKey(ProfilRetruteur, on_delete=models.CASCADE)
     titre = models.CharField(max_length=200)
-    type_contrat = models.CharField(max_length=50,  choices=CONTRAT_TYPE)
+    type_contrat = models.CharField(max_length=50)
     salaire_min =  models.PositiveIntegerField(default=0)
-    date_debut = models.DateTimeField(auto_now_add=True)
-    date_fin = models.DateTimeField()
+    date_debut = models.DateField(auto_now_add=True)
+    date_fin = models.DateField()
     description = models.TextField()
     salaire_max = models.PositiveIntegerField(default=0)
     Job_statue = models.CharField(max_length=150, choices=WORK_STATUE)
-    work_location =  models.CharField(max_length=200, choices=WORK_LOC)
+    work_location =  models.CharField(max_length=200)
     nombres_experiences = models.PositiveIntegerField(default=0)
    
 
