@@ -2163,6 +2163,14 @@ ${docstring}${body}
 	    classrelation_ref 171142 // avoir
       end
     end
+
+    classinstance 128006 ""
+      type class_ref 128390 // Job
+      attributes
+        end
+      relations
+        end
+    end
   end
 
   usecaseview 128006 "use_case_myjob"

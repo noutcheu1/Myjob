@@ -77,6 +77,7 @@ class RetruterPostuler(GenericViewSet):
     permission_classes = [IsAuthenticated, ]
 
     @swagger_auto_schema(
+        request_body=RetruterSerializer(),
         operation_description='method to find Job with  using the name of job. ')
     @action(methods=["POST"], detail=False)
     def retruter(self, request, *args, **kwargs):
@@ -95,17 +96,41 @@ class RetruterPostuler(GenericViewSet):
         for retruter_job  in userrs:
             username = retruter_job.get('username')
             user = User.objects.get(username=username)
-            job_id = user_have_job.validated_data.get('job_id')
-            postul = postuler.get(job_id=job_id, user_id=user.pk)
             
-            postul.set_retruter(user, job_id)
-            list_user_postuler.append(user)
 
+            try:
+                job_id = user_have_job.validated_data.get('job_id')
+                postul = postuler.get(job_id=job_id, user_id=user.pk)
+            
+                postul.set_retruter(user, job_id)
+                list_user_postuler.append(user)
+
+            except Exception as e:
+                raise e
+            
+            
         list_user_postuler = UserSerializer(many=True, data=list_user_postuler)
 
         # do something with the book
       
         return Response({'resultat':print(list_user_postuler)}, status=status.HTTP_200_OK)
+
+    @swagger_auto_schema(
+        request_body=RetruterSerializer(),
+        operation_description='get  the numbers of personne who have poster to a job. ')
+    @action(methods=["POST"], detail=False)
+    def get_number(self, request, *args, **kwargs):
+        user_have_job = RetruterSerializer(data=self.request.data)
+        user_have_job.is_valid(raise_exception=True)
+        userrs = user_have_job.validated_data.get('user_id')
+        postuler = Postuler.objects.all()
+        list_user_postuler = postuler.filter(job_id=user_have_job.validated_data.get('job_id')).count()
+        
+
+        # do something with the book
+      
+        return Response({'postuler': str(list_user_postuler)}, status=status.HTTP_200_OK)
+
 
 
 
@@ -123,6 +148,7 @@ class FilterFind(GenericViewSet):
     # Logout Ressource
 
     @swagger_auto_schema(
+        request_body=FindJobSerializer(),
         operation_description='method to find Job with  using the name of job. ')
     @action(methods=["POST"], detail=False)
     def findbyname(self, request, *args, **kwargs):
@@ -150,6 +176,7 @@ class FilterFind(GenericViewSet):
 
 
     @swagger_auto_schema(
+        request_body=FindJobSerializer(),
         operation_description='method to find Job with  using the name of job. ')
     @action(methods=["POST"], detail=False)
     def findName_metier(self, request, *args, **kwargs):
@@ -176,6 +203,9 @@ class FilterFind(GenericViewSet):
         return Response({}, status=status.HTTP_404_NOT_FOUND)
 
 
+    @swagger_auto_schema(
+        request_body=FindJobSerializer(),
+        operation_description='method to find Job with  using the name of job. ')
     def findName_metier_salaire(self, request, *args, **kwargs):
         
         seria_job = FindJobSerializer(data=self.request.data)
