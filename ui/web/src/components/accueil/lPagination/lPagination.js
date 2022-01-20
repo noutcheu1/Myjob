@@ -25,7 +25,7 @@ export default {
       let k = 0
       let max = table.length
       let result = []
-      var resultElement = []
+      let resultElement = []
       for (i = 0; i < max; i++) {
         j++
         resultElement.push(table[i])

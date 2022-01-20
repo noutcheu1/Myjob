@@ -68,7 +68,6 @@
         <div>
             <L-pblication-form/>
         </div>
-
          <footer>
             <div class="flex_acceuil">
             <div class="text_left">

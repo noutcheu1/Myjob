@@ -1,0 +1,71 @@
+.updatProfil{
+    text-align: left;
+}
+.wrapperUpdProfil{
+    width: 70%;
+    height: 100%;
+    background-color: #faf9f9;
+    margin: 10px 50px 30px 180px;
+    padding: 50px 100px 50px 100px;
+}
+.titleUpdProfil{
+    text-align: center;
+    margin-bottom: 80px;
+}
+.updAvatar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.imgUser{
+    height: 117px;
+    width: 117px;
+    border-radius: 100%;
+    border: 1px solid #FFC947;
+}
+.red{
+    color: red;
+}
+.blue{
+    color: blue;
+}
+.orange{
+    color: #FFC947;
+    font-size: 20px;
+}
+h1 p{
+    color: rgb(0, 0, 0);
+}
+.editImg{
+    display: flex;
+}
+.iconTxt{
+    margin-right: 10px;
+    color: blue;
+    font-style: italic;
+}
+textarea {
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border: solid 2px #DFE1E6;
+    color: rgb(40,40,40);
+    border-radius: 0.1em;
+    font-size: 15px;
+    resize: none;
+    border-radius: 8px;
+}
+.nextupdUser{
+    width: 202px;
+    height: 35px;
+    background-color: blue;
+    text-align: center;
+    border-radius: 8px;
+    color: white;
+}
+.nextupdUser:hover {
+    background-color:#f7ad00;
+    color: #fff;
+}

@@ -1,0 +1,53 @@
+.cardProfil{
+    position: fixed;
+    top:50%;
+    left: 50%;
+    width: 395px;
+    height: 500px;
+    overflow: scroll;
+    margin-left: 270px;
+    margin-top: -250px;
+    border: solid 1px silver;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    background-color: #ffffff;
+    /*  background-image: url('./back-modal.png');  */
+    background-position: top right;
+    background-size: 45%;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+}
+.orange{
+    color: #ffb300;
+}
+.img{
+    margin-right: 30px;
+}
+.cardProfil{
+    justify-content: center;
+    align-items: center;
+}
+
+.space{
+    margin: 15px;
+}
+.description{
+    color: black;
+}
+.x{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logoMyjob{
+    margin-top: 30px;
+}
+.socialNetwork ul {
+    /* text-align: center; */
+    justify-content: center;
+    /* align-items: center; */
+    display: flex;    
+}
+.socialNetwork ul li{
+    margin-right: 15px;  
+    list-style: none;
+}
