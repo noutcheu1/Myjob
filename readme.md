@@ -5,19 +5,19 @@
             --------------------------------------
             |Niveau     | licence 3 informatique |
 ### liste de membre du projet Myjob
-            ----------------------------------------------------------------------------
-            |Matricule       |  NOM ET PRENOMS                |     NOM SUR GITHUB      |
-            ----------------------------------------------------------------------------
-            | 19M2310        |  NOUTCHEU LIBERT JORAN         |                         |
-             ---------------------------------------------------------------------------
-            |                 |                               |                        |
-             ---------------------------------------------------------------------------
-            |                 |                               |                        |
-             ---------------------------------------------------------------------------
-            |                 |                               |                        |                       
-             ---------------------------------------------------------------------------
-            |                 |                               |                        |                       
-             ---------------------------------------------------------------------------
+            -------------------------------------------------------------------------------
+            |Matricule       |  NOM ET PRENOMS                   |     NOM SUR GITHUB      |
+            -------------------------------------------------------------------------------
+            | 19M2310        |  NOUTCHEU LIBERT JORAN            |       noutc123          |
+             ------------------------------------------------------------------------------
+            | 18T2814        | TCHIAGUIA CHRISTOPHE              |    chrisAfrotech        |
+             ------------------------------------------------------------------------------
+            | 18T2737        |TABANTSA ZEMBOUG ARMAND            |  tabantsa               |
+             ------------------------------------------------------------------------------
+            |  19M2245      |     MEKEUTIBOUA TAFEUTSOP DARELLE  |  Darell20               |                       
+             ------------------------------------------------------------------------------
+            |  18T2578      |     TAMO MBOBDA  ERIC Arnaud       |                         |                  
+             ------------------------------------------------------------------------------
              
 ## Prerequis
       ## pour Demarer le serveur django
@@ -34,5 +34,13 @@
             ->   python manage.py runserver 
           *aller a l'adresse localhost:8000/api/v1 ou localhost:8000/api/docs pour voire la documentation de l'api 
               
-
+ 
       ## pour le frontend 
+       il faut intsalller au Vuejs 3.0
+      afin de pouvoir lancer notre site 
+          * installer les dependances pour le projet
+          * aller dans le dossier ./src/myjob/ui/web/
+          * lancer la commande 
+            ->   yarn install
+            ->   yarn start pour lancer le projet
+          *aller a l'adresse http://localhost:8080/accueil
