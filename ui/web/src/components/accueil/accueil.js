@@ -4,7 +4,8 @@ import CardBid from './cardBid/CardBid.vue'
 import CardBid1 from './cardBid1/CardBid1.vue'
 import modalJob from './modalJob/ModalJob.vue'
 import LPblicationForm from './lPblicationForm/LPblicationForm.vue'
-import  from './cardProfil/CardProfil.vue'
+import CardProfil from './cardProfil/CardProfil.vue'
+import UpdatProfil from './updatProfil/UpdatProfil.vue'
 export default {
   name: 'accueil',
   components: {
@@ -13,6 +14,8 @@ export default {
     CardBid,
     CardBid1,
     modalJob,
-    LPblicationForm
+    LPblicationForm,
+    CardProfil,
+    UpdatProfil
   }
 }

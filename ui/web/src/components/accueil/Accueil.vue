@@ -67,7 +67,9 @@
         <div>
             <L-pblication-form/>
         </div>
-
+        <div>
+            <CardProfil/>
+        </div>
          <footer>
             <div class="flex_acceuil">
             <div class="text_left">

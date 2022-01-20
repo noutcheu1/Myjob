@@ -29,7 +29,6 @@
             <div class="lPBattenteOffre"><span class="blue">Quels sont vos attentes par rapport a cet offrre d’emploie ?</span><span class="red"> *</span><textarea v-model="publiContent" placeholder="Entrer votre texte ici"></textarea></div><br>
             <div class="lPBoffreSalaire"><span class="blue">Quel offre de salaire pourra vous arranger ?</span><span class="red"> *</span><textarea v-model="publiTitle" placeholder="Entrer votre montant ici en FCFA"></textarea> </div><br>
             <div @click='sendImage' class="lPBpublier">Publier</div>
-        </div>
     </div>
 </section>
 </template>
