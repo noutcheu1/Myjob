@@ -172,6 +172,9 @@ class ExperienceSerializer(ModelSerializer):
          fields = ('id', 'date_de_debut', 'experiences_users', 'date_de_fin', 'title','Description', 'lieux')
 
 
+
+
+
 class ProfilRetruteurSerializer(ModelSerializer):
     """
     Description: Model Description
@@ -258,7 +261,7 @@ class JobSerializer(ModelSerializer):
 
     class Meta:
        model = Job
-       fields = ('id','titre', 'metier', 'type_contrat', 'salaire_min','salaire_max','profilretruteur', 'date_debut', 'date_fin', 'description', 'work_location', 'nombres_experiences')
+       fields = ('id','titre', 'metier', 'type_contrat', 'salaire_min','salaire_max','profilretruteur', 'date_debut', 'date_fin', 'description', 'work_location', 'nbre_place','nombres_experiences')
 
 class LogoutSerializer(Serializer):
     """
@@ -331,3 +334,9 @@ class RetruterSerializer(Serializer):
 
     class Meta:
         fields = ('id', 'job_id', 'user_id',)
+
+class JobRetruteurSerializers(Serializer):
+    """
+    Description: Model Description
+    """
+    profil_id = fields.IntegerField(write_only=True, required=True)

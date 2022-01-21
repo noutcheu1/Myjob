@@ -5,6 +5,7 @@ from rest_framework.mixins import (CreateModelMixin, DestroyModelMixin,
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.views import APIView
 from .serializers import (ProfilRetruteurSerializer, SetPasswordSerializers, LogoutSerializer, MetierSerializer, UserSerializer, FindJobSerializer, LoginSerializer, RetruterSerializer, SetpassSerializers, FormationSerializer, CompetenceSerializer, ExperienceSerializer, JobSerializer, PostulerSerializer, ProfilUserSerializer)
+from  .serializers import (JobRetruteurSerializers,)
 from django.contrib.auth import logout, login, authenticate
 from rest_framework.decorators import action
 from drf_yasg.utils import swagger_auto_schema
@@ -79,6 +80,23 @@ class RetruterPostuler(GenericViewSet):
     serializer_class = RetruterSerializer
     permission_classes = [IsAuthenticated, ]
 
+
+    @swagger_auto_schema(
+        request_body=JobRetruteurSerializers(),
+        operation_description='method to find all job for the one the specific entreprise. ')
+    @action(methods=["POST"], detail=False)
+    def get_job_by_profil(self, request, *args, **kwargs):
+        profil_id_seria = JobRetruteurSerializers(data=self.request.data)
+        profil_id_seria.is_valid(raise_exception=True)
+        jobs = Job.objects.all()
+        profil_id = profil_id_seria.validated_data.get('profil_id')
+        job = jobs.filter(profilretruteur=profil_id)
+        
+        job_serialiseres = JobSerializer(job, many=True).data
+
+        
+        return Response({'resultat':job_serialiseres}, status=status.HTTP_200_OK)
+    
     @swagger_auto_schema(
         request_body=RetruterSerializer(),
         operation_description='method to find Job with  using the name of job. ')
