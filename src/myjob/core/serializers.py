@@ -193,7 +193,7 @@ class ProfilRetruteurSerializer(ModelSerializer):
 
     class Meta:
         model = ProfilRetruteur
-        fields = ('id','user', 'location','Description','adresse','nationalite',)
+        fields = ('id','user', 'location','Description','adresse','nationalite','web_site',)
         
 
 class ProfilUserSerializer(ModelSerializer):
