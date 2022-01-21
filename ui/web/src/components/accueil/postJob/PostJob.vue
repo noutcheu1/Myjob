@@ -1,6 +1,6 @@
 <template>
 <section class="postJob"  >
-     <div class="contentPostJob">
+    <div class="contentPostJob">
         <div class="dashboard">
                 <div class="menu space"><img src="./menu.png"></div>
                 <div class="menuEntretien space"><img src="./entretien.png"></div>
@@ -16,10 +16,15 @@
                     <div class="title2PostJob"><h1>Poster Job</h1></div>
                 </div>
                 <div class="updNom"><span class="blue">Titre métier</span><span class="red"> *</span><textarea v-model="publiContent" placeholder="Entrer votre metier"></textarea></div><br>
-                <span class="blue">Type de contrat <span class="red"> *</span></span>
-                <div class ="postJobInput">
-                    <div>CDD<input @click="fillCv('oui')" type = "radio" name="yes" value="oui"/></div>
-                    <div>CDI<input  @click="fillCv('non')" type = "radio" name="yes" value="non"/></div>
+                <div class="updTypeContrat">
+                    <span class="blue">Type de contrat <span class="red"> *</span></span>
+                    <select class = "DropDownList">
+                        <option> CDI </option>
+                        <option> CDD </option>
+                        <option> occasionel </option>
+                        <option> Stage </option>
+                        <option> Freelancer </option>
+                    </select>
                 </div><br>
                 <div class="updPrenom"><span class="blue">Salaire minimal</span><span class="red"> *</span><textarea v-model="publiTitle" placeholder="Editer le Salaire minimum"></textarea> </div><br>
                 <div class="updUsername"><span class="blue">Salaire maximal</span><span class="red"> *</span><textarea v-model="publiContent" placeholder="Editer le Salaire maximum"></textarea></div><br>

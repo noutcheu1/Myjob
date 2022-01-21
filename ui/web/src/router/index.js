@@ -8,6 +8,7 @@ import Login from '@/components/inscription/Login'
 import Accueil from '@/components/accueil/Accueil'
 import UpdatProfil from '@/components/accueil/updatProfil/UpdatProfil'
 import PostJob from '@/components/accueil/postJob/PostJob'
+import Profile from '@/components/accueil/profile/Profile'
 Vue.use(Router)
 
 export default new Router({
@@ -47,6 +48,11 @@ export default new Router({
       path: '/PostJob',
       name: 'postJob',
       component: PostJob
+    },
+    {
+      path: '/Profile',
+      name: 'profile',
+      component: Profile
     }
 
   ]

@@ -1,11 +1,40 @@
+.dashboard{
+    width: 8%;
+    background-color: #000F94;
+    border-radius: 8px;
+    padding-top: 15px;
+    padding-left: 4%;
+    margin-right: 50px;
+}
+.menu{
+    margin-bottom: 150px;
+}
+.menuSetting{
+    width: 100%;
+    height: 50px;
+    padding-top: 30px;
+    background-color: rgb(242, 241, 241);
+    border-radius: 5px;
+}
+.space{
+    margin-bottom: 100px;
+}
 .updatProfil{
     text-align: left;
+    display: flex;
+}
+.updContent{
+    width: 90%;
+    justify-content: center;
+
+}
+.butt{
+    margin-left: 68%;
 }
 .wrapperUpdProfil{
     width: 70%;
-    height: 100%;
     background-color: #faf9f9;
-    margin: 10px 50px 30px 180px;
+    margin: 10px 50px 30px 80px;
     padding: 50px 100px 50px 100px;
 }
 .titleUpdProfil{
@@ -58,6 +87,9 @@ textarea {
     border-radius: 8px;
 }
 .nextupdUser{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 202px;
     height: 35px;
     background-color: blue;
