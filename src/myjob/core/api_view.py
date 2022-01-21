@@ -153,37 +153,34 @@ class FilterFind(GenericViewSet):
         'lastest_job_list': lastest_Job_list,
     }
         return render(request, 'core/index.html', context)
-def detail(request, job_id):
-    try:
-        job = Choix.objects.get(pk=job_id)
-        context = {
-                'job': job
-        }
-       # date = timezone.now()
-    except Travail.DoesNotExist:
-        raise Http404("job does not exist")
-    return render(request, 'core/detail.html', context)
-def nbre_place(request, travail_id):
-    travail = get_object_or_404(Travail, pk=travail_id)
-    try:
-        selected_choice = travail.choice_set.get(pk=request.POST['choice'])
-    except (KeyError, Choix.DoesNotExist):
-        # Redisplay the question voting form.
-        return render(request, '/detail.html', {
-            'travail': travail,
-            'error_message': "You didn't select a choice.",
-        })
-    else:
-        selected_choice.nbre_place += 1
-        selected_choice.save()
-        # Always return an HttpResponseRedirect after successfully dealing
-        # with POST data. This prevents data from being posted twice if a
-        # user hits the Back button.
-        return HttpResponseRedirect(reverse('core:results', args=(travail.id,)))
-def results(request, travail_id):
-    question = get_object_or_404(Travail, pk=travail_id)
-    return render(request, 'core/results.html', {'question': question})
-    # Logout Ressource
+
+    @swagger_auto_schema(
+        request_body=FindJobSerializer(),
+        operation_description='method to find Job with  using the name of job. ')
+    @action(methods=["POST"], detail=False)
+    def nbre_place(request, travail_id):
+
+        travail = get_object_or_404(Travail, pk=travail_id)
+        try:
+            selected_choice = travail.choice_set.get(pk=request.POST['choice'])
+        except (KeyError, Choix.DoesNotExist):
+            # Redisplay the question voting form.
+            return render(request, '/detail.html', {
+                'travail': travail,
+                'error_message': "You didn't select a choice.",
+            })
+        else:
+            selected_choice.nbre_place += 1
+            selected_choice.save()
+            # Always return an HttpResponseRedirect after successfully dealing
+            # with POST data. This prevents data from being posted twice if a
+            # user hits the Back button.
+            return HttpResponseRedirect(reverse('core:results', args=(travail.id,)))
+
+    def results(request, travail_id):
+        question = get_object_or_404(Travail, pk=travail_id)
+        return render(request, 'core/results.html', {'question': question})
+        # Logout Ressource
 
     @swagger_auto_schema(
         request_body=FindJobSerializer(),
@@ -301,9 +298,26 @@ class AuthViewSet(GenericViewSet):
                     'email': user.email,
                     'username': user.username,
                 }
+                profil_user = None
+                profil = None
+                try:
+                    profil_user = ProfilUser.objects.get(user__id=user.id)  
+                    profil = ProfilUserSerializer(profil_user).data
+                   
+                except Exception as e:
+                    print('profile user absent')
 
-                res = LoginSerializer(user).data
-                return Response(res, status=status.HTTP_200_OK)
+                if profil_user == None:
+                        try:
+                           profil_retruteur = ProfilRetruteur.objects.get(user__id=user.id)
+                           
+                           profil = ProfilRetruteurSerializer(profil_retruteur).data 
+                        except Exception as e:
+                           print('profile retruteur absent')  
+                res = LoginSerializer(user).data      
+                users = UserSerializer(user).data
+                return Response({'user':res, 'profil':profil, 'utilisateur':users}, status=status.HTTP_200_OK)
+                
             else:
 
                 return Response({

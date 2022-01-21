@@ -30,6 +30,7 @@ class Choix(models.Model):
     nbre_place = models.IntegerField(default=0)
     def __str__(self):
        return "{}".format(self.choix_text)
+       
 class ProfilUser(Profil):
     """
     Description: Model Description
@@ -135,7 +136,7 @@ class Job(models.Model):
     Job_statue = models.CharField(max_length=150, choices=WORK_STATUE)
     work_location =  models.CharField(max_length=200)
     nombres_experiences = models.PositiveIntegerField(default=0)
-   
+    nbre_place = models.PositiveIntegerField(default=1)
 
    
 
