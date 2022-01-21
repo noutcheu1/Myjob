@@ -6,6 +6,7 @@ import modalJob from './modalJob/ModalJob.vue'
 import LPblicationForm from './lPblicationForm/LPblicationForm.vue'
 import CardProfil from './cardProfil/CardProfil.vue'
 import UpdatProfil from './updatProfil/UpdatProfil.vue'
+// import Footer from './footer/Footer.vue'
 export default {
   name: 'accueil',
   components: {
@@ -17,5 +18,6 @@ export default {
     LPblicationForm,
     CardProfil,
     UpdatProfil
+    // Footer
   }
 }
