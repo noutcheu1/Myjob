@@ -22,7 +22,7 @@
         <div class="updPassword"><span class="blue">Password</span><span class="red"> *</span><textarea v-model="publiTitle" placeholder="Editer votre password"></textarea> </div><br>
         <div class="updConfirmPassword"><span class="blue">Confirm Password</span><span class="red"> *</span><textarea v-model="publiContent" placeholder="Editer votre password"></textarea></div><br>
     </div>
-    <button @click='sendImage' class="nextupdUser">Next</button>
+    <a href="accueil"><button @click='sendImage' class="nextupdUser">Next</button></a>
 </section>
 </template>
 <style src="./updatProfil.css">

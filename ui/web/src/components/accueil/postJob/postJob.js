@@ -37,7 +37,6 @@ export default {
         nombres_experiences: 0
       })
         .then((response) => {
-          alert(response.data)
           console.log(response.data)
           this.$router.push('accueil')
         })

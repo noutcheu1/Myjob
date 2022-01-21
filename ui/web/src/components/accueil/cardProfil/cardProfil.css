@@ -16,6 +16,23 @@
     background-repeat: no-repeat;
     border-radius: 10px;
 }
+.carProlPBFCCross {
+    position:absolute;
+    width: 32px;
+    height: 32px;
+    right: 0%;  
+    top: 0%;
+    margin-right: 10px;
+    margin-top: 15px;
+    border-radius: 5em;
+    background-color: lightgrey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.carProlPBFCCross img {
+    width: 55%;
+}
 .orange{
     color: #ffb300;
 }
@@ -50,4 +67,10 @@
 .socialNetwork ul li{
     margin-right: 15px;  
     list-style: none;
+}
+
+/* hover effect */
+.carProlPBFCCross:hover {
+    cursor: pointer;
+    background-color: rgb(175, 172, 172);
 }

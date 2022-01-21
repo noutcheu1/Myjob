@@ -42,9 +42,9 @@ export default {
           email: this.$refs.email.message
         })
           .then((response) => {
-            alert('inscription de' + response.data.username + ' ' + response.data.first_name + 'reuissi')
-            console.log(response.data.id)
-            let playload = {connected: true, id: response.data.id}
+            alert('inscription de ' + response.data.username + ' ' + response.data.first_name + ' reuissi')
+            console.log(response.data)
+            let playload = {connected: true, id: response.data.id, name: response.data.username, email: response.data.email}
             this.$store.commit('updateLogin', playload)
             this.$router.push('accueil')
           })

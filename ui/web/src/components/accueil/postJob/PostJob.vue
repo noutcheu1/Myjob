@@ -24,7 +24,7 @@
                 <div class="updPrenom"><span class="blue">Salaire minimal</span><span class="red"> *</span><textarea v-model="salaire_min" placeholder="Editer le Salaire minimum"></textarea> </div><br>
                 <div class="updUsername"><span class="blue">Salaire maximal</span><span class="red"> *</span><textarea v-model="salaire_max" placeholder="Editer le Salaire maximum"></textarea></div><br>
                 <div class="updEmail"><span class="blue">Profil Recherché</span><span class="red"> *</span><textarea v-model="profil_recruteur" placeholder="Editer votre profil"></textarea> </div><br>
-                <div class="updConfirmEmail"><span class="blue">Date de fin</span><span class="red"> *</span><textarea v-model="date_fin" placeholder="Editer la date de fin du contrat"></textarea></div><br>
+                <div class="updConfirmEmail"><span class="blue">Date de fin</span><span class="red"> *</span> <input style="height:40px" type="date" v-model="date_fin" placeholder="Editer la date de fin du contrat"/></div><br>
                 <div class="updPassword"><span class="blue">Description</span><span class="red"> *</span><textarea v-model="description" placeholder="Editer la description"></textarea> </div><br>
                 <div class="updConfirmPassword"><span class="blue">Localisation du travail</span><span class="red"> *</span><textarea v-model="work_location" placeholder="Editer la localisation"></textarea></div><br>
                 <div class="updConfirmPassword"><span class="blue">Nombre d'année requis</span><span class="red"> *</span><textarea v-model="nombres_experiences" placeholder="Editer le nombre d'année requis"></textarea></div><br>

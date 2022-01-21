@@ -77,7 +77,7 @@ select {
     cursor: pointer;
 }
 
-.DropDownList {
+.tNavDropDownList {
     box-sizing:border-box;
     padding: 4px;
     padding-right: 8px;
@@ -94,6 +94,6 @@ select {
     background-origin: content-box;
     background-image: url('./down_arrow.svg');
 }
-.DropDownList::-ms-expand {
+.tNavDropDownList::-ms-expand {
     display: none;
 }

@@ -5,7 +5,7 @@
             <MyProfile/>
         </div>
         <div class="flex_acceuil">
-            <div>
+        <div>
             <CardBid title='Déposer votre CV' text="Des miliers de cv sont déposé chaque jour sur MyJob. Déposé votre cv pour avoir la chance d'etre contacté direstement par un recruteur"/>
         </div>
          <div>
@@ -23,13 +23,13 @@
         </div>
          <div class="flex_acceuil">
             <div>
-                <CardBid1 displayNumbCandidate='none'/>
+                <CardBid1 :datas='publicationIndexes[0]' displayNumbCandidate='none'/>
             </div>
             <div>
-                <CardBid1 displayNumbCandidate='none'/>
+                <CardBid1 :datas='publicationIndexes[1]' displayNumbCandidate='none'/>
             </div>
             <div>
-                <CardBid1 displayNumbCandidate='none'/>
+                <CardBid1 :datas='publicationIndexes[2]' displayNumbCandidate='none'/>
             </div>
         </div>
         <div class="div_offres_recentes">
@@ -67,6 +67,9 @@
 
         <div>
             <L-pblication-form/>
+        </div>
+        <div>
+            <CardProfil/>
         </div>
          <footer>
             <div class="flex_acceuil">
@@ -106,19 +109,6 @@
                             <a href="#team">
                                 <P>-----------------------</P>
                                 <p>Equipe</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#partenaires">
-                                <P>-----------------------</P>
-                                <p>partenaires</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#contact">
-                                <P>-----------------------</P>
-                                <p>Contacts</p>
-                                <P>-----------------------</P>
                             </a>
                         </li>
                    </ul>

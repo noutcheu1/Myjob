@@ -24,6 +24,10 @@ export default {
       return this.position + '%'
     }
   },
-  created () {
+  mounted () {
+    setInterval(() => {
+      if (this.position >= -100) this.position -= 100
+      else this.position = 0
+    }, 2000)
   }
 }

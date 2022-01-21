@@ -34,7 +34,9 @@ const store = new Vuex.Store({
     ],
     login: {
       connected: false,
-      id: 9
+      id: 9,
+      name: 'none',
+      email: 'none'
     },
     inscription: {
       surname: '',
@@ -52,6 +54,8 @@ const store = new Vuex.Store({
     updateLogin (state, playload) {
       state.login.connected = playload.connected
       state.login.id = playload.id
+      state.login.name = playload.name
+      state.login.email = playload.email
     },
     mutPubliMessage (state, playload) {
       state.publicationMessage = playload

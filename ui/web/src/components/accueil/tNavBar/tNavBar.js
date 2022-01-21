@@ -10,14 +10,19 @@ export default {
   },
   data () {
     return {
-      connectDisplay: 'block'
+      connectDisplay: 'block',
+      nonConnectDisplay: 'none'
     }
   },
   methods: {
     connexionVisible () {
       if (this.$store.state.login.connected) {
         this.connectDisplay = 'none'
+        this.nonConnectDisplay = 'block'
       } else this.connectDisplay = 'block'
+    },
+    displayProfile () {
+      this.$root.$emit('displayProfile', {id: this.reference, title: this.title})
     }
   },
   mounted () {
