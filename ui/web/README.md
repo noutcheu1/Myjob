@@ -1,4 +1,4 @@
-# myJoba web app for find yours workbase on vuejs 2
+# MyJoba web app for find yours workbase on vuejs 2
 
 
 # Prerequis
