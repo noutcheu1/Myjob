@@ -26,6 +26,8 @@ export default {
           password: this.$refs.password.message
         })
           .then((response) => {
+            let playload = {connected: true, id: response.data.id}
+            this.$store.commit('updateLogin', playload)
             this.$router.push('accueil')
           })
           .catch((error) => {

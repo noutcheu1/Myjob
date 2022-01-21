@@ -1,5 +1,5 @@
 <template>
-    <button class ="button1">
+    <button class ="button1" @click="goToLink">
         {{ message }}
     </button>
 </template>
@@ -28,7 +28,13 @@
 export default {
   name: 'Button1',
   props: {
-    message: String
+    message: String,
+    link: String
+  },
+  methods: {
+    goToLink () {
+      this.$router.push(this.link)
+    }
   }
 }
 </script>

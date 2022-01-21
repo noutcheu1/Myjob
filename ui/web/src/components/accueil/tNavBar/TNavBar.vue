@@ -26,8 +26,8 @@
                 <option>Fr</option> <option>Eng</option>
                 </select>
             </div>
-            <div class="tNavLogin"><a href="../Login"> <Button1 message="Log In"/> </a></div>
-            <div><Button message="Sign Up" /></div>
+            <div class="tNavLogin"><a :style ="{display:connectDisplay}"> <Button1 message="Log In" link='login' /> </a></div>
+            <div :style ="{display:connectDisplay}"><Button message="Sign Up" link='inscription' /></div>
         </div>
     </div>
 </template>

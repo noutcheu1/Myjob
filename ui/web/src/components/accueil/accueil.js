@@ -27,19 +27,21 @@ export default {
     exist (a) {
       let result
       if (typeof a === 'undefined') {
-        result = 'lll'
+        result = false
       } else result = a
       return result
     }
   },
   mounted () {
     this.$root.$on('pageChanged', data => {
-      this.publicationIndexes = data
+      this.publicationIndexes = []
       let i, max
-      max = this.publicationIndexes.length
-     /* for (i = 0; i < max; i++) {
-        this.publicationIndexes[i] = this.exist(this.publicationIndexes[i])
-      } */
+      let publi = []
+      max = data.length
+      for (i = 0; i < max; i++) {
+        publi.push(this.exist(data[i]))
+      }
+      this.publicationIndexes = publi
       window.scrollTo(0, 700)
     })
   }

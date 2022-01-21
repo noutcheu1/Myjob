@@ -28,7 +28,7 @@ export default {
       this.$root.$emit('displayForm', {id: this.reference, title: this.title})
     },
     updateDatas () {
-      if (typeof this.datas === 'undefined') this.Display = 'none'
+      if (!this.datas) this.Display = 'none'
       else {
         console.log(this.datas)
         this.Display = 'block'

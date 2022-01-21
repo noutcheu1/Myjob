@@ -7,5 +7,20 @@ export default {
     Button,
     Button1,
     InputSearch
+  },
+  data () {
+    return {
+      connectDisplay: 'block'
+    }
+  },
+  methods: {
+    connexionVisible () {
+      if (this.$store.state.login.connected) {
+        this.connectDisplay = 'none'
+      } else this.connectDisplay = 'block'
+    }
+  },
+  mounted () {
+    this.connexionVisible()
   }
 }
