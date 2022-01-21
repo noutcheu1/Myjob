@@ -6,12 +6,6 @@ end
 classinstancecanvas 128262 classinstance_ref 134662 // anglais
   xyz 805 299 2005
 end
-classinstancecanvas 128390 classinstance_ref 134790 // licence
-  xyz 819 -5 2005
-end
-classinstancecanvas 128518 classinstance_ref 134918 // Fullstack
-  xyz 711 429 2005
-end
 classinstancecanvas 128774 classinstance_ref 135174 // 
   xyz 36 32 2000
 end
@@ -33,14 +27,8 @@ end
 objectlinkcanvas 129030 norel
   from ref 128774 z 2001 to ref 128902
   no_role_a no_role_b
-objectlinkcanvas 129158 norel
-  from ref 128902 z 2006 to ref 128390
-  no_role_a no_role_b
 objectlinkcanvas 129286 norel
   from ref 128902 z 2006 to ref 128262
-  no_role_a no_role_b
-objectlinkcanvas 129414 norel
-  from ref 128902 z 2006 to ref 128518
   no_role_a no_role_b
 objectlinkcanvas 130054 norel
   from ref 128902 z 2001 to ref 129926
