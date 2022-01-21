@@ -1,7 +1,5 @@
-# BixtTodos
-a Bixterprise tools for manage yours projects base on vuejs 2
+# myJoba web app for find yours workbase on vuejs 2
 
-![alt text](./todos.png)
 
 # Prerequis
 nodejs already installed
