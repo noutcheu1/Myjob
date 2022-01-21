@@ -41,7 +41,7 @@ diagramme d 'etat d'un job
   xyzwh 110.5 1637.3 2000 213 175
 classcanvas 133638 class_ref 155398 // Postuler
   classdiagramsettings member_max_width 0 end
-  xyz 977.8 530.7 2000
+  xyz 1007.8 554.7 2000
 end
 classcanvas 134918 class_ref 148742 // Metier
   classdiagramsettings show_members_full_definition yes show_members_visibility yes show_members_stereotype yes show_members_multiplicity yes show_members_initialization yes show_attribute_modifiers yes member_max_width 0 show_parameter_dir yes show_parameter_name yes end

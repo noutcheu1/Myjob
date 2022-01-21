@@ -1,6 +1,6 @@
 format 224
 "myjob"
-  revision 10
+  revision 11
   modified_by 6 "noutcheu"
 
 
@@ -94,7 +94,7 @@ format 224
 
     objectdiagram 128646 "obj_myjob"
       objectdiagramsettings end
-      size A4
+      size A1
     end
 
     activity 128006 "activty_myhob"
@@ -1294,6 +1294,30 @@ ${docstring}${members}
 	mysql_decl ""
 	MysqlColumn
       end
+
+      attribute 183942 "job_id"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 184070 "user_id"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
     end
 
     class 155526 "Retruter"
@@ -2164,9 +2188,193 @@ ${docstring}${body}
       end
     end
 
-    classinstance 128006 ""
+    classinstance 128006 "developeur Angular"
       type class_ref 128390 // Job
       attributes
+        attribute_ref 144902 // description
+          "charger de contruires un site de ecomerce"
+        attribute_ref 146950 // nombre_experience
+          "1"
+        attribute_ref 128518 // periode
+          "3"
+        attribute_ref 128262 // salaire
+          "100000"
+        attribute_ref 128006 // titre
+          "recherce de developpeur frontend"
+        attribute_ref 128134 // type_contrat
+          "cdd"
+        attribute_ref 146182 // work_statue
+          "valider"
+        end
+      relations
+        end
+    end
+
+    classinstance 134534 "libert"
+      type class_ref 128006 // Utilisateur
+      attributes
+        end
+      relations
+        end
+    end
+
+    classinstance 134662 "anglais"
+      type class_ref 128774 // Competence
+      attributes
+        attribute_ref 144518 // description
+          "bksjvfbvksfbv"
+        attribute_ref 144390 // niveau
+          "1"
+        attribute_ref 145414 // nom
+          "leonard"
+        end
+      relations
+        end
+    end
+
+    classinstance 134790 "licence"
+      type class_ref 128646 // Formation
+      attributes
+        attribute_ref 163846 // date_de_debut
+          "2021-04-12"
+        attribute_ref 129158 // date_de_debut
+          "2021-04-1"
+        attribute_ref 163974 // date_de_fin
+          "2021-04-1"
+        attribute_ref 129286 // date_de_fin
+          "2021-04-1"
+        attribute_ref 164230 // description
+          "lmlfkmlskmvlsk"
+        attribute_ref 164358 // lieux
+          "yaounde"
+        attribute_ref 164102 // nom
+          "luon"
+        attribute_ref 145030 // nom
+          "kcmkdmc"
+        end
+      relations
+        end
+    end
+
+    classinstance 134918 "Fullstack"
+      type class_ref 148742 // Metier
+      attributes
+        attribute_ref 146310 // nom
+          "developpeur github"
+        end
+      relations
+        end
+    end
+
+    classinstance 135046 ""
+      type class_ref 148614 // Admin
+      attributes
+        end
+      relations
+        end
+    end
+
+    classinstance 135174 ""
+      type class_ref 162566 // User
+      attributes
+        attribute_ref 144006 // email
+          "example@gmail.com"
+        attribute_ref 129542 // first_name
+          "ealon"
+        attribute_ref 129670 // last_name
+          "cdnmk"
+        attribute_ref 144134 // password
+          "*******"
+        attribute_ref 163718 // username
+          "libert"
+        end
+      relations
+        end
+    end
+
+    classinstance 135302 ""
+      type class_ref 162054 // ProfilUser
+      attributes
+        attribute_ref 161030 // adresse
+          "cite des palmier"
+        attribute_ref 161158 // birthday
+          "20-2333-12"
+        attribute_ref 161414 // cv
+          "null"
+        attribute_ref 177414 // description
+          "ckdmkmcdk"
+        attribute_ref 161286 // location
+          "yaounde"
+        attribute_ref 145798 // nationalite
+          "cameroun"
+        attribute_ref 163078 // user
+          "libert"
+        end
+      relations
+        end
+    end
+
+    classinstance 135430 ""
+      type class_ref 155398 // Postuler
+      attributes
+        attribute_ref 153734 // date_post
+          "21-09-2001"
+        attribute_ref 183942 // job_id
+          "developpeur angular"
+        attribute_ref 153862 // motivation_letter
+          "i am motivate"
+        attribute_ref 154502 // response_status
+          "en attente"
+        attribute_ref 154374 // retruteur
+          "leo"
+        attribute_ref 184070 // user_id
+          "libert"
+        end
+      relations
+        end
+    end
+
+    classinstance 135558 ""
+      type class_ref 155526 // Retruter
+      attributes
+        attribute_ref 154246 // job_id
+          "1"
+        attribute_ref 154118 // retruteur_id
+          "1 (Mboatek)"
+        attribute_ref 153990 // user_id
+          "1 (libert )"
+        end
+      relations
+        end
+    end
+
+    classinstance 135686 ""
+      type class_ref 128134 // ProfilRetruteur
+      attributes
+        attribute_ref 161030 // adresse
+          "Nzimeyong"
+        attribute_ref 161286 // location
+          "yaounde"
+        attribute_ref 144774 // name
+          "Mboatek"
+        attribute_ref 163078 // user
+          "Mboatek"
+        end
+      relations
+        end
+    end
+
+    classinstance 135814 ""
+      type class_ref 162566 // User
+      attributes
+        attribute_ref 129542 // first_name
+          "leina"
+        attribute_ref 129670 // last_name
+          "lala"
+        attribute_ref 144134 // password
+          "****"
+        attribute_ref 144262 // username
+          "Mboatek"
         end
       relations
         end

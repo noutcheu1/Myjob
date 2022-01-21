@@ -227,7 +227,7 @@ class ProfilUserSerializer(ModelSerializer):
 
     class Meta:
         model = ProfilUser
-        fields = ('id','user', 'location','Description','adresse','nationalite','birthday','cv',)
+        fields = ('id','user', 'location','Description','adresse','nationalite','birthday','cv', 'metier',)
 
 
 class JobSerializer(ModelSerializer):

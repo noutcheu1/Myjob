@@ -1,3 +1,63 @@
 format 224
 
+classinstancecanvas 128134 classinstance_ref 128006 // developeur Angular
+  xyz 203 445 2000
+end
+classinstancecanvas 128262 classinstance_ref 134662 // anglais
+  xyz 805 299 2005
+end
+classinstancecanvas 128390 classinstance_ref 134790 // licence
+  xyz 819 -5 2005
+end
+classinstancecanvas 128518 classinstance_ref 134918 // Fullstack
+  xyz 711 429 2005
+end
+classinstancecanvas 128774 classinstance_ref 135174 // 
+  xyz 36 32 2000
+end
+classinstancecanvas 128902 classinstance_ref 135302 // 
+  xyz 308 35 2000
+end
+classinstancecanvas 129926 classinstance_ref 135430 // 
+  xyz 293 241 2000
+end
+classinstancecanvas 130310 classinstance_ref 135558 // 
+  xyz 8 553 2000
+end
+classinstancecanvas 130438 classinstance_ref 135686 // 
+  xyz 318 720 2000
+end
+classinstancecanvas 130566 classinstance_ref 135814 // 
+  xyz 540 801 2005
+end
+objectlinkcanvas 129030 norel
+  from ref 128774 z 2001 to ref 128902
+  no_role_a no_role_b
+objectlinkcanvas 129158 norel
+  from ref 128902 z 2006 to ref 128390
+  no_role_a no_role_b
+objectlinkcanvas 129286 norel
+  from ref 128902 z 2006 to ref 128262
+  no_role_a no_role_b
+objectlinkcanvas 129414 norel
+  from ref 128902 z 2006 to ref 128518
+  no_role_a no_role_b
+objectlinkcanvas 130054 norel
+  from ref 128902 z 2001 to ref 129926
+  no_role_a no_role_b
+objectlinkcanvas 130182 norel
+  from ref 129926 z 2001 to ref 128134
+  no_role_a no_role_b
+objectlinkcanvas 130694 norel
+  from ref 130566 z 2006 to ref 130438
+  no_role_a no_role_b
+objectlinkcanvas 130822 norel
+  from ref 130438 z 2001 to ref 128134
+  no_role_a no_role_b
+objectlinkcanvas 130950 norel
+  from ref 130438 z 2001 to ref 130310
+  no_role_a no_role_b
+objectlinkcanvas 131078 norel
+  from ref 128902 z 2001 to ref 130310
+  no_role_a no_role_b
 end
